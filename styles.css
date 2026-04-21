@@ -1,153 +1,177 @@
-/* Soft, pastel, paper-like palette. No gradients, no purples/pinks. */
+/* Maxua blogroll-inspired: warm paper background, flat list, accent-coloured
+   date headings and bullet dots. Blue accent instead of orange. */
+
 :root {
-  --bg: #f6f1e7;          /* warm off-white / paper */
-  --panel: #fbf8f1;       /* slightly lighter panel */
-  --ink: #2b2a28;         /* body text */
-  --ink-soft: #5c5a55;    /* secondary text */
-  --rule: #e4dccd;        /* neutral border */
-  --accent: #4e7c79;      /* dusty teal */
-  --accent-soft: #dfe9e7; /* tint of accent for focus bg */
-  --radius: 10px;
-  --shadow: 0 1px 0 rgba(43, 42, 40, 0.04);
-  --measure: 68ch;
+  --bg: #faf8f5;          /* warm paper */
+  --ink: #333;            /* body text */
+  --ink-strong: #111;     /* headings */
+  --ink-soft: #999;       /* muted meta */
+  --rule: #e8e4df;        /* header/footer dividers */
+  --rule-soft: #efe9e3;   /* row dividers */
+  --accent: #3d86e1;      /* links-hover, date heading, bullet */
+  --accent-soft: #6385a8; /* source metadata text */
+  --measure: 620px;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
   background: var(--bg);
   color: var(--ink);
 }
 
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 .page {
   max-width: var(--measure);
-  margin: 0 auto;
-  padding: 3rem 1.25rem 4rem;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
 }
+
+/* Header ------------------------------------------------------------ */
 
 .page__header {
-  margin-bottom: 2.25rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
 }
 
-h1 {
-  font-size: 1.9rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.35rem;
+.page__header h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+  margin-bottom: 0.4rem;
 }
 
 .lede {
-  margin: 0;
   color: var(--ink-soft);
+  font-size: 0.85rem;
 }
 
 .meta {
-  margin: 0.75rem 0 0;
-  font-size: 0.85rem;
+  margin-top: 0.35rem;
   color: var(--ink-soft);
+  font-size: 0.78rem;
 }
+
+/* Status / empty / failure states ---------------------------------- */
 
 .status {
   color: var(--ink-soft);
   font-style: italic;
+  text-align: center;
 }
 
+.empty {
+  padding: 1.5rem 1rem;
+  color: var(--ink-soft);
+  text-align: center;
+  border: 1px dashed var(--rule);
+}
+
+/* Day groups ------------------------------------------------------- */
+
 .day {
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.25rem 1.25rem;
-  margin: 0 0 1rem;
-  box-shadow: var(--shadow);
+  /* flat, no card — each day is just a heading + list */
 }
 
 .day__heading {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-  margin: 0 0 0.85rem;
+  letter-spacing: 0.08em;
+  margin: 2rem 0 0.8rem;
+}
+
+.day:first-of-type .day__heading {
+  margin-top: 0;
 }
 
 .day__list {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .article {
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--rule);
+  position: relative;
+  padding: 0.6rem 0 0.6rem 1rem;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--rule-soft);
 }
 
-.article:first-child {
-  padding-top: 0;
-  border-top: none;
+.article:last-child {
+  border-bottom: none;
+}
+
+.article::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(0.6rem + 0.55em);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .article__title {
-  display: block;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 550;
-  line-height: 1.4;
+  font-weight: 500;
 }
 
 .article__title:hover {
   color: var(--accent);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
 }
 
 .article__title:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .article__byline {
-  margin: 0.2rem 0 0;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: var(--accent-soft);
+  line-height: 1.4;
 }
 
-.article__source {
-  color: var(--ink-soft);
+.article__source::before {
+  content: "·";
+  margin: 0 0.35rem;
+  color: #ddd;
 }
 
-.empty {
-  padding: 1.25rem;
-  border: 1px dashed var(--rule);
-  border-radius: var(--radius);
+/* Failures & footer ------------------------------------------------ */
+
+.failures {
+  margin-top: 2rem;
+  font-size: 0.78rem;
   color: var(--ink-soft);
   text-align: center;
 }
 
-.failures {
-  margin-top: 1.5rem;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-}
-
 .failures details {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.75rem;
+  display: inline-block;
+  text-align: left;
 }
 
 .failures summary {
@@ -155,39 +179,47 @@ h1 {
 }
 
 .failures ul {
+  list-style: disc;
   margin: 0.5rem 0 0;
   padding-left: 1.2rem;
 }
 
 .page__footer {
-  margin-top: 3rem;
-  padding-top: 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--rule);
-  font-size: 0.85rem;
-  color: var(--ink-soft);
+  text-align: center;
+  color: #bbb;
+  font-size: 0.8rem;
+  line-height: 1.8;
 }
 
-@media (max-width: 480px) {
-  body {
-    font-size: 16px;
-  }
-  .page {
-    padding: 2rem 1rem 3rem;
-  }
-  h1 {
-    font-size: 1.65rem;
-  }
+.page__footer a {
+  color: var(--accent-soft);
+  text-decoration: none;
 }
+
+.page__footer a:hover {
+  color: var(--accent);
+}
+
+/* Dark mode — same hue family, darker paper ------------------------ */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1f1e1b;
-    --panel: #262521;
-    --ink: #e9e4d8;
-    --ink-soft: #a8a396;
-    --rule: #34322c;
-    --accent: #8fb8b4;
-    --accent-soft: #2d3a39;
-    --shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    --bg: #1c1b19;
+    --ink: #d8d4cc;
+    --ink-strong: #f2efe9;
+    --ink-soft: #8a857d;
+    --rule: #2e2c28;
+    --rule-soft: #262421;
+    --accent: #7fb0ea;
+    --accent-soft: #6d8aa8;
+  }
+  .article__source::before {
+    color: #3a3733;
+  }
+  .page__footer {
+    color: #6a645d;
   }
 }

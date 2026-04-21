@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(curl -s --max-time 10 \"https://simonwillison.net/atom/entries/\")"
+      "Bash(curl -s --max-time 10 \"https://simonwillison.net/atom/entries/\")",
+      "WebFetch(domain:maxua.com)",
+      "Bash(curl -s --max-time 15 \"https://maxua.com/blogroll\" -o /tmp/maxua.html)",
+      "Read(//tmp/**)"
     ]
   }
 }
