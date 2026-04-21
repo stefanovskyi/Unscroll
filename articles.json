@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-04-21T17:22:12.918Z",
+  "windowDays": 7,
+  "count": 13,
+  "failures": [],
+  "articles": [
+    {
+      "title": "Fragments: April 21",
+      "link": "https://martinfowler.com/fragments/2026-04-21.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-21T14:34:00.000Z"
+    },
+    {
+      "title": "Learnings from conducting ~1,000 interviews at Amazon",
+      "link": "https://newsletter.pragmaticengineer.com/p/learnings-from-conducting-1000-interviews",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-21T12:49:16.000Z"
+    },
+    {
+      "title": "Celebrating computers at Omacon",
+      "link": "https://world.hey.com/dhh/celebrating-computers-at-omacon-163eb568",
+      "author": "David Heinemeier Hansson",
+      "source": "DHH — HEY World",
+      "date": "2026-04-21T10:56:33.000Z"
+    },
+    {
+      "title": "Joy & Curiosity #82",
+      "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-82",
+      "author": "Thorsten Ball",
+      "source": "Thorsten Ball — Register Spill",
+      "date": "2026-04-19T05:23:09.000Z"
+    },
+    {
+      "title": "Agent Harness Engineering",
+      "link": "https://addyosmani.com/blog/agent-harness-engineering/",
+      "author": "Addy Osmani",
+      "source": "Addy Osmani",
+      "date": "2026-04-19T00:00:00.000Z"
+    },
+    {
+      "title": "Changes in the system prompt between Claude Opus 4.6 and 4.7",
+      "link": "https://simonwillison.net/2026/Apr/18/opus-system-prompt/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-18T23:59:40.000Z"
+    },
+    {
+      "title": "Some secret management belongs in your HTTP proxy",
+      "link": "https://blog.exe.dev/http-proxy-secrets",
+      "author": "David Crawshaw and Philip Zeyliger",
+      "source": "blog.exe.dev",
+      "date": "2026-04-18T00:00:00.000Z"
+    },
+    {
+      "title": "Many anti-AI arguments are conservative arguments",
+      "link": "https://seangoedecke.com/many-anti-ai-arguments-are-conservative/",
+      "author": "Sean Goedecke",
+      "source": "Sean Goedecke",
+      "date": "2026-04-18T00:00:00.000Z"
+    },
+    {
+      "title": "Join us at PyCon US 2026 in Long Beach - we have new AI and security tracks this year",
+      "link": "https://simonwillison.net/2026/Apr/17/pycon-us-2026/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-17T23:59:03.000Z"
+    },
+    {
+      "title": "Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7",
+      "link": "https://simonwillison.net/2026/Apr/16/qwen-beats-opus/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-16T17:16:52.000Z"
+    },
+    {
+      "title": "The Pulse: ‘Tokenmaxxing’ as a weird new trend",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tokenmaxxing-as-a-weird",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-16T16:47:08.000Z"
+    },
+    {
+      "title": "The AI Vibe Shift Has Officially Arrived",
+      "link": "https://www.derekthompson.org/p/the-ai-vibe-shift-is-here",
+      "author": "Derek Thompson",
+      "source": "Derek Thompson",
+      "date": "2026-04-16T10:08:39.000Z"
+    },
+    {
+      "title": "The malleable computer",
+      "link": "https://world.hey.com/dhh/the-malleable-computer-7c187a9b",
+      "author": "David Heinemeier Hansson",
+      "source": "DHH — HEY World",
+      "date": "2026-04-15T15:06:27.000Z"
+    }
+  ]
+}
