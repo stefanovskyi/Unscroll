@@ -1,9 +1,44 @@
 {
-  "generatedAt": "2026-04-21T17:22:12.918Z",
+  "generatedAt": "2026-04-22T20:13:06.562Z",
   "windowDays": 7,
-  "count": 13,
+  "count": 17,
   "failures": [],
   "articles": [
+    {
+      "title": "Designing Data-intensive Applications with Martin Kleppmann",
+      "link": "https://newsletter.pragmaticengineer.com/p/designing-data-intensive-applications",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-22T16:19:26.000Z"
+    },
+    {
+      "title": "Is Claude Code going to cost $100/month? Probably not - it's all very confusing",
+      "link": "https://simonwillison.net/2026/Apr/22/claude-code-confusion/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-22T02:07:34.000Z"
+    },
+    {
+      "title": "Series A for exe.dev",
+      "link": "https://blog.exe.dev/series-a",
+      "author": "David Crawshaw",
+      "source": "blog.exe.dev",
+      "date": "2026-04-22T00:00:00.000Z"
+    },
+    {
+      "title": "Luddites and AI datacenters",
+      "link": "https://seangoedecke.com/luddites-and-ai-datacenters/",
+      "author": "Sean Goedecke",
+      "source": "Sean Goedecke",
+      "date": "2026-04-22T00:00:00.000Z"
+    },
+    {
+      "title": "Where's the raccoon with the ham radio? (ChatGPT Images 2.0)",
+      "link": "https://simonwillison.net/2026/Apr/21/gpt-image-2/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-21T20:32:24.000Z"
+    },
     {
       "title": "Fragments: April 21",
       "link": "https://martinfowler.com/fragments/2026-04-21.html",
@@ -87,13 +122,6 @@
       "author": "Derek Thompson",
       "source": "Derek Thompson",
       "date": "2026-04-16T10:08:39.000Z"
-    },
-    {
-      "title": "The malleable computer",
-      "link": "https://world.hey.com/dhh/the-malleable-computer-7c187a9b",
-      "author": "David Heinemeier Hansson",
-      "source": "DHH — HEY World",
-      "date": "2026-04-15T15:06:27.000Z"
     }
   ]
 }
