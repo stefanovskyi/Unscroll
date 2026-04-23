@@ -39,16 +39,25 @@ function simonWillisonTransform(item) {
   return { ...item, link: url.toString() };
 }
 
+// `xHandle` is the author's X (formerly Twitter) handle without the @.
+// The generator attaches `https://x.com/<handle>` as `authorUrl` on any
+// article whose author matches the feed's `fallbackAuthor` (or an
+// explicit `xAuthor` for multi-author feeds). Guest posts on single-
+// author feeds therefore don't get misattributed to the main author.
+// Feeds without a clear single author (brand newsletters, group blogs)
+// omit `xHandle`.
 export const feeds = [
   {
     source: "Simon Willison",
     fallbackAuthor: "Simon Willison",
+    xHandle: "simonw",
     candidates: ["https://simonwillison.net/atom/entries/"],
     transform: simonWillisonTransform,
   },
   {
     source: "The Pragmatic Engineer",
     fallbackAuthor: "Gergely Orosz",
+    xHandle: "GergelyOrosz",
     candidates: [
       "https://newsletter.pragmaticengineer.com/feed",
       "https://www.pragmaticengineer.com/rss/",
@@ -57,16 +66,19 @@ export const feeds = [
   {
     source: "DHH — HEY World",
     fallbackAuthor: "David Heinemeier Hansson",
+    xHandle: "dhh",
     candidates: ["https://world.hey.com/dhh/feed.atom"],
   },
   {
     source: "Martin Fowler",
     fallbackAuthor: "Martin Fowler",
+    xHandle: "martinfowler",
     candidates: ["https://martinfowler.com/feed.atom"],
   },
   {
     source: "Thorsten Ball — Register Spill",
     fallbackAuthor: "Thorsten Ball",
+    xHandle: "thorstenball",
     candidates: [
       "https://registerspill.thorstenball.com/feed",
       "https://registerspill.substack.com/feed",
@@ -85,11 +97,13 @@ export const feeds = [
   {
     source: "Sean Goedecke",
     fallbackAuthor: "Sean Goedecke",
+    xHandle: "sjgoedecke",
     candidates: ["https://www.seangoedecke.com/rss.xml"],
   },
   {
     source: "Derek Thompson",
     fallbackAuthor: "Derek Thompson",
+    xHandle: "DKThomp",
     candidates: [
       "https://www.derekthompson.org/feed",
       "https://derekthompson.substack.com/feed",
@@ -98,6 +112,7 @@ export const feeds = [
   {
     source: "Addy Osmani",
     fallbackAuthor: "Addy Osmani",
+    xHandle: "addyosmani",
     candidates: [
       "https://addyosmani.com/feed.xml",
       "https://addyosmani.com/blog/feed.xml",
@@ -112,50 +127,61 @@ export const feeds = [
   {
     source: "Armin Ronacher",
     fallbackAuthor: "Armin Ronacher",
+    xHandle: "mitsuhiko",
     candidates: ["https://lucumr.pocoo.org/feed.atom"],
   },
   {
     source: "Boris Tane",
     fallbackAuthor: "Boris Tane",
+    xHandle: "boristane",
     candidates: ["https://boristane.com/rss.xml"],
   },
   {
     source: "David Crawshaw",
     fallbackAuthor: "David Crawshaw",
+    xHandle: "davidcrawshaw",
     candidates: ["https://crawshaw.io/atom.xml"],
   },
   {
     source: "Phil Eaton",
     fallbackAuthor: "Phil Eaton",
+    xHandle: "eatonphil",
     candidates: ["https://notes.eatonphil.com/rss.xml"],
   },
   {
     source: "Stay SaaSy",
     fallbackAuthor: "Stay SaaSy",
+    xHandle: "staysaasy",
     candidates: ["https://staysaasy.com/feed.xml"],
   },
   {
     source: "Paul Graham",
+    xHandle: "paulg",
+    xAuthor: "Paul Graham",
     fetch: fetchPaulGraham,
   },
   {
     source: "Geoffrey Litt",
     fallbackAuthor: "Geoffrey Litt",
+    xHandle: "geoffreylitt",
     candidates: ["https://www.geoffreylitt.com/feed.xml"],
   },
   {
     source: "Ben Kuhn",
     fallbackAuthor: "Ben Kuhn",
+    xHandle: "benkuhn",
     candidates: ["https://www.benkuhn.net/index.xml"],
   },
   {
     source: "Stratechery",
     fallbackAuthor: "Ben Thompson",
+    xHandle: "benthompson",
     candidates: ["https://stratechery.com/feed/"],
   },
   {
     source: "Charity Majors",
     fallbackAuthor: "Charity Majors",
+    xHandle: "mipsytipsy",
     candidates: ["https://charity.wtf/feed/"],
   },
   {
@@ -165,26 +191,31 @@ export const feeds = [
     // Kept separate from his personal substack (`Derek Thompson`).
     source: "Work in Progress (The Atlantic)",
     fallbackAuthor: "Derek Thompson",
+    xHandle: "DKThomp",
     candidates: ["https://www.theatlantic.com/feed/author/derek-thompson/"],
   },
   {
     source: "One Useful Thing (Ethan Mollick)",
     fallbackAuthor: "Ethan Mollick",
+    xHandle: "emollick",
     candidates: ["https://www.oneusefulthing.org/feed"],
   },
   {
     source: "Max Woolf",
     fallbackAuthor: "Max Woolf",
+    xHandle: "minimaxir",
     candidates: ["https://minimaxir.com/index.xml"],
   },
   {
     source: "Noahpinion (Noah Smith)",
     fallbackAuthor: "Noah Smith",
+    xHandle: "Noahpinion",
     candidates: ["https://www.noahpinion.blog/feed"],
   },
   {
     source: "Steve Yegge",
     fallbackAuthor: "Steve Yegge",
+    xHandle: "Steve_Yegge",
     candidates: [
       "https://steve-yegge.medium.com/feed",
       "https://medium.com/feed/@steve-yegge",
@@ -193,21 +224,25 @@ export const feeds = [
   {
     source: "Read Trung (Trung Phan)",
     fallbackAuthor: "Trung Phan",
+    xHandle: "TrungTPhan",
     candidates: ["https://www.readtrung.com/feed"],
   },
   {
     source: "Val Town",
     fallbackAuthor: "Val Town",
+    xHandle: "ValDotTown",
     candidates: ["https://blog.val.town/rss.xml"],
   },
   {
     source: "NLP Newsletter (Elvis Saravia)",
     fallbackAuthor: "Elvis Saravia",
+    xHandle: "omarsar0",
     candidates: ["https://nlp.elvissaravia.com/feed"],
   },
   {
     source: "Architecture Weekly",
     fallbackAuthor: "Oskar Dudycz",
+    xHandle: "oskar_at_net",
     candidates: ["https://www.architecture-weekly.com/feed"],
   },
   {
@@ -215,20 +250,25 @@ export const feeds = [
     // tech-adjacent content. Individual authors vary.
     source: "a16z",
     fallbackAuthor: "a16z",
+    xHandle: "a16z",
     candidates: ["https://www.a16z.news/feed"],
   },
   {
     source: "ByteByteGo",
     fallbackAuthor: "Alex Xu",
+    xHandle: "alexxubyte",
     candidates: ["https://blog.bytebytego.com/feed"],
   },
   {
     source: "Hacker Newsletter",
     fallbackAuthor: "Hacker Newsletter",
+    xHandle: "hnletter",
     candidates: ["https://buttondown.com/hacker-newsletter/rss"],
   },
   {
     source: "Software Lead Weekly",
+    xHandle: "orenellenbogen",
+    xAuthor: "Oren Ellenbogen",
     fetch: fetchSoftwareLeadWeekly,
   },
   {

@@ -85,6 +85,23 @@ function normalize(parsed, feedConfig) {
   return items;
 }
 
+// Attach https://x.com/<handle> to articles whose author matches the
+// feed's primary-author name (xAuthor, falling back to fallbackAuthor).
+// The match is case-insensitive and trimmed so minor feed inconsistencies
+// don't drop the link. Guest posts whose author differs are left alone.
+function attachAuthorUrls(articles, feedConfig) {
+  if (!feedConfig.xHandle) return articles;
+  const primary = (feedConfig.xAuthor || feedConfig.fallbackAuthor || "")
+    .trim()
+    .toLowerCase();
+  if (!primary) return articles;
+  const url = `https://x.com/${feedConfig.xHandle}`;
+  for (const a of articles) {
+    if ((a.author || "").trim().toLowerCase() === primary) a.authorUrl = url;
+  }
+  return articles;
+}
+
 function withinLastDays(iso, cutoffMs) {
   return new Date(iso).getTime() >= cutoffMs;
 }
@@ -106,6 +123,7 @@ async function main() {
         items = normalize(parsed.parsed, feed);
         label = parsed.url;
       }
+      attachAuthorUrls(items, feed);
       const recent = items.filter((a) => withinLastDays(a.date, cutoffMs));
       console.log(`  ✓ ${label} — ${recent.length} recent item(s)`);
       return recent;

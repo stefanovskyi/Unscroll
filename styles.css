@@ -154,6 +154,22 @@ body {
   line-height: 1.4;
 }
 
+.article__author-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+.article__author-link:hover {
+  color: var(--accent);
+}
+
+.article__author-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .article__source::before {
   content: "·";
   margin: 0 0.35rem;

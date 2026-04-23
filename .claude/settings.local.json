@@ -29,7 +29,8 @@
       "Bash(curl -s -A \"Mozilla/5.0\" https://softwareleadweekly.com/issues/699)",
       "Bash(curl *)",
       "Bash(awk -F- '{print $NF, $0}')",
-      "Bash(grep -oE '[a-z]+$')"
+      "Bash(grep -oE '[a-z]+$')",
+      "WebSearch"
     ]
   }
 }

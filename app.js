@@ -66,15 +66,27 @@ function renderDay(group) {
       { class: "article__title", href: a.link, rel: "noopener", target: "_blank" },
       a.title,
     );
+    const authorNode = a.authorUrl
+      ? el(
+          "a",
+          {
+            class: "article__author-link",
+            href: a.authorUrl,
+            rel: "noopener",
+            target: "_blank",
+          },
+          a.author,
+        )
+      : document.createTextNode(a.author);
     const sameByAndSource =
       (a.author || "").trim().toLowerCase() ===
       (a.source || "").trim().toLowerCase();
     const byline = sameByAndSource
-      ? el("p", { class: "article__byline" }, a.author)
+      ? el("p", { class: "article__byline" }, authorNode)
       : el(
           "p",
           { class: "article__byline" },
-          a.author,
+          authorNode,
           el("span", { class: "article__source" }, ` · ${a.source}`),
         );
     list.appendChild(el("li", { class: "article" }, title, byline));
