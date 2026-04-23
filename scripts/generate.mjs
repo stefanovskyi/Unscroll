@@ -244,7 +244,7 @@ async function writeIndexHtml(snapshot, rootDir) {
     readFile(stylesPath, "utf8"),
   ]);
   let html = template;
-  html = replaceMarker(html, "styles", styles);
+  html = replaceMarker(html, "styles", `<style>${styles}</style>`);
   html = replaceMarker(html, "meta", renderMetaHtml(snapshot));
   html = replaceMarker(html, "filter-options", renderFilterOptionsHtml(snapshot.articles));
   html = replaceMarker(html, "content", renderArticlesHtml(snapshot.articles));

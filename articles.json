@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-23T12:22:08.905Z",
+  "generatedAt": "2026-04-23T13:33:53.518Z",
   "windowDays": 14,
   "sources": 38,
-  "count": 92,
+  "count": 90,
   "failures": [],
   "writers": [
     {
@@ -833,21 +833,6 @@
       "author": "Katie Kirsch",
       "source": "a16z",
       "date": "2026-04-09T14:02:24.000Z"
-    },
-    {
-      "title": "Fragments: April  9",
-      "link": "https://martinfowler.com/fragments/2026-04-09.html",
-      "author": "Martin Fowler",
-      "source": "Martin Fowler",
-      "date": "2026-04-09T13:23:00.000Z",
-      "authorUrl": "https://x.com/martinfowler"
-    },
-    {
-      "title": "The AI Data Modeling Tax: Working On Human Readiness Before AI Readiness",
-      "link": "https://moderndata101.substack.com/p/the-ai-data-modeling-tax",
-      "author": "Alejandro Aboy",
-      "source": "Modern Data 101",
-      "date": "2026-04-09T13:18:39.000Z"
     }
   ]
 }

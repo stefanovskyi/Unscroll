@@ -8,31 +8,331 @@
       name="description"
       content="A weekly reading list aggregated from a handful of writers I follow."
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <!--@styles--><style>/* Maxua blogroll-inspired: warm paper background, flat list, accent-coloured
+   date headings and bullet dots. Blue accent instead of orange. */
+
+:root {
+  --bg: #faf8f5;          /* warm paper */
+  --ink: #333;            /* body text */
+  --ink-strong: #111;     /* headings */
+  --ink-soft: #999;       /* muted meta */
+  --rule: #e8e4df;        /* header/footer dividers */
+  --rule-soft: #efe9e3;   /* row dividers */
+  --accent: #3d86e1;      /* links-hover, date heading, bullet */
+  --accent-soft: #6385a8; /* source metadata text */
+  --measure: 620px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Header ------------------------------------------------------------ */
+
+.page__header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.page__header h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+  margin-bottom: 0.4rem;
+}
+
+.meta {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.filter {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.filter label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.filter select {
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.2rem 0.45rem;
+  cursor: pointer;
+}
+
+.filter select:hover {
+  border-color: var(--accent-soft);
+}
+
+.filter select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Status / empty / failure states ---------------------------------- */
+
+.status {
+  color: var(--ink-soft);
+  font-style: italic;
+  text-align: center;
+}
+
+.empty {
+  padding: 1.5rem 1rem;
+  color: var(--ink-soft);
+  text-align: center;
+  border: 1px dashed var(--rule);
+}
+
+#content {
+  text-align: left;
+}
+
+/* Day groups ------------------------------------------------------- */
+
+.day {
+  /* flat, no card — each day is just a heading + list */
+}
+
+.day__heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 2rem 0 0.8rem;
+}
+
+.day:first-of-type .day__heading {
+  margin-top: 0;
+}
+
+.day__list {
+  list-style: none;
+}
+
+.article {
+  position: relative;
+  padding: 0.6rem 0 0.6rem 1rem;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.article::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(0.6rem + 0.55em);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.article__title {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.article__title:hover {
+  color: var(--accent);
+}
+
+.article__title:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.article__byline {
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: var(--accent-soft);
+  line-height: 1.4;
+}
+
+.article__author-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+.article__author-link:hover {
+  color: var(--accent);
+}
+
+.article__author-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.article__source::before {
+  content: "·";
+  margin: 0 0.35rem;
+  color: #ddd;
+}
+
+/* Failures & footer ------------------------------------------------ */
+
+.failures {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.failures details {
+  display: inline-block;
+  text-align: left;
+}
+
+.failures summary {
+  cursor: pointer;
+}
+
+.failures ul {
+  list-style: disc;
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.page__footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.blogroll {
+  margin-bottom: 1rem;
+  word-spacing: 0.05em;
+}
+
+.blogroll a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.blogroll a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.blogroll__plain {
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.colophon {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.75rem;
+}
+
+.page__footer a {
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.page__footer a:hover {
+  color: var(--accent);
+}
+
+/* Dark mode — same hue family, darker paper ------------------------ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1b19;
+    --ink: #d8d4cc;
+    --ink-strong: #f2efe9;
+    --ink-soft: #8a857d;
+    --rule: #2e2c28;
+    --rule-soft: #262421;
+    --accent: #7fb0ea;
+    --accent-soft: #6d8aa8;
+  }
+  .article__source::before {
+    color: #3a3733;
+  }
+  .page__footer {
+    color: #6a645d;
+  }
+}
+</style><!--/@styles-->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext x='0' y='13' font-size='13'%3E%F0%9F%93%96%3C/text%3E%3C/svg%3E" />
   </head>
   <body>
     <main class="page">
       <header class="page__header">
         <h1>Reading list</h1>
-        <p class="meta" id="meta" hidden></p>
-        <div class="filter" id="filter" hidden>
+        <p class="meta" id="meta"><!--@meta-->38 sources · last 14 days · updated 2026-04-23 13:33 UTC<!--/@meta--></p>
+        <div class="filter" id="filter">
           <label for="filter-source">Source</label>
           <select id="filter-source">
             <option value="">All sources</option>
+            <!--@filter-options--><option value="a16z">a16z</option><option value="Addy Osmani">Addy Osmani</option><option value="Architecture Weekly">Architecture Weekly</option><option value="Armin Ronacher">Armin Ronacher</option><option value="blog.exe.dev">blog.exe.dev</option><option value="ByteByteGo">ByteByteGo</option><option value="David Crawshaw">David Crawshaw</option><option value="Deep Learning Weekly">Deep Learning Weekly</option><option value="Derek Thompson">Derek Thompson</option><option value="DHH — HEY World">DHH — HEY World</option><option value="Founder Weekly">Founder Weekly</option><option value="Hacker Newsletter">Hacker Newsletter</option><option value="Martin Fowler">Martin Fowler</option><option value="Modern Data 101">Modern Data 101</option><option value="NLP Newsletter (Elvis Saravia)">NLP Newsletter (Elvis Saravia)</option><option value="Noahpinion (Noah Smith)">Noahpinion (Noah Smith)</option><option value="Phil Eaton">Phil Eaton</option><option value="Programmer Weekly">Programmer Weekly</option><option value="Python Weekly">Python Weekly</option><option value="Read Trung (Trung Phan)">Read Trung (Trung Phan)</option><option value="Sean Goedecke">Sean Goedecke</option><option value="Simon Willison">Simon Willison</option><option value="Software Lead Weekly">Software Lead Weekly</option><option value="Stay SaaSy">Stay SaaSy</option><option value="Stratechery">Stratechery</option><option value="The Pragmatic Engineer">The Pragmatic Engineer</option><option value="Thorsten Ball — Register Spill">Thorsten Ball — Register Spill</option><!--/@filter-options-->
           </select>
         </div>
       </header>
 
       <section id="content" aria-live="polite">
-        <p class="status" id="status">Loading…</p>
+        <!--@content--><section class="day" aria-labelledby="day-2026-04-23"><h2 class="day__heading" id="day-2026-04-23">Thursday, April 23</h2><ul class="day__list"><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/investing-in-petual" rel="noopener" target="_blank">Investing in Petual</a><p class="article__byline">Kimberly Tan<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Derek Thompson"><a class="article__title" href="https://www.derekthompson.org/p/if-americas-so-rich-howd-it-get-so" rel="noopener" target="_blank">If America&#39;s So Rich, How&#39;d It Get So Sad?</a><p class="article__byline"><a class="article__author-link" href="https://x.com/DKThomp" rel="noopener" target="_blank">Derek Thompson</a></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/an-interview-with-google-cloud-ceo-thomas-kurian-about-the-agentic-moment/" rel="noopener" target="_blank">An Interview with Google Cloud CEO Thomas Kurian About the Agentic Moment</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-22"><h2 class="day__heading" id="day-2026-04-22">Wednesday, April 22</h2><ul class="day__list"><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/is-chinas-soft-power-really-rising" rel="noopener" target="_blank">Is China&#39;s soft power really rising, or is America&#39;s just crumbling?</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li><li class="article" data-source="Modern Data 101"><a class="article__title" href="https://moderndata101.substack.com/p/data-products-the-essential-context" rel="noopener" target="_blank">Data Products: The Essential Context for Enterprise AI</a><p class="article__byline">Animesh Kumar<span class="article__source"> · Modern Data 101</span></p></li><li class="article" data-source="The Pragmatic Engineer"><a class="article__title" href="https://newsletter.pragmaticengineer.com/p/designing-data-intensive-applications" rel="noopener" target="_blank">Designing Data-intensive Applications with Martin Kleppmann</a><p class="article__byline"><a class="article__author-link" href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a><span class="article__source"> · The Pragmatic Engineer</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/why-we-need-continual-learning" rel="noopener" target="_blank">Why We Need Continual Learning</a><p class="article__byline">Malika Aubakirova<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/" rel="noopener" target="_blank">John Ternus and Apple’s Hardware-Defined Future, SpaceXAI and Cursor</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Simon Willison"><a class="article__title" href="https://simonwillison.net/2026/Apr/22/claude-code-confusion/" rel="noopener" target="_blank">Is Claude Code going to cost $100/month? Probably not - it&#39;s all very confusing</a><p class="article__byline"><a class="article__author-link" href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a></p></li><li class="article" data-source="Founder Weekly"><a class="article__title" href="https://www.founderweekly.com/p/founder-weekly-issue-728-april-22-2026" rel="noopener" target="_blank">Founder Weekly #728</a><p class="article__byline">Founder Weekly</p></li><li class="article" data-source="David Crawshaw"><a class="article__title" href="https://crawshaw.io/blog/building-a-cloud" rel="noopener" target="_blank">I am building a cloud</a><p class="article__byline"><a class="article__author-link" href="https://x.com/davidcrawshaw" rel="noopener" target="_blank">David Crawshaw</a></p></li><li class="article" data-source="Sean Goedecke"><a class="article__title" href="https://seangoedecke.com/luddites-and-ai-datacenters/" rel="noopener" target="_blank">Luddites and AI datacenters</a><p class="article__byline"><a class="article__author-link" href="https://x.com/sjgoedecke" rel="noopener" target="_blank">Sean Goedecke</a></p></li><li class="article" data-source="blog.exe.dev"><a class="article__title" href="https://blog.exe.dev/series-a" rel="noopener" target="_blank">Series A for exe.dev</a><p class="article__byline">David Crawshaw<span class="article__source"> · blog.exe.dev</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-21"><h2 class="day__heading" id="day-2026-04-21">Tuesday, April 21</h2><ul class="day__list"><li class="article" data-source="Simon Willison"><a class="article__title" href="https://simonwillison.net/2026/Apr/21/gpt-image-2/" rel="noopener" target="_blank">Where&#39;s the raccoon with the ham radio? (ChatGPT Images 2.0)</a><p class="article__byline"><a class="article__author-link" href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a></p></li><li class="article" data-source="Modern Data 101"><a class="article__title" href="https://moderndata101.substack.com/p/knowledge-graphs-for-ai" rel="noopener" target="_blank">What Makes Knowledge Graphs AI-Ready</a><p class="article__byline">Animesh Kumar<span class="article__source"> · Modern Data 101</span></p></li><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/how-doordash-launches-a-new-country" rel="noopener" target="_blank">How DoorDash Launches a New Country in One Week</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="Martin Fowler"><a class="article__title" href="https://martinfowler.com/fragments/2026-04-21.html" rel="noopener" target="_blank">Fragments: April 21</a><p class="article__byline"><a class="article__author-link" href="https://x.com/martinfowler" rel="noopener" target="_blank">Martin Fowler</a></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/the-internet-is-real-life" rel="noopener" target="_blank">The Internet is Real Life</a><p class="article__byline">Erik Torenberg<span class="article__source"> · a16z</span></p></li><li class="article" data-source="The Pragmatic Engineer"><a class="article__title" href="https://newsletter.pragmaticengineer.com/p/learnings-from-conducting-1000-interviews" rel="noopener" target="_blank">Learnings from conducting ~1,000 interviews at Amazon</a><p class="article__byline"><a class="article__author-link" href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a><span class="article__source"> · The Pragmatic Engineer</span></p></li><li class="article" data-source="DHH — HEY World"><a class="article__title" href="https://world.hey.com/dhh/celebrating-computers-at-omacon-163eb568" rel="noopener" target="_blank">Celebrating computers at Omacon</a><p class="article__byline"><a class="article__author-link" href="https://x.com/dhh" rel="noopener" target="_blank">David Heinemeier Hansson</a><span class="article__source"> · DHH — HEY World</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/tim-cooks-impeccable-timing/" rel="noopener" target="_blank">Tim Cook’s Impeccable Timing</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/no-america-is-not-in-a-stealth-manufacturing" rel="noopener" target="_blank">No, America is not in a &quot;stealth manufacturing boom&quot;</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-20"><h2 class="day__heading" id="day-2026-04-20">Monday, April 20</h2><ul class="day__list"><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/the-security-architecture-of-github" rel="noopener" target="_blank">The Security Architecture of GitHub Agentic Workflow</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/monitoring-the-situation" rel="noopener" target="_blank">Monitoring the Situation</a><p class="article__byline">Erik Torenberg<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Architecture Weekly"><a class="article__title" href="https://www.architecture-weekly.com/p/yoda-principle-for-better-integrations" rel="noopener" target="_blank">Yoda Principle for better integrations</a><p class="article__byline"><a class="article__author-link" href="https://x.com/oskar_at_net" rel="noopener" target="_blank">Oskar Dudycz</a><span class="article__source"> · Architecture Weekly</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/tsmc-earnings-new-n3-fabs-the-nvidia-ramp/" rel="noopener" target="_blank">TSMC Earnings, New N3 Fabs, The Nvidia Ramp</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/updated-thoughts-on-industrial-policy" rel="noopener" target="_blank">Updated thoughts on industrial policy</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-19"><h2 class="day__heading" id="day-2026-04-19">Sunday, April 19</h2><ul class="day__list"><li class="article" data-source="NLP Newsletter (Elvis Saravia)"><a class="article__title" href="https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-717" rel="noopener" target="_blank">🥇Top AI Papers of the Week</a><p class="article__byline">elvis<span class="article__source"> · NLP Newsletter (Elvis Saravia)</span></p></li><li class="article" data-source="Thorsten Ball — Register Spill"><a class="article__title" href="https://registerspill.thorstenball.com/p/joy-and-curiosity-82" rel="noopener" target="_blank">Joy &amp; Curiosity #82</a><p class="article__byline"><a class="article__author-link" href="https://x.com/thorstenball" rel="noopener" target="_blank">Thorsten Ball</a><span class="article__source"> · Thorsten Ball — Register Spill</span></p></li><li class="article" data-source="Addy Osmani"><a class="article__title" href="https://addyosmani.com/blog/agent-harness-engineering/" rel="noopener" target="_blank">Agent Harness Engineering</a><p class="article__byline"><a class="article__author-link" href="https://x.com/addyosmani" rel="noopener" target="_blank">Addy Osmani</a></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-18"><h2 class="day__heading" id="day-2026-04-18">Saturday, April 18</h2><ul class="day__list"><li class="article" data-source="Simon Willison"><a class="article__title" href="https://simonwillison.net/2026/Apr/18/opus-system-prompt/" rel="noopener" target="_blank">Changes in the system prompt between Claude Opus 4.6 and 4.7</a><p class="article__byline"><a class="article__author-link" href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a></p></li><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/ep211-how-the-jvm-works" rel="noopener" target="_blank">EP211: How the JVM Works</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="NLP Newsletter (Elvis Saravia)"><a class="article__title" href="https://nlp.elvissaravia.com/p/ai-agents-weekly-claude-opus-47-codex" rel="noopener" target="_blank">🤖 AI Agents Weekly: Claude Opus 4.7, Codex Everywhere, Claude Design, Windsurf 2.0, Qwen3.6-35B-A3B, AiScientist, and More</a><p class="article__byline">elvis<span class="article__source"> · NLP Newsletter (Elvis Saravia)</span></p></li><li class="article" data-source="Read Trung (Trung Phan)"><a class="article__title" href="https://www.readtrung.com/p/live-nation-x-ticketmaster-monopoly" rel="noopener" target="_blank">Live Nation x Ticketmaster Monopoly, explained</a><p class="article__byline">Trungphan2<span class="article__source"> · Read Trung (Trung Phan)</span></p></li><li class="article" data-source="Sean Goedecke"><a class="article__title" href="https://seangoedecke.com/many-anti-ai-arguments-are-conservative/" rel="noopener" target="_blank">Many anti-AI arguments are conservative arguments</a><p class="article__byline"><a class="article__author-link" href="https://x.com/sjgoedecke" rel="noopener" target="_blank">Sean Goedecke</a></p></li><li class="article" data-source="blog.exe.dev"><a class="article__title" href="https://blog.exe.dev/http-proxy-secrets" rel="noopener" target="_blank">Some secret management belongs in your HTTP proxy</a><p class="article__byline">David Crawshaw and Philip Zeyliger<span class="article__source"> · blog.exe.dev</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-17"><h2 class="day__heading" id="day-2026-04-17">Friday, April 17</h2><ul class="day__list"><li class="article" data-source="Simon Willison"><a class="article__title" href="https://simonwillison.net/2026/Apr/17/pycon-us-2026/" rel="noopener" target="_blank">Join us at PyCon US 2026 in Long Beach - we have new AI and security tracks this year</a><p class="article__byline"><a class="article__author-link" href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/hasan-piker-is-bad-for-the-democrats" rel="noopener" target="_blank">Hasan Piker is bad for the Democrats</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/servers-satellites-and-stars/" rel="noopener" target="_blank">2026.16: Servers, Satellites, and Stars</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/it-takes-too-long-to-do-things-in" rel="noopener" target="_blank">It takes too long to do things in the government</a><p class="article__byline">Zachary Long<span class="article__source"> · a16z</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/charts-of-the-week-is-tech-cheap" rel="noopener" target="_blank">Charts of the Week: &#39;Is Tech Cheap, Now?&#39;</a><p class="article__byline">a16z New Media<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Hacker Newsletter"><a class="article__title" href="https://buttondown.com/hacker-newsletter/archive/790/" rel="noopener" target="_blank">Hacker Newsletter #790</a><p class="article__byline"><a class="article__author-link" href="https://x.com/hnletter" rel="noopener" target="_blank">Hacker Newsletter</a></p></li><li class="article" data-source="Software Lead Weekly"><a class="article__title" href="https://softwareleadweekly.com/issues/699" rel="noopener" target="_blank">Software Lead Weekly #699</a><p class="article__byline"><a class="article__author-link" href="https://x.com/orenellenbogen" rel="noopener" target="_blank">Oren Ellenbogen</a><span class="article__source"> · Software Lead Weekly</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-16"><h2 class="day__heading" id="day-2026-04-16">Thursday, April 16</h2><ul class="day__list"><li class="article" data-source="Simon Willison"><a class="article__title" href="https://simonwillison.net/2026/Apr/16/qwen-beats-opus/" rel="noopener" target="_blank">Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7</a><p class="article__byline"><a class="article__author-link" href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a></p></li><li class="article" data-source="The Pragmatic Engineer"><a class="article__title" href="https://newsletter.pragmaticengineer.com/p/the-pulse-tokenmaxxing-as-a-weird" rel="noopener" target="_blank">The Pulse: ‘Tokenmaxxing’ as a weird new trend</a><p class="article__byline"><a class="article__author-link" href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a><span class="article__source"> · The Pragmatic Engineer</span></p></li><li class="article" data-source="Modern Data 101"><a class="article__title" href="https://moderndata101.substack.com/p/who-owns-the-ai" rel="noopener" target="_blank">Who Owns the AI: Why Vanity Deployments Are Enterprise’s Most Expensive Mistake</a><p class="article__byline">Animesh Kumar<span class="article__source"> · Modern Data 101</span></p></li><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/a-guide-to-relational-database-design" rel="noopener" target="_blank">A Guide to Relational Database Design</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="Deep Learning Weekly"><a class="article__title" href="https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-451" rel="noopener" target="_blank">Deep Learning Weekly: Issue 451</a><p class="article__byline">Miko Planas<span class="article__source"> · Deep Learning Weekly</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/prediction-markets-they-grow-up-so" rel="noopener" target="_blank">Prediction Markets: They Grow Up So Fast</a><p class="article__byline">Alex Immerman<span class="article__source"> · a16z</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/investing-in-ulysses" rel="noopener" target="_blank">Investing in Ulysses</a><p class="article__byline">Erin Price-Wright<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Derek Thompson"><a class="article__title" href="https://www.derekthompson.org/p/the-ai-vibe-shift-is-here" rel="noopener" target="_blank">The AI Vibe Shift Has Officially Arrived</a><p class="article__byline"><a class="article__author-link" href="https://x.com/DKThomp" rel="noopener" target="_blank">Derek Thompson</a></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/an-interview-with-f1-driver-and-venture-capitalist-nico-rosberg-about-the-drive-to-win/" rel="noopener" target="_blank">An Interview with F1 Driver and Venture Capitalist Nico Rosberg About the Drive to Win</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/you-are-what-you-consume" rel="noopener" target="_blank">You are what you consume</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li><li class="article" data-source="Python Weekly"><a class="article__title" href="https://www.pythonweekly.com/p/python-weekly-issue-741-april-16-2026" rel="noopener" target="_blank">Python Weekly #741</a><p class="article__byline">Rahul Chaudhary<span class="article__source"> · Python Weekly</span></p></li><li class="article" data-source="Programmer Weekly"><a class="article__title" href="https://www.programmerweekly.com/p/programmer-weekly-issue-296-apr-16-2026" rel="noopener" target="_blank">Programmer Weekly #296</a><p class="article__byline">Programmer Weekly</p></li><li class="article" data-source="Phil Eaton"><a class="article__title" href="http://notes.eatonphil.com/2026-04-16-who-even-uses-jemalloc-anyway.html" rel="noopener" target="_blank">Who even uses jemalloc in 2026 anyway? (many major projects)</a><p class="article__byline"><a class="article__author-link" href="https://x.com/eatonphil" rel="noopener" target="_blank">Phil Eaton</a></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-15"><h2 class="day__heading" id="day-2026-04-15">Wednesday, April 15</h2><ul class="day__list"><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/investing-in-hilbert" rel="noopener" target="_blank">Investing in Hilbert</a><p class="article__byline">Bryan Kim<span class="article__source"> · a16z</span></p></li><li class="article" data-source="DHH — HEY World"><a class="article__title" href="https://world.hey.com/dhh/the-malleable-computer-7c187a9b" rel="noopener" target="_blank">The malleable computer</a><p class="article__byline"><a class="article__author-link" href="https://x.com/dhh" rel="noopener" target="_blank">David Heinemeier Hansson</a><span class="article__source"> · DHH — HEY World</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/frontier-systems-for-the-physical" rel="noopener" target="_blank">Frontier Systems for the Physical World</a><p class="article__byline">Oliver Hsu<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/amazon-buys-globalstar-delta-to-add-leo-the-apple-angle/" rel="noopener" target="_blank">Amazon Buys Globalstar, Delta to Add Leo, The Apple Angle</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Founder Weekly"><a class="article__title" href="https://www.founderweekly.com/p/founder-weekly-issue-727-april-15-2026" rel="noopener" target="_blank">Founder Weekly #727</a><p class="article__byline">Founder Weekly</p></li><li class="article" data-source="Stay SaaSy"><a class="article__title" href="https://staysaasy.com/startups/2026/04/15/high-amplitude-disagreeableness.html" rel="noopener" target="_blank">High Amplitude Disagreeableness</a><p class="article__byline"><a class="article__author-link" href="https://x.com/staysaasy" rel="noopener" target="_blank">Stay SaaSy</a></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-14"><h2 class="day__heading" id="day-2026-04-14">Tuesday, April 14</h2><ul class="day__list"><li class="article" data-source="The Pragmatic Engineer"><a class="article__title" href="https://newsletter.pragmaticengineer.com/p/the-impact-of-ai-on-software-engineers-2026" rel="noopener" target="_blank">The impact of AI on software engineers in 2026: key trends</a><p class="article__byline"><a class="article__author-link" href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a><span class="article__source"> · The Pragmatic Engineer</span></p></li><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/figma-design-to-code-code-to-design" rel="noopener" target="_blank">Figma Design to Code, Code to Design: Clearly Explained</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/the-evidence-gap-why-courts-cant" rel="noopener" target="_blank">The Evidence Gap: Why Courts Can&#39;t Balance State AI Regulation</a><p class="article__byline">Jai Ramaswamy<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Martin Fowler"><a class="article__title" href="https://martinfowler.com/fragments/2026-04-14.html" rel="noopener" target="_blank">Fragments: April 14</a><p class="article__byline"><a class="article__author-link" href="https://x.com/martinfowler" rel="noopener" target="_blank">Martin Fowler</a></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/openais-memos-frontier-amazon-and-anthropic/" rel="noopener" target="_blank">OpenAI’s Memos, Frontier, Amazon and Anthropic</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-13"><h2 class="day__heading" id="day-2026-04-13">Monday, April 13</h2><ul class="day__list"><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/how-linkedin-feed-uses-llms-to-serve" rel="noopener" target="_blank">How LinkedIn Feed Uses LLMs to Serve 1.3 Billion Users</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/surviving-ai-price-wars-without-destroying" rel="noopener" target="_blank">Surviving AI Price Wars Without Destroying Your Business</a><p class="article__byline">Tugce Erten<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Modern Data 101"><a class="article__title" href="https://moderndata101.substack.com/p/how-ai-is-reshaping-data-governance" rel="noopener" target="_blank">How AI Is Reshaping Enterprise Data Governance</a><p class="article__byline">Dia Adams<span class="article__source"> · Modern Data 101</span></p></li><li class="article" data-source="Architecture Weekly"><a class="article__title" href="https://www.architecture-weekly.com/p/passive-aggresive-event" rel="noopener" target="_blank">Anti-patterns in event modelling - Passive-Aggressive Events</a><p class="article__byline"><a class="article__author-link" href="https://x.com/oskar_at_net" rel="noopener" target="_blank">Oskar Dudycz</a><span class="article__source"> · Architecture Weekly</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/" rel="noopener" target="_blank">Mythos, Muse, and the Opportunity Cost of Compute</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/what-if-a-few-ai-companies-end-up" rel="noopener" target="_blank">What if a few AI companies end up with all the money and power?</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-12"><h2 class="day__heading" id="day-2026-04-12">Sunday, April 12</h2><ul class="day__list"><li class="article" data-source="NLP Newsletter (Elvis Saravia)"><a class="article__title" href="https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-831" rel="noopener" target="_blank">🥇Top AI Papers of the Week</a><p class="article__byline">elvis<span class="article__source"> · NLP Newsletter (Elvis Saravia)</span></p></li><li class="article" data-source="Thorsten Ball — Register Spill"><a class="article__title" href="https://registerspill.thorstenball.com/p/joy-and-curiosity-81" rel="noopener" target="_blank">Joy &amp; Curiosity #81</a><p class="article__byline"><a class="article__author-link" href="https://x.com/thorstenball" rel="noopener" target="_blank">Thorsten Ball</a><span class="article__source"> · Thorsten Ball — Register Spill</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-11"><h2 class="day__heading" id="day-2026-04-11">Saturday, April 11</h2><ul class="day__list"><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/ep210-monolithic-vs-microservices" rel="noopener" target="_blank">EP210: Monolithic vs Microservices vs Serverless</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="NLP Newsletter (Elvis Saravia)"><a class="article__title" href="https://nlp.elvissaravia.com/p/ai-agents-weekly-claude-managed-agents" rel="noopener" target="_blank">🤖 AI Agents Weekly: Claude Managed Agents, Muse Spark, Project Glasswing, Advisor Strategy, GLM-5.1, Memento, and More</a><p class="article__byline">elvis<span class="article__source"> · NLP Newsletter (Elvis Saravia)</span></p></li><li class="article" data-source="Martin Fowler"><a class="article__title" href="https://martinfowler.com/articles/202604-turing.html" rel="noopener" target="_blank">Alan Turing play in Cambridge MA</a><p class="article__byline"><a class="article__author-link" href="https://x.com/martinfowler" rel="noopener" target="_blank">Martin Fowler</a></p></li><li class="article" data-source="Noahpinion (Noah Smith)"><a class="article__title" href="https://www.noahpinion.blog/p/will-americans-want-more-housing" rel="noopener" target="_blank">Will Americans want more housing if it looks prettier?</a><p class="article__byline"><a class="article__author-link" href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a><span class="article__source"> · Noahpinion (Noah Smith)</span></p></li><li class="article" data-source="Armin Ronacher"><a class="article__title" href="https://lucumr.pocoo.org/2026/4/11/the-center-has-a-bias/" rel="noopener" target="_blank">The Center Has a Bias</a><p class="article__byline"><a class="article__author-link" href="https://x.com/mitsuhiko" rel="noopener" target="_blank">Armin Ronacher</a></p></li><li class="article" data-source="Addy Osmani"><a class="article__title" href="https://addyosmani.com/blog/agentic-engine-optimization/" rel="noopener" target="_blank">Agentic Engine Optimization (AEO)</a><p class="article__byline"><a class="article__author-link" href="https://x.com/addyosmani" rel="noopener" target="_blank">Addy Osmani</a></p></li><li class="article" data-source="blog.exe.dev"><a class="article__title" href="https://blog.exe.dev/regions" rel="noopener" target="_blank">Closer compute 🇺🇸 🇬🇧 🇯🇵 🇩🇪 🇦🇺</a><p class="article__byline">David Crawshaw<span class="article__source"> · blog.exe.dev</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-10"><h2 class="day__heading" id="day-2026-04-10">Friday, April 10</h2><ul class="day__list"><li class="article" data-source="Read Trung (Trung Phan)"><a class="article__title" href="https://www.readtrung.com/p/shohei-ohtani-the-125m-ad-man" rel="noopener" target="_blank">Shohei Ohtani $125m Sponsorship Bag</a><p class="article__byline">Trungphan2<span class="article__source"> · Read Trung (Trung Phan)</span></p></li><li class="article" data-source="Stratechery"><a class="article__title" href="https://stratechery.com/2026/myth-and-mythos/" rel="noopener" target="_blank">2026.15: Myth and Mythos</a><p class="article__byline"><a class="article__author-link" href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a><span class="article__source"> · Stratechery</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/charts-of-the-week-ventures-300b" rel="noopener" target="_blank">Charts of the Week: Venture&#39;s $300B Quarter</a><p class="article__byline">a16z New Media<span class="article__source"> · a16z</span></p></li><li class="article" data-source="Hacker Newsletter"><a class="article__title" href="https://buttondown.com/hacker-newsletter/archive/789/" rel="noopener" target="_blank">Hacker Newsletter #789</a><p class="article__byline"><a class="article__author-link" href="https://x.com/hnletter" rel="noopener" target="_blank">Hacker Newsletter</a></p></li><li class="article" data-source="Software Lead Weekly"><a class="article__title" href="https://softwareleadweekly.com/issues/698" rel="noopener" target="_blank">Software Lead Weekly #698</a><p class="article__byline"><a class="article__author-link" href="https://x.com/orenellenbogen" rel="noopener" target="_blank">Oren Ellenbogen</a><span class="article__source"> · Software Lead Weekly</span></p></li></ul></section><section class="day" aria-labelledby="day-2026-04-09"><h2 class="day__heading" id="day-2026-04-09">Thursday, April 9</h2><ul class="day__list"><li class="article" data-source="ByteByteGo"><a class="article__title" href="https://blog.bytebytego.com/p/must-know-cross-cutting-concerns" rel="noopener" target="_blank">Must-Know Cross-Cutting Concerns in API Development</a><p class="article__byline">ByteByteGo</p></li><li class="article" data-source="Deep Learning Weekly"><a class="article__title" href="https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-450" rel="noopener" target="_blank">Deep Learning Weekly: Issue 450</a><p class="article__byline">Miko Planas<span class="article__source"> · Deep Learning Weekly</span></p></li><li class="article" data-source="a16z"><a class="article__title" href="https://www.a16z.news/p/sf-is-back-and-the-tech-social-scene" rel="noopener" target="_blank">SF is back - and the tech social scene is being run by the terminally online</a><p class="article__byline">Katie Kirsch<span class="article__source"> · a16z</span></p></li></ul></section><!--/@content-->
       </section>
 
-      <div id="failures"></div>
+      <div id="failures"><!--@failures--><!--/@failures--></div>
 
       <footer class="page__footer">
-        <p class="blogroll" id="blogroll" hidden></p>
-        <p class="colophon" id="colophon"></p>
+        <p class="blogroll" id="blogroll"><!--@blogroll--><a href="https://x.com/a16z" rel="noopener" target="_blank">a16z</a> · <a href="https://x.com/addyosmani" rel="noopener" target="_blank">Addy Osmani</a> · <a href="https://x.com/alexxubyte" rel="noopener" target="_blank">Alex Xu</a> · <a href="https://x.com/mitsuhiko" rel="noopener" target="_blank">Armin Ronacher</a> · <a href="https://x.com/benkuhn" rel="noopener" target="_blank">Ben Kuhn</a> · <a href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a> · <a href="https://x.com/boristane" rel="noopener" target="_blank">Boris Tane</a> · <a href="https://x.com/mipsytipsy" rel="noopener" target="_blank">Charity Majors</a> · <a href="https://x.com/davidcrawshaw" rel="noopener" target="_blank">David Crawshaw</a> · <a href="https://x.com/dhh" rel="noopener" target="_blank">David Heinemeier Hansson</a> · <span class="blogroll__plain">Deep Learning Weekly</span> · <a href="https://x.com/DKThomp" rel="noopener" target="_blank">Derek Thompson</a> · <span class="blogroll__plain">Dima Maleev</span> · <a href="https://x.com/omarsar0" rel="noopener" target="_blank">Elvis Saravia</a> · <a href="https://x.com/emollick" rel="noopener" target="_blank">Ethan Mollick</a> · <span class="blogroll__plain">exe.dev</span> · <span class="blogroll__plain">Founder Weekly</span> · <a href="https://x.com/geoffreylitt" rel="noopener" target="_blank">Geoffrey Litt</a> · <a href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a> · <a href="https://x.com/hnletter" rel="noopener" target="_blank">Hacker Newsletter</a> · <a href="https://x.com/martinfowler" rel="noopener" target="_blank">Martin Fowler</a> · <a href="https://x.com/minimaxir" rel="noopener" target="_blank">Max Woolf</a> · <span class="blogroll__plain">Modern Data 101</span> · <a href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a> · <a href="https://x.com/orenellenbogen" rel="noopener" target="_blank">Oren Ellenbogen</a> · <a href="https://x.com/oskar_at_net" rel="noopener" target="_blank">Oskar Dudycz</a> · <a href="https://x.com/paulg" rel="noopener" target="_blank">Paul Graham</a> · <a href="https://x.com/eatonphil" rel="noopener" target="_blank">Phil Eaton</a> · <span class="blogroll__plain">Programmer Weekly</span> · <span class="blogroll__plain">Python Weekly</span> · <a href="https://x.com/sjgoedecke" rel="noopener" target="_blank">Sean Goedecke</a> · <a href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a> · <a href="https://x.com/staysaasy" rel="noopener" target="_blank">Stay SaaSy</a> · <a href="https://x.com/Steve_Yegge" rel="noopener" target="_blank">Steve Yegge</a> · <a href="https://x.com/thorstenball" rel="noopener" target="_blank">Thorsten Ball</a> · <a href="https://x.com/TrungTPhan" rel="noopener" target="_blank">Trung Phan</a> · <a href="https://x.com/ValDotTown" rel="noopener" target="_blank">Val Town</a><!--/@blogroll--></p>
+        <p class="colophon" id="colophon"><!--@colophon-->Snapshot 2026-04-23 13:33 UTC · 90 articles.<!--/@colophon--></p>
       </footer>
     </main>
     <script src="./app.js" defer></script>
