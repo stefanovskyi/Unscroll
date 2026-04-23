@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   schedule:
-    # Daily at 06:15 UTC — rebuilds articles.json so the site stays fresh.
     - cron: "15 1 * * *"
   workflow_dispatch: {}
 
