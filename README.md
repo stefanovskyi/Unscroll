@@ -1,24 +1,30 @@
-# Reading list
+# Unscroll (reading list)
+
+**Live site:** [unscroll.stefanovskyi.com](https://unscroll.stefanovskyi.com)
+
+## Idea
+
+**Unscroll** is a small, single-page “reverse timeline” of writing you care about: a curated set of author feeds, rolled into one calm list, newest first. The goal is to skim what actually published in the last couple of weeks without opening dozens of sites or social feeds. Feeds are fetched at **build time** (RSS has no useful browser CORS for most sites), the page is **static HTML** on GitHub Pages, and CI rebuilds and redeploys on a daily schedule so the list stays current.
 
 A minimal static site that lists recent articles from a small set of writers,
 grouped by date (most recent first), showing each article's title and author.
 Only the **last 14 days** of items (relative to the build snapshot) are shown.
 
 The page is plain HTML, CSS, and JS — no runtime framework, no client bundle,
-no server. It loads a single `articles.json` produced ahead of time by a
-Node script; GitHub Actions regenerates and redeploys daily.
+no server. The build pipeline pre-renders the article list into `index.html`
+and produces `articles.json`; GitHub Actions regenerates and redeploys daily.
 
-## Files
+## Key files (reference)
 
 | Path | Role |
 | --- | --- |
-| `index.html` | The page |
-| `styles.css` | Paper-toned, pastel styling |
-| `app.js` | Loads `articles.json`, renders day-grouped list |
-| `articles.json` | Data file (generated — do not edit by hand) |
-| `scripts/feeds.mjs` | Source → feed-URL list |
-| `scripts/generate.mjs` | Fetches feeds, filters to last 14 days, writes `articles.json` |
-| `.github/workflows/build.yml` | Runs the generator and deploys Pages daily |
+| `index.html` | Page **template** and build **output**; the generator rewrites the `<!--@name-->` / `<!--/@name-->` regions (styles, content, meta, blogroll, etc.). |
+| `styles.css` | Paper-toned, pastel look; the generator inlines it into the built `index.html`. |
+| `app.js` | **Runtime:** source filter on the pre-rendered list. **Dev:** if the content placeholder is still there, fetches `articles.json` and renders. |
+| `articles.json` | Build output: snapshot for CI/local use (do not edit by hand). |
+| `scripts/feeds.mjs` | Authoritative list of sources, candidate feed URLs, optional per-source `transform` hooks. |
+| `scripts/generate.mjs` | Fetches feeds, 14-day window, writes `articles.json`, patches `index.html`. |
+| `.github/workflows/build.yml` | `npm run build` + GitHub Pages deploy (push, daily cron, manual). |
 
 ## Local preview
 
@@ -45,41 +51,3 @@ append an entry like:
   candidates: ["https://example.com/feed.atom"],
 },
 ```
-
-## GitHub Pages setup
-
-1. In repository **Settings → Pages**, set **Source** to
-   *GitHub Actions* (the workflow uses `actions/deploy-pages`).
-2. Make sure **Settings → Actions → General → Workflow permissions** allows
-   Pages deployments (this is the default for repositories that have Pages
-   enabled with the GitHub Actions source).
-3. Push to `main`. The workflow at `.github/workflows/build.yml` runs on
-   every push, on a daily cron (`15 6 * * *` UTC), and on manual dispatch.
-   It installs dependencies, runs `npm run build`, uploads the whole
-   directory as a Pages artifact, and deploys.
-
-### Project-Pages base path
-
-This site uses **relative URLs** (`./styles.css`, `./articles.json`) so it
-works whether deployed to a user/organisation Pages site
-(`https://user.github.io/`) or a project Pages site
-(`https://user.github.io/repo-name/`). No base-path configuration is needed.
-
-## Design notes
-
-- Solid pastel fills, no gradients. Warm paper tone for the page, slightly
-  lighter panel for grouped content.
-- One muted accent (dusty teal) for hover/focus states.
-- No violet / magenta / pink / oversaturated hues.
-- System font stack for body text; one weight for titles.
-- Optional `prefers-color-scheme: dark` palette using the same hue family.
-
-## Why the data file is committed
-
-GitHub Pages serves static files, so `articles.json` must be present in
-the deployed tree. The CI workflow rebuilds it on every run before uploading
-the artifact; committing the file keeps local previews working without
-needing to run `npm run build` first. If you prefer not to commit it, delete
-the file from `main` and rely solely on the workflow-generated artifact —
-just remember local previews will show the "could not load" state until
-you run `npm run build`.
