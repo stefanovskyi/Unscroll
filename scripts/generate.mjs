@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import Parser from "rss-parser";
@@ -124,6 +124,137 @@ function withinLastDays(iso, cutoffMs) {
   return new Date(iso).getTime() >= cutoffMs;
 }
 
+// HTML rendering --------------------------------------------------
+//
+// The site pre-renders articles into index.html at build time. This
+// eliminates the render-blocking CSS request, the articles.json
+// fetch, and the layout shift that used to happen when the "Loading…"
+// placeholder was swapped for the full list. The browser gets a page
+// whose critical content is already painted on first byte; app.js
+// only wires up the source filter.
+
+const htmlEscapes = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => htmlEscapes[c]);
+
+const dayHeadingFmt = new Intl.DateTimeFormat("en", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
+function groupArticlesByUtcDay(articles) {
+  const byDay = new Map();
+  for (const a of articles) {
+    const key = a.date.slice(0, 10);
+    if (!byDay.has(key)) byDay.set(key, []);
+    byDay.get(key).push(a);
+  }
+  return [...byDay.entries()]
+    .sort((a, b) => (a[0] < b[0] ? 1 : -1))
+    .map(([key, items]) => ({
+      key,
+      date: new Date(items[0].date),
+      items: items.sort((x, y) => (x.date < y.date ? 1 : -1)),
+    }));
+}
+
+function renderArticle(a) {
+  const title = `<a class="article__title" href="${esc(a.link)}" rel="noopener" target="_blank">${esc(a.title)}</a>`;
+  const authorNode = a.authorUrl
+    ? `<a class="article__author-link" href="${esc(a.authorUrl)}" rel="noopener" target="_blank">${esc(a.author)}</a>`
+    : esc(a.author);
+  const sameByAndSource =
+    (a.author || "").trim().toLowerCase() === (a.source || "").trim().toLowerCase();
+  const byline = sameByAndSource
+    ? `<p class="article__byline">${authorNode}</p>`
+    : `<p class="article__byline">${authorNode}<span class="article__source"> · ${esc(a.source)}</span></p>`;
+  return `<li class="article" data-source="${esc(a.source)}">${title}${byline}</li>`;
+}
+
+function renderArticlesHtml(articles) {
+  if (!articles.length) {
+    return `<p class="empty">No articles published in the last window.</p>`;
+  }
+  const groups = groupArticlesByUtcDay(articles);
+  return groups
+    .map(
+      (g) =>
+        `<section class="day" aria-labelledby="day-${g.key}">` +
+        `<h2 class="day__heading" id="day-${g.key}">${esc(dayHeadingFmt.format(g.date))}</h2>` +
+        `<ul class="day__list">${g.items.map(renderArticle).join("")}</ul>` +
+        `</section>`,
+    )
+    .join("");
+}
+
+function renderFilterOptionsHtml(articles) {
+  const sources = [...new Set(articles.map((a) => a.source))].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: "base" }),
+  );
+  return sources.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
+}
+
+function renderMetaHtml(snapshot) {
+  const { sources, windowDays, generatedAt } = snapshot;
+  const stamp = new Date(generatedAt);
+  const when = stamp.toISOString().replace("T", " ").slice(0, 16) + " UTC";
+  return `${sources} source${sources === 1 ? "" : "s"} · last ${windowDays} days · updated ${esc(when)}`;
+}
+
+function renderBlogrollHtml(writers) {
+  if (!writers?.length) return "";
+  return writers
+    .map((w) =>
+      w.xUrl
+        ? `<a href="${esc(w.xUrl)}" rel="noopener" target="_blank">${esc(w.name)}</a>`
+        : `<span class="blogroll__plain">${esc(w.name)}</span>`,
+    )
+    .join(" · ");
+}
+
+function renderColophonHtml(snapshot) {
+  const stamp = new Date(snapshot.generatedAt);
+  const when = stamp.toISOString().replace("T", " ").slice(0, 16) + " UTC";
+  return `Snapshot ${esc(when)} · ${snapshot.count} article${snapshot.count === 1 ? "" : "s"}.`;
+}
+
+function renderFailuresHtml(failures) {
+  if (!failures?.length) return "";
+  const items = failures
+    .map((f) => `<li>${esc(f.source)} — ${esc(f.reason)}</li>`)
+    .join("");
+  return `<div class="failures"><details><summary>${failures.length} feed(s) failed in the last build</summary><ul>${items}</ul></details></div>`;
+}
+
+function replaceMarker(html, name, replacement) {
+  const open = `<!--@${name}-->`;
+  const close = `<!--/@${name}-->`;
+  const start = html.indexOf(open);
+  const end = html.indexOf(close, start + open.length);
+  if (start < 0 || end < 0) throw new Error(`Missing marker @${name} in index.html`);
+  return html.slice(0, start + open.length) + replacement + html.slice(end);
+}
+
+async function writeIndexHtml(snapshot, rootDir) {
+  const indexPath = path.join(rootDir, "index.html");
+  const stylesPath = path.join(rootDir, "styles.css");
+  const [template, styles] = await Promise.all([
+    readFile(indexPath, "utf8"),
+    readFile(stylesPath, "utf8"),
+  ]);
+  let html = template;
+  html = replaceMarker(html, "styles", styles);
+  html = replaceMarker(html, "meta", renderMetaHtml(snapshot));
+  html = replaceMarker(html, "filter-options", renderFilterOptionsHtml(snapshot.articles));
+  html = replaceMarker(html, "content", renderArticlesHtml(snapshot.articles));
+  html = replaceMarker(html, "failures", renderFailuresHtml(snapshot.failures));
+  html = replaceMarker(html, "blogroll", renderBlogrollHtml(snapshot.writers));
+  html = replaceMarker(html, "colophon", renderColophonHtml(snapshot));
+  await writeFile(indexPath, html, "utf8");
+  return indexPath;
+}
+
 async function main() {
   const now = new Date();
   const cutoffMs = now.getTime() - DAYS * 24 * 60 * 60 * 1000;
@@ -171,15 +302,17 @@ async function main() {
     articles,
   };
 
-  const outPath = path.resolve(
+  const rootDir = path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
     "..",
-    "articles.json",
   );
+  const outPath = path.join(rootDir, "articles.json");
   await writeFile(outPath, JSON.stringify(snapshot, null, 2) + "\n", "utf8");
+  const indexPath = await writeIndexHtml(snapshot, rootDir);
   console.log(
     `\nWrote ${articles.length} article(s) from ${feeds.length - failures.length}/${feeds.length} feeds to ${path.relative(process.cwd(), outPath)}`,
   );
+  console.log(`Patched pre-rendered HTML into ${path.relative(process.cwd(), indexPath)}`);
 }
 
 main().catch((err) => {
