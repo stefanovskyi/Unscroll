@@ -200,6 +200,59 @@ export const feeds = [
     fallbackAuthor: "Val Town",
     candidates: ["https://blog.val.town/rss.xml"],
   },
+  {
+    source: "NLP Newsletter (Elvis Saravia)",
+    fallbackAuthor: "Elvis Saravia",
+    candidates: ["https://nlp.elvissaravia.com/feed"],
+  },
+  {
+    source: "Architecture Weekly",
+    fallbackAuthor: "Oskar Dudycz",
+    candidates: ["https://www.architecture-weekly.com/feed"],
+  },
+  {
+    // a16z publishes no per-topic RSS; the main feed is used and is mostly
+    // tech-adjacent content. Individual authors vary.
+    source: "a16z",
+    fallbackAuthor: "a16z",
+    candidates: ["https://www.a16z.news/feed"],
+  },
+  {
+    source: "ByteByteGo",
+    fallbackAuthor: "Alex Xu",
+    candidates: ["https://blog.bytebytego.com/feed"],
+  },
+  {
+    source: "Hacker Newsletter",
+    fallbackAuthor: "Hacker Newsletter",
+    candidates: ["https://buttondown.com/hacker-newsletter/rss"],
+  },
+  {
+    source: "Software Lead Weekly",
+    fetch: fetchSoftwareLeadWeekly,
+  },
+  {
+    source: "Founder Weekly",
+    fetch: fetchFounderWeekly,
+  },
+  {
+    source: "Programmer Weekly",
+    fetch: fetchProgrammerWeekly,
+  },
+  {
+    source: "Python Weekly",
+    fetch: fetchPythonWeekly,
+  },
+  {
+    source: "Modern Data 101",
+    fallbackAuthor: "Modern Data 101",
+    candidates: ["https://moderndata101.substack.com/feed"],
+  },
+  {
+    source: "Deep Learning Weekly",
+    fallbackAuthor: "Deep Learning Weekly",
+    candidates: ["https://www.deeplearningweekly.com/feed"],
+  },
 ];
 
 // --- Paul Graham scraper -------------------------------------------
@@ -240,6 +293,125 @@ function extractMonthYear(html) {
   // month-level precision: "March 2026" was as likely published on
   // March 1 as on March 30.
   return new Date(Date.UTC(Number(m[2]), month, 15));
+}
+
+// --- Beehiiv sitemap scraper ---------------------------------------
+//
+// Beehiiv-hosted newsletters (founderweekly.com, programmerweekly.com,
+// pythonweekly.com) expose no RSS feed, but their sitemap.xml lists every
+// issue with the publish date baked into the slug — e.g.
+// `founder-weekly-issue-728-april-22-2026`. We parse dates straight from
+// the slug and keep the newest N so the 14-day window filter doesn't have
+// to walk hundreds of archived issues. Some publications abbreviate the
+// month ("apr" vs "april"), so matchMonth accepts both forms.
+
+function matchMonth(token) {
+  const lc = token.toLowerCase();
+  const exact = MONTHS.indexOf(lc);
+  if (exact >= 0) return exact;
+  const prefix = MONTHS.findIndex((m) => m.startsWith(lc));
+  return prefix;
+}
+
+async function fetchBeehiivIssues({ origin, slugPrefix, source, author, titlePrefix }) {
+  const sitemap = await fetchText(`${origin}/sitemap.xml`);
+  const slugRe = new RegExp(
+    `/p/(${slugPrefix}-(\\d+)-([a-z]+)-(\\d+)-(\\d{4}))`,
+    "g",
+  );
+  const seen = new Set();
+  const articles = [];
+  for (const [, slug, issue, month, day, year] of sitemap.matchAll(slugRe)) {
+    if (seen.has(slug)) continue;
+    seen.add(slug);
+    const monthIdx = matchMonth(month);
+    if (monthIdx < 0) continue;
+    const date = new Date(Date.UTC(Number(year), monthIdx, Number(day)));
+    if (Number.isNaN(date.getTime())) continue;
+    articles.push({
+      title: `${titlePrefix} #${issue}`,
+      link: `${origin}/p/${slug}`,
+      author,
+      source,
+      date: date.toISOString(),
+    });
+  }
+  articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+  return articles.slice(0, 20);
+}
+
+function fetchFounderWeekly() {
+  return fetchBeehiivIssues({
+    origin: "https://www.founderweekly.com",
+    slugPrefix: "founder-weekly-issue",
+    source: "Founder Weekly",
+    author: "Founder Weekly",
+    titlePrefix: "Founder Weekly",
+  });
+}
+
+function fetchProgrammerWeekly() {
+  return fetchBeehiivIssues({
+    origin: "https://www.programmerweekly.com",
+    slugPrefix: "programmer-weekly-issue",
+    source: "Programmer Weekly",
+    author: "Programmer Weekly",
+    titlePrefix: "Programmer Weekly",
+  });
+}
+
+function fetchPythonWeekly() {
+  return fetchBeehiivIssues({
+    origin: "https://www.pythonweekly.com",
+    slugPrefix: "python-weekly-issue",
+    source: "Python Weekly",
+    author: "Rahul Chaudhary",
+    titlePrefix: "Python Weekly",
+  });
+}
+
+// --- Software Lead Weekly scraper ----------------------------------
+//
+// softwareleadweekly.com serves a JS-rendered SPA; its advertised /rss/
+// endpoint returns the HTML shell, not a feed. The sitemap.xml lists
+// every issue at /issues/N (no date in the slug), but each issue page
+// has a <title> like "Issue #699, 17th April 2026 - SoftwareLeadWeekly",
+// so we pull dates from the title tag.
+
+async function fetchSoftwareLeadWeekly() {
+  const sitemap = await fetchText("https://softwareleadweekly.com/sitemap.xml");
+  const issueRe = /\/issues\/(\d+)(?=[<"])/g;
+  const issues = new Set();
+  for (const [, n] of sitemap.matchAll(issueRe)) issues.add(Number(n));
+  const top = [...issues].sort((a, b) => b - a).slice(0, 15);
+  if (top.length === 0) throw new Error("No /issues/N URLs in sitemap");
+
+  const titleRe =
+    /Issue #(\d+),\s*(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(\d{4})/;
+  const articles = await Promise.all(
+    top.map(async (n) => {
+      const url = `https://softwareleadweekly.com/issues/${n}`;
+      try {
+        const html = await fetchText(url);
+        const m = html.match(titleRe);
+        if (!m) return null;
+        const monthIdx = MONTHS.indexOf(m[3].toLowerCase());
+        if (monthIdx < 0) return null;
+        const date = new Date(Date.UTC(Number(m[4]), monthIdx, Number(m[2])));
+        if (Number.isNaN(date.getTime())) return null;
+        return {
+          title: `Software Lead Weekly #${m[1]}`,
+          link: url,
+          author: "Oren Ellenbogen",
+          source: "Software Lead Weekly",
+          date: date.toISOString(),
+        };
+      } catch {
+        return null;
+      }
+    }),
+  );
+  return articles.filter(Boolean);
 }
 
 async function fetchPaulGraham() {
