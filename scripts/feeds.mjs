@@ -6,6 +6,10 @@
 // `source` is the human-readable label used in the UI.
 // `transform(item)` is an optional per-source hook that runs after the
 // default normalizer; return a modified item, or `null` to drop it.
+//
+// `fetch()` is an escape hatch for sources that have no usable feed.
+// When set, the generator skips rss-parser entirely and uses the array
+// of normalized articles the function returns. See Paul Graham below.
 
 // Simon Willison's blog publishes four streams under one site:
 // long-form entries, quotes ("Quoting X"), link blog, and TILs. The
@@ -105,4 +109,167 @@ export const feeds = [
     fallbackAuthor: "Dima Maleev",
     candidates: ["https://sonerdy.substack.com/feed"],
   },
+  {
+    source: "Armin Ronacher",
+    fallbackAuthor: "Armin Ronacher",
+    candidates: ["https://lucumr.pocoo.org/feed.atom"],
+  },
+  {
+    source: "Boris Tane",
+    fallbackAuthor: "Boris Tane",
+    candidates: ["https://boristane.com/rss.xml"],
+  },
+  {
+    source: "David Crawshaw",
+    fallbackAuthor: "David Crawshaw",
+    candidates: ["https://crawshaw.io/atom.xml"],
+  },
+  {
+    source: "Phil Eaton",
+    fallbackAuthor: "Phil Eaton",
+    candidates: ["https://notes.eatonphil.com/rss.xml"],
+  },
+  {
+    source: "Stay SaaSy",
+    fallbackAuthor: "Stay SaaSy",
+    candidates: ["https://staysaasy.com/feed.xml"],
+  },
+  {
+    source: "Paul Graham",
+    fetch: fetchPaulGraham,
+  },
+  {
+    source: "Geoffrey Litt",
+    fallbackAuthor: "Geoffrey Litt",
+    candidates: ["https://www.geoffreylitt.com/feed.xml"],
+  },
+  {
+    source: "Ben Kuhn",
+    fallbackAuthor: "Ben Kuhn",
+    candidates: ["https://www.benkuhn.net/index.xml"],
+  },
+  {
+    source: "Stratechery",
+    fallbackAuthor: "Ben Thompson",
+    candidates: ["https://stratechery.com/feed/"],
+  },
+  {
+    source: "Charity Majors",
+    fallbackAuthor: "Charity Majors",
+    candidates: ["https://charity.wtf/feed/"],
+  },
+  {
+    // The Atlantic has no newsletter-specific RSS for Work in Progress;
+    // the Derek Thompson author feed is the closest available and in
+    // practice covers his WIP columns plus a handful of broader pieces.
+    // Kept separate from his personal substack (`Derek Thompson`).
+    source: "Work in Progress (The Atlantic)",
+    fallbackAuthor: "Derek Thompson",
+    candidates: ["https://www.theatlantic.com/feed/author/derek-thompson/"],
+  },
+  {
+    source: "One Useful Thing (Ethan Mollick)",
+    fallbackAuthor: "Ethan Mollick",
+    candidates: ["https://www.oneusefulthing.org/feed"],
+  },
+  {
+    source: "Max Woolf",
+    fallbackAuthor: "Max Woolf",
+    candidates: ["https://minimaxir.com/index.xml"],
+  },
+  {
+    source: "Noahpinion (Noah Smith)",
+    fallbackAuthor: "Noah Smith",
+    candidates: ["https://www.noahpinion.blog/feed"],
+  },
+  {
+    source: "Steve Yegge",
+    fallbackAuthor: "Steve Yegge",
+    candidates: [
+      "https://steve-yegge.medium.com/feed",
+      "https://medium.com/feed/@steve-yegge",
+    ],
+  },
+  {
+    source: "Read Trung (Trung Phan)",
+    fallbackAuthor: "Trung Phan",
+    candidates: ["https://www.readtrung.com/feed"],
+  },
+  {
+    source: "Val Town",
+    fallbackAuthor: "Val Town",
+    candidates: ["https://blog.val.town/rss.xml"],
+  },
 ];
+
+// --- Paul Graham scraper -------------------------------------------
+//
+// paulgraham.com has no RSS. aaronsw.com hosts a scrape but it omits
+// dates, which makes a date-windowed reader useless. The site itself
+// publishes only a month-level date ("March 2026") inside each essay
+// page, so this scraper walks articles.html and fetches the top few
+// essay pages to extract their dates.
+
+const MONTHS = [
+  "january", "february", "march", "april", "may", "june",
+  "july", "august", "september", "october", "november", "december",
+];
+
+async function fetchText(url, timeoutMs = 20_000) {
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(timeoutMs),
+    headers: {
+      "User-Agent": "reading-list-news/1.0 (+github pages aggregator)",
+    },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return res.text();
+}
+
+function extractMonthYear(html) {
+  // Matches the "<font size=2 face=verdana>March 2026" header each
+  // essay renders just below its title image. Fall back to a naked
+  // "Month YYYY" anywhere if the font tag varies.
+  const m = html.match(
+    /<font[^>]*>\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/i,
+  );
+  if (!m) return null;
+  const month = MONTHS.indexOf(m[1].toLowerCase());
+  if (month < 0) return null;
+  // Mid-month (15th, UTC) is a fair centre for a date with only
+  // month-level precision: "March 2026" was as likely published on
+  // March 1 as on March 30.
+  return new Date(Date.UTC(Number(m[2]), month, 15));
+}
+
+async function fetchPaulGraham() {
+  const indexUrl = "https://paulgraham.com/articles.html";
+  const html = await fetchText(indexUrl);
+  // The articles.html body is a flat list of essay links, newest first.
+  // Grab the top 6 — more than enough to cover any realistic window,
+  // and cheap enough to fetch in parallel.
+  const linkRe = /<a href="([a-z0-9][a-z0-9-]*\.html)">([^<]+)<\/a>/g;
+  const newest = [...html.matchAll(linkRe)].slice(0, 6);
+  if (newest.length === 0) throw new Error("No essay links found in articles.html");
+
+  const essays = await Promise.all(
+    newest.map(async ([, href, title]) => {
+      const essayUrl = `https://paulgraham.com/${href}`;
+      try {
+        const essayHtml = await fetchText(essayUrl);
+        const date = extractMonthYear(essayHtml);
+        if (!date) return null;
+        return {
+          title: title.trim(),
+          link: essayUrl,
+          author: "Paul Graham",
+          source: "Paul Graham",
+          date: date.toISOString(),
+        };
+      } catch {
+        return null;
+      }
+    }),
+  );
+  return essays.filter(Boolean);
+}

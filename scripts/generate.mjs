@@ -4,7 +4,7 @@ import path from "node:path";
 import Parser from "rss-parser";
 import { feeds } from "./feeds.mjs";
 
-const DAYS = 7;
+const DAYS = 14;
 const USER_AGENT =
   "reading-list-news/1.0 (+https://github.com/) feed-aggregator";
 const TIMEOUT_MS = 20_000;
@@ -97,12 +97,18 @@ async function main() {
   const results = await Promise.allSettled(
     feeds.map(async (feed) => {
       console.log(`→ ${feed.source}`);
-      const { parsed, url } = await fetchFeed(feed);
-      const items = normalize(parsed, feed).filter((a) =>
-        withinLastDays(a.date, cutoffMs),
-      );
-      console.log(`  ✓ ${url} — ${items.length} recent item(s)`);
-      return items;
+      let items, label;
+      if (typeof feed.fetch === "function") {
+        items = await feed.fetch();
+        label = `${feed.source} (custom)`;
+      } else {
+        const parsed = await fetchFeed(feed);
+        items = normalize(parsed.parsed, feed);
+        label = parsed.url;
+      }
+      const recent = items.filter((a) => withinLastDays(a.date, cutoffMs));
+      console.log(`  ✓ ${label} — ${recent.length} recent item(s)`);
+      return recent;
     }),
   );
 

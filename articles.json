@@ -1,15 +1,29 @@
 {
-  "generatedAt": "2026-04-22T20:13:06.562Z",
-  "windowDays": 7,
-  "count": 17,
+  "generatedAt": "2026-04-23T06:56:02.439Z",
+  "windowDays": 14,
+  "count": 50,
   "failures": [],
   "articles": [
+    {
+      "title": "Is China's soft power really rising, or is America's just crumbling?",
+      "link": "https://www.noahpinion.blog/p/is-chinas-soft-power-really-rising",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-22T21:01:40.000Z"
+    },
     {
       "title": "Designing Data-intensive Applications with Martin Kleppmann",
       "link": "https://newsletter.pragmaticengineer.com/p/designing-data-intensive-applications",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
       "date": "2026-04-22T16:19:26.000Z"
+    },
+    {
+      "title": "John Ternus and Apple’s Hardware-Defined Future, SpaceXAI and Cursor",
+      "link": "https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-22T10:00:00.000Z"
     },
     {
       "title": "Is Claude Code going to cost $100/month? Probably not - it's all very confusing",
@@ -30,6 +44,13 @@
       "link": "https://seangoedecke.com/luddites-and-ai-datacenters/",
       "author": "Sean Goedecke",
       "source": "Sean Goedecke",
+      "date": "2026-04-22T00:00:00.000Z"
+    },
+    {
+      "title": "I am building a cloud",
+      "link": "https://crawshaw.io/blog/building-a-cloud",
+      "author": "David Crawshaw",
+      "source": "David Crawshaw",
       "date": "2026-04-22T00:00:00.000Z"
     },
     {
@@ -61,6 +82,34 @@
       "date": "2026-04-21T10:56:33.000Z"
     },
     {
+      "title": "Tim Cook’s Impeccable Timing",
+      "link": "https://stratechery.com/2026/tim-cooks-impeccable-timing/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-21T10:00:00.000Z"
+    },
+    {
+      "title": "No, America is not in a \"stealth manufacturing boom\"",
+      "link": "https://www.noahpinion.blog/p/no-america-is-not-in-a-stealth-manufacturing",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-21T05:30:49.000Z"
+    },
+    {
+      "title": "TSMC Earnings, New N3 Fabs, The Nvidia Ramp",
+      "link": "https://stratechery.com/2026/tsmc-earnings-new-n3-fabs-the-nvidia-ramp/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-20T10:00:00.000Z"
+    },
+    {
+      "title": "Updated thoughts on industrial policy",
+      "link": "https://www.noahpinion.blog/p/updated-thoughts-on-industrial-policy",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-20T05:07:55.000Z"
+    },
+    {
       "title": "Joy & Curiosity #82",
       "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-82",
       "author": "Thorsten Ball",
@@ -80,6 +129,13 @@
       "author": "Simon Willison",
       "source": "Simon Willison",
       "date": "2026-04-18T23:59:40.000Z"
+    },
+    {
+      "title": "Live Nation x Ticketmaster Monopoly, explained",
+      "link": "https://www.readtrung.com/p/live-nation-x-ticketmaster-monopoly",
+      "author": "Trungphan2",
+      "source": "Read Trung (Trung Phan)",
+      "date": "2026-04-18T00:19:34.000Z"
     },
     {
       "title": "Some secret management belongs in your HTTP proxy",
@@ -103,6 +159,20 @@
       "date": "2026-04-17T23:59:03.000Z"
     },
     {
+      "title": "Hasan Piker is bad for the Democrats",
+      "link": "https://www.noahpinion.blog/p/hasan-piker-is-bad-for-the-democrats",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-17T20:45:24.000Z"
+    },
+    {
+      "title": "2026.16: Servers, Satellites, and Stars",
+      "link": "https://stratechery.com/2026/servers-satellites-and-stars/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-17T17:00:00.000Z"
+    },
+    {
       "title": "Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7",
       "link": "https://simonwillison.net/2026/Apr/16/qwen-beats-opus/",
       "author": "Simon Willison",
@@ -122,6 +192,167 @@
       "author": "Derek Thompson",
       "source": "Derek Thompson",
       "date": "2026-04-16T10:08:39.000Z"
+    },
+    {
+      "title": "An Interview with F1 Driver and Venture Capitalist Nico Rosberg About the Drive to Win",
+      "link": "https://stratechery.com/2026/an-interview-with-f1-driver-and-venture-capitalist-nico-rosberg-about-the-drive-to-win/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-16T10:00:00.000Z"
+    },
+    {
+      "title": "You are what you consume",
+      "link": "https://www.noahpinion.blog/p/you-are-what-you-consume",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-16T07:57:14.000Z"
+    },
+    {
+      "title": "Who even uses jemalloc in 2026 anyway? (many major projects)",
+      "link": "http://notes.eatonphil.com/2026-04-16-who-even-uses-jemalloc-anyway.html",
+      "author": "Phil Eaton",
+      "source": "Phil Eaton",
+      "date": "2026-04-16T00:00:00.000Z"
+    },
+    {
+      "title": "The malleable computer",
+      "link": "https://world.hey.com/dhh/the-malleable-computer-7c187a9b",
+      "author": "David Heinemeier Hansson",
+      "source": "DHH — HEY World",
+      "date": "2026-04-15T15:06:27.000Z"
+    },
+    {
+      "title": "Amazon Buys Globalstar, Delta to Add Leo, The Apple Angle",
+      "link": "https://stratechery.com/2026/amazon-buys-globalstar-delta-to-add-leo-the-apple-angle/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-15T10:00:00.000Z"
+    },
+    {
+      "title": "High Amplitude Disagreeableness",
+      "link": "https://staysaasy.com/startups/2026/04/15/high-amplitude-disagreeableness.html",
+      "author": "Stay SaaSy",
+      "source": "Stay SaaSy",
+      "date": "2026-04-15T00:00:00.000Z"
+    },
+    {
+      "title": "The impact of AI on software engineers in 2026: key trends",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-impact-of-ai-on-software-engineers-2026",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-14T16:01:02.000Z"
+    },
+    {
+      "title": "Fragments: April 14",
+      "link": "https://martinfowler.com/fragments/2026-04-14.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-14T13:16:00.000Z"
+    },
+    {
+      "title": "OpenAI’s Memos, Frontier, Amazon and Anthropic",
+      "link": "https://stratechery.com/2026/openais-memos-frontier-amazon-and-anthropic/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-14T10:00:00.000Z"
+    },
+    {
+      "title": "Mythos, Muse, and the Opportunity Cost of Compute",
+      "link": "https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-13T10:00:00.000Z"
+    },
+    {
+      "title": "What if a few AI companies end up with all the money and power?",
+      "link": "https://www.noahpinion.blog/p/what-if-a-few-ai-companies-end-up",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-13T00:50:34.000Z"
+    },
+    {
+      "title": "Joy & Curiosity #81",
+      "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-81",
+      "author": "Thorsten Ball",
+      "source": "Thorsten Ball — Register Spill",
+      "date": "2026-04-12T06:25:54.000Z"
+    },
+    {
+      "title": "Alan Turing play in Cambridge MA",
+      "link": "https://martinfowler.com/articles/202604-turing.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-11T13:01:00.000Z"
+    },
+    {
+      "title": "Will Americans want more housing if it looks prettier?",
+      "link": "https://www.noahpinion.blog/p/will-americans-want-more-housing",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-11T09:17:36.000Z"
+    },
+    {
+      "title": "Closer compute 🇺🇸 🇬🇧 🇯🇵 🇩🇪 🇦🇺",
+      "link": "https://blog.exe.dev/regions",
+      "author": "David Crawshaw",
+      "source": "blog.exe.dev",
+      "date": "2026-04-11T00:00:00.000Z"
+    },
+    {
+      "title": "Agentic Engine Optimization (AEO)",
+      "link": "https://addyosmani.com/blog/agentic-engine-optimization/",
+      "author": "Addy Osmani",
+      "source": "Addy Osmani",
+      "date": "2026-04-11T00:00:00.000Z"
+    },
+    {
+      "title": "The Center Has a Bias",
+      "link": "https://lucumr.pocoo.org/2026/4/11/the-center-has-a-bias/",
+      "author": "Armin Ronacher",
+      "source": "Armin Ronacher",
+      "date": "2026-04-11T00:00:00.000Z"
+    },
+    {
+      "title": "Shohei Ohtani $125m Sponsorship Bag",
+      "link": "https://www.readtrung.com/p/shohei-ohtani-the-125m-ad-man",
+      "author": "Trungphan2",
+      "source": "Read Trung (Trung Phan)",
+      "date": "2026-04-10T22:12:01.000Z"
+    },
+    {
+      "title": "2026.15: Myth and Mythos",
+      "link": "https://stratechery.com/2026/myth-and-mythos/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-10T17:00:00.000Z"
+    },
+    {
+      "title": "Fragments: April  9",
+      "link": "https://martinfowler.com/fragments/2026-04-09.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-09T13:23:00.000Z"
+    },
+    {
+      "title": "How ‘Zombie Flow’ Took Over Culture",
+      "link": "https://www.derekthompson.org/p/how-zombie-flow-took-over-culture",
+      "author": "Derek Thompson",
+      "source": "Derek Thompson",
+      "date": "2026-04-09T10:02:28.000Z"
+    },
+    {
+      "title": "An Interview with New York Times CEO Meredith Kopit Levien About Betting on Humans With Expertise",
+      "link": "https://stratechery.com/2026/an-interview-with-new-york-times-ceo-meredith-kopit-levien-about-betting-on-humans-with-expertise/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-09T10:00:00.000Z"
+    },
+    {
+      "title": "Yes, assimilation is good",
+      "link": "https://www.noahpinion.blog/p/yes-assimilation-is-good",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-09T09:56:42.000Z"
     }
   ]
 }

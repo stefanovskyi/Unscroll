@@ -6,7 +6,13 @@
       "Bash(curl -s --max-time 10 \"https://simonwillison.net/atom/entries/\")",
       "WebFetch(domain:maxua.com)",
       "Bash(curl -s --max-time 15 \"https://maxua.com/blogroll\" -o /tmp/maxua.html)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(curl -s --max-time 10 \"https://staysaasy.com/feed.xml\")",
+      "Bash(curl -s --max-time 10 \"http://www.aaronsw.com/2002/feeds/pgessays.rss\")",
+      "Bash(curl -s --max-time 10 \"https://paulgraham.com/articles.html\")",
+      "Bash(curl -s --max-time 10 \"https://blog.val.town/rss.xml\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s --max-time 10 \"https://minimaxir.com/index.xml\")"
     ]
   }
 }

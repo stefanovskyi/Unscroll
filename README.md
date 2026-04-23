@@ -2,7 +2,7 @@
 
 A minimal static site that lists recent articles from a small set of writers,
 grouped by date (most recent first), showing each article's title and author.
-Only the **last 7 days** of items (relative to the build snapshot) are shown.
+Only the **last 14 days** of items (relative to the build snapshot) are shown.
 
 The page is plain HTML, CSS, and JS — no runtime framework, no client bundle,
 no server. It loads a single `articles.json` produced ahead of time by a
@@ -17,7 +17,7 @@ Node script; GitHub Actions regenerates and redeploys daily.
 | `app.js` | Loads `articles.json`, renders day-grouped list |
 | `articles.json` | Data file (generated — do not edit by hand) |
 | `scripts/feeds.mjs` | Source → feed-URL list |
-| `scripts/generate.mjs` | Fetches feeds, filters to last 7 days, writes `articles.json` |
+| `scripts/generate.mjs` | Fetches feeds, filters to last 14 days, writes `articles.json` |
 | `.github/workflows/build.yml` | Runs the generator and deploys Pages daily |
 
 ## Local preview
