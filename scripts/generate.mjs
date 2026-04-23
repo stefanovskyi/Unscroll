@@ -85,6 +85,24 @@ function normalize(parsed, feedConfig) {
   return items;
 }
 
+// Build a deduped, alphabetized list of writers for the page footer
+// blogroll. Two feeds may represent the same writer (e.g. Derek Thompson
+// has both his Substack and his Atlantic author feed); merge by X handle
+// so the reader sees one entry per person. Feeds without an xHandle fall
+// back to a plain name (no link).
+function buildWriters(feedList) {
+  const map = new Map();
+  for (const f of feedList) {
+    const name = f.xAuthor || f.fallbackAuthor || f.source;
+    const xUrl = f.xHandle ? `https://x.com/${f.xHandle}` : null;
+    const key = xUrl ?? `name:${name.toLowerCase()}`;
+    if (!map.has(key)) map.set(key, { name, xUrl });
+  }
+  return [...map.values()].sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
+  );
+}
+
 // Attach https://x.com/<handle> to articles whose author matches the
 // feed's primary-author name (xAuthor, falling back to fallbackAuthor).
 // The match is case-insensitive and trimmed so minor feed inconsistencies
@@ -146,8 +164,10 @@ async function main() {
   const snapshot = {
     generatedAt: now.toISOString(),
     windowDays: DAYS,
+    sources: feeds.length,
     count: articles.length,
     failures,
+    writers: buildWriters(feeds),
     articles,
   };
 

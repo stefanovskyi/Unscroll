@@ -1,9 +1,183 @@
 {
-  "generatedAt": "2026-04-23T08:38:30.263Z",
+  "generatedAt": "2026-04-23T12:22:08.905Z",
   "windowDays": 14,
+  "sources": 38,
   "count": 92,
   "failures": [],
+  "writers": [
+    {
+      "name": "a16z",
+      "xUrl": "https://x.com/a16z"
+    },
+    {
+      "name": "Addy Osmani",
+      "xUrl": "https://x.com/addyosmani"
+    },
+    {
+      "name": "Alex Xu",
+      "xUrl": "https://x.com/alexxubyte"
+    },
+    {
+      "name": "Armin Ronacher",
+      "xUrl": "https://x.com/mitsuhiko"
+    },
+    {
+      "name": "Ben Kuhn",
+      "xUrl": "https://x.com/benkuhn"
+    },
+    {
+      "name": "Ben Thompson",
+      "xUrl": "https://x.com/benthompson"
+    },
+    {
+      "name": "Boris Tane",
+      "xUrl": "https://x.com/boristane"
+    },
+    {
+      "name": "Charity Majors",
+      "xUrl": "https://x.com/mipsytipsy"
+    },
+    {
+      "name": "David Crawshaw",
+      "xUrl": "https://x.com/davidcrawshaw"
+    },
+    {
+      "name": "David Heinemeier Hansson",
+      "xUrl": "https://x.com/dhh"
+    },
+    {
+      "name": "Deep Learning Weekly",
+      "xUrl": null
+    },
+    {
+      "name": "Derek Thompson",
+      "xUrl": "https://x.com/DKThomp"
+    },
+    {
+      "name": "Dima Maleev",
+      "xUrl": null
+    },
+    {
+      "name": "Elvis Saravia",
+      "xUrl": "https://x.com/omarsar0"
+    },
+    {
+      "name": "Ethan Mollick",
+      "xUrl": "https://x.com/emollick"
+    },
+    {
+      "name": "exe.dev",
+      "xUrl": null
+    },
+    {
+      "name": "Founder Weekly",
+      "xUrl": null
+    },
+    {
+      "name": "Geoffrey Litt",
+      "xUrl": "https://x.com/geoffreylitt"
+    },
+    {
+      "name": "Gergely Orosz",
+      "xUrl": "https://x.com/GergelyOrosz"
+    },
+    {
+      "name": "Hacker Newsletter",
+      "xUrl": "https://x.com/hnletter"
+    },
+    {
+      "name": "Martin Fowler",
+      "xUrl": "https://x.com/martinfowler"
+    },
+    {
+      "name": "Max Woolf",
+      "xUrl": "https://x.com/minimaxir"
+    },
+    {
+      "name": "Modern Data 101",
+      "xUrl": null
+    },
+    {
+      "name": "Noah Smith",
+      "xUrl": "https://x.com/Noahpinion"
+    },
+    {
+      "name": "Oren Ellenbogen",
+      "xUrl": "https://x.com/orenellenbogen"
+    },
+    {
+      "name": "Oskar Dudycz",
+      "xUrl": "https://x.com/oskar_at_net"
+    },
+    {
+      "name": "Paul Graham",
+      "xUrl": "https://x.com/paulg"
+    },
+    {
+      "name": "Phil Eaton",
+      "xUrl": "https://x.com/eatonphil"
+    },
+    {
+      "name": "Programmer Weekly",
+      "xUrl": null
+    },
+    {
+      "name": "Python Weekly",
+      "xUrl": null
+    },
+    {
+      "name": "Sean Goedecke",
+      "xUrl": "https://x.com/sjgoedecke"
+    },
+    {
+      "name": "Simon Willison",
+      "xUrl": "https://x.com/simonw"
+    },
+    {
+      "name": "Stay SaaSy",
+      "xUrl": "https://x.com/staysaasy"
+    },
+    {
+      "name": "Steve Yegge",
+      "xUrl": "https://x.com/Steve_Yegge"
+    },
+    {
+      "name": "Thorsten Ball",
+      "xUrl": "https://x.com/thorstenball"
+    },
+    {
+      "name": "Trung Phan",
+      "xUrl": "https://x.com/TrungTPhan"
+    },
+    {
+      "name": "Val Town",
+      "xUrl": "https://x.com/ValDotTown"
+    }
+  ],
   "articles": [
+    {
+      "title": "Investing in Petual",
+      "link": "https://www.a16z.news/p/investing-in-petual",
+      "author": "Kimberly Tan",
+      "source": "a16z",
+      "date": "2026-04-23T12:00:58.000Z"
+    },
+    {
+      "title": "If America's So Rich, How'd It Get So Sad?",
+      "link": "https://www.derekthompson.org/p/if-americas-so-rich-howd-it-get-so",
+      "author": "Derek Thompson",
+      "source": "Derek Thompson",
+      "date": "2026-04-23T10:01:44.000Z",
+      "authorUrl": "https://x.com/DKThomp"
+    },
+    {
+      "title": "An Interview with Google Cloud CEO Thomas Kurian About the Agentic Moment",
+      "link": "https://stratechery.com/2026/an-interview-with-google-cloud-ceo-thomas-kurian-about-the-agentic-moment/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-23T10:00:00.000Z",
+      "authorUrl": "https://x.com/benthompson"
+    },
     {
       "title": "Is China's soft power really rising, or is America's just crumbling?",
       "link": "https://www.noahpinion.blog/p/is-chinas-soft-power-really-rising",
@@ -674,30 +848,6 @@
       "author": "Alejandro Aboy",
       "source": "Modern Data 101",
       "date": "2026-04-09T13:18:39.000Z"
-    },
-    {
-      "title": "How ‘Zombie Flow’ Took Over Culture",
-      "link": "https://www.derekthompson.org/p/how-zombie-flow-took-over-culture",
-      "author": "Derek Thompson",
-      "source": "Derek Thompson",
-      "date": "2026-04-09T10:02:28.000Z",
-      "authorUrl": "https://x.com/DKThomp"
-    },
-    {
-      "title": "An Interview with New York Times CEO Meredith Kopit Levien About Betting on Humans With Expertise",
-      "link": "https://stratechery.com/2026/an-interview-with-new-york-times-ceo-meredith-kopit-levien-about-betting-on-humans-with-expertise/",
-      "author": "Ben Thompson",
-      "source": "Stratechery",
-      "date": "2026-04-09T10:00:00.000Z",
-      "authorUrl": "https://x.com/benthompson"
-    },
-    {
-      "title": "Yes, assimilation is good",
-      "link": "https://www.noahpinion.blog/p/yes-assimilation-is-good",
-      "author": "Noah Smith",
-      "source": "Noahpinion (Noah Smith)",
-      "date": "2026-04-09T09:56:42.000Z",
-      "authorUrl": "https://x.com/Noahpinion"
     }
   ]
 }

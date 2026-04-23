@@ -15,21 +15,24 @@
     <main class="page">
       <header class="page__header">
         <h1>Reading list</h1>
-        <p class="lede">
-          Recent articles from a handful of writers, grouped by day.
-        </p>
         <p class="meta" id="meta" hidden></p>
+        <div class="filter" id="filter" hidden>
+          <label for="filter-source">Source</label>
+          <select id="filter-source">
+            <option value="">All sources</option>
+          </select>
+        </div>
       </header>
 
       <section id="content" aria-live="polite">
         <p class="status" id="status">Loading…</p>
       </section>
 
+      <div id="failures"></div>
+
       <footer class="page__footer">
-        <p>
-          Built as a static page on GitHub Pages. Source list lives in the
-          repository.
-        </p>
+        <p class="blogroll" id="blogroll" hidden></p>
+        <p class="colophon" id="colophon"></p>
       </footer>
     </main>
     <script src="./app.js" defer></script>

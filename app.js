@@ -5,6 +5,11 @@ const DATA_URL = "./articles.json";
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("content");
 const metaEl = document.getElementById("meta");
+const filterEl = document.getElementById("filter");
+const filterSelect = document.getElementById("filter-source");
+const blogrollEl = document.getElementById("blogroll");
+const colophonEl = document.getElementById("colophon");
+const failuresEl = document.getElementById("failures");
 
 const dayKeyFmt = new Intl.DateTimeFormat("en-CA", {
   year: "numeric",
@@ -16,13 +21,20 @@ const dayHeadingFmt = new Intl.DateTimeFormat(undefined, {
   month: "long",
   day: "numeric",
 });
-const metaFmt = new Intl.DateTimeFormat(undefined, {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
+const relTimeFmt = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
 
 function dayKey(iso) {
   return dayKeyFmt.format(new Date(iso));
+}
+
+function relativeTime(iso) {
+  const diffMs = new Date(iso).getTime() - Date.now();
+  const minutes = Math.round(diffMs / 60_000);
+  if (Math.abs(minutes) < 60) return relTimeFmt.format(minutes, "minute");
+  const hours = Math.round(minutes / 60);
+  if (Math.abs(hours) < 24) return relTimeFmt.format(hours, "hour");
+  const days = Math.round(hours / 24);
+  return relTimeFmt.format(days, "day");
 }
 
 function groupByDay(articles) {
@@ -122,9 +134,79 @@ function renderFailures(failures) {
 }
 
 function renderMeta(snapshot) {
-  const when = metaFmt.format(new Date(snapshot.generatedAt));
+  const sources = snapshot.sources ?? "?";
+  const parts = [
+    `${sources} source${sources === 1 ? "" : "s"}`,
+    `last ${snapshot.windowDays} days`,
+    `updated ${relativeTime(snapshot.generatedAt)}`,
+  ];
   metaEl.hidden = false;
-  metaEl.textContent = `Snapshot: ${when} · window: last ${snapshot.windowDays} days · ${snapshot.count} article${snapshot.count === 1 ? "" : "s"}.`;
+  metaEl.textContent = parts.join(" · ");
+}
+
+function renderBlogroll(writers) {
+  if (!writers?.length) return;
+  blogrollEl.replaceChildren();
+  writers.forEach((w, i) => {
+    if (i > 0) blogrollEl.appendChild(document.createTextNode(" · "));
+    if (w.xUrl) {
+      blogrollEl.appendChild(
+        el(
+          "a",
+          { href: w.xUrl, rel: "noopener", target: "_blank" },
+          w.name,
+        ),
+      );
+    } else {
+      blogrollEl.appendChild(
+        el("span", { class: "blogroll__plain" }, w.name),
+      );
+    }
+  });
+  blogrollEl.hidden = false;
+}
+
+function renderColophon(snapshot) {
+  colophonEl.replaceChildren(
+    document.createTextNode(
+      `Snapshot ${new Date(snapshot.generatedAt).toLocaleString(undefined, {
+        dateStyle: "medium",
+        timeStyle: "short",
+      })} · ${snapshot.count} article${snapshot.count === 1 ? "" : "s"}.`,
+    ),
+  );
+}
+
+function populateFilter(articles) {
+  const sources = [...new Set(articles.map((a) => a.source))].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: "base" }),
+  );
+  for (const s of sources) {
+    filterSelect.appendChild(el("option", { value: s }, s));
+  }
+  filterEl.hidden = false;
+}
+
+function renderArticles(articles, filterSource) {
+  contentEl.replaceChildren();
+  const filtered = filterSource
+    ? articles.filter((a) => a.source === filterSource)
+    : articles;
+  if (filtered.length === 0) {
+    contentEl.appendChild(
+      el(
+        "p",
+        { class: "empty" },
+        filterSource
+          ? `No recent articles from ${filterSource}.`
+          : "No articles published in the last window.",
+      ),
+    );
+    return;
+  }
+  for (const group of groupByDay(filtered)) {
+    contentEl.appendChild(renderDay(group));
+  }
 }
 
 async function main() {
@@ -139,25 +221,18 @@ async function main() {
   }
 
   renderMeta(snapshot);
-  contentEl.replaceChildren();
+  renderColophon(snapshot);
+  renderBlogroll(snapshot.writers);
 
   const articles = Array.isArray(snapshot.articles) ? snapshot.articles : [];
-  if (articles.length === 0) {
-    contentEl.appendChild(
-      el(
-        "p",
-        { class: "empty" },
-        "No articles published in the last week.",
-      ),
-    );
-  } else {
-    for (const group of groupByDay(articles)) {
-      contentEl.appendChild(renderDay(group));
-    }
-  }
+  populateFilter(articles);
+  filterSelect.addEventListener("change", () => {
+    renderArticles(articles, filterSelect.value);
+  });
+  renderArticles(articles, "");
 
   const failures = renderFailures(snapshot.failures);
-  if (failures) contentEl.appendChild(failures);
+  if (failures) failuresEl.appendChild(failures);
 }
 
 main();

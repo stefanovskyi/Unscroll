@@ -30,7 +30,8 @@
       "Bash(curl *)",
       "Bash(awk -F- '{print $NF, $0}')",
       "Bash(grep -oE '[a-z]+$')",
-      "WebSearch"
+      "WebSearch",
+      "Bash(node -e \"const d=require\\('./articles.json'\\); console.log\\('sources:',d.sources,'| articles:',d.count,'| writers:',d.writers.length\\); console.log\\('first 5 writers:'\\); d.writers.slice\\(0,5\\).forEach\\(w=>console.log\\(' ',w.name,'|',w.xUrl||'\\(no link\\)'\\)\\);\")"
     ]
   }
 }
