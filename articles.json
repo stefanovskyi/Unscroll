@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-27T10:47:43.550Z",
+  "generatedAt": "2026-04-27T11:09:20.696Z",
   "windowDays": 14,
   "sources": 43,
-  "count": 135,
+  "count": 134,
   "failures": [],
   "writers": [
     {
@@ -14,7 +14,7 @@
       "xUrl": "https://x.com/addyosmani"
     },
     {
-      "name": "AI Engineer (YouTube)",
+      "name": "AI Engineer",
       "xUrl": null
     },
     {
@@ -90,11 +90,11 @@
       "xUrl": "https://x.com/hnletter"
     },
     {
-      "name": "In the World of AI (YouTube)",
+      "name": "In the World of AI",
       "xUrl": null
     },
     {
-      "name": "Lenny's Podcast (YouTube)",
+      "name": "Lenny's Podcast",
       "xUrl": null
     },
     {
@@ -102,7 +102,7 @@
       "xUrl": "https://x.com/martinfowler"
     },
     {
-      "name": "Matt Wolfe (YouTube)",
+      "name": "Matt Wolfe",
       "xUrl": null
     },
     {
@@ -134,7 +134,7 @@
       "xUrl": "https://x.com/eatonphil"
     },
     {
-      "name": "Pragmatic Engineer (YouTube)",
+      "name": "Pragmatic Engineer",
       "xUrl": null
     },
     {
@@ -209,23 +209,26 @@
     {
       "title": "Collaborative AI Engineering: One Dev, Two Dozen Agents, Zero Alignment — Maggie Appleton, GitHub",
       "link": "https://www.youtube.com/watch?v=ClWD8OEYgp8",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-26T15:00:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-26T15:00:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "The AI era has made distribution the most important moat | Evan Spiegel (Snapchat CEO)",
       "link": "https://www.youtube.com/watch?v=-7Yol5vX5xw",
-      "author": "Lenny's Podcast (YouTube)",
-      "source": "Lenny's Podcast (YouTube)",
-      "date": "2026-04-26T12:30:00.000Z"
+      "author": "Lenny's Podcast",
+      "source": "Lenny's Podcast",
+      "date": "2026-04-26T12:30:00.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Qwen 3.6 Max: NEW Powerful AI Model EVER! Beats Opus 4.5, Gemini 3, Deepseek v4! (Fully Tested)",
       "link": "https://www.youtube.com/watch?v=CEVSgJIYSqs",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-26T06:01:35.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-26T06:01:35.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Joy & Curiosity #83",
@@ -246,16 +249,18 @@
     {
       "title": "MCP = Mega Context Problem - Matt Carey",
       "link": "https://www.youtube.com/watch?v=YBYUvGOuotE",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-25T17:00:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-25T17:00:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "AgentCraft: Putting the Orc in Orchestration — Ido Salomon",
       "link": "https://www.youtube.com/watch?v=kR64LOqBBCU",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-25T16:00:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-25T16:00:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "EP212: Data Warehouse vs Data Lake vs Data Mesh",
@@ -297,23 +302,26 @@
     {
       "title": "Essential Skills for AI Coding from Planning to Production — Matt Pocock (@mattpocockuk )",
       "link": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-24T15:15:38.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-24T15:15:38.000Z",
+      "kind": "youtube"
     },
     {
       "title": "AI News: The Biggest Leap We've Seen This Year!",
       "link": "https://www.youtube.com/watch?v=jsP-eRriC0k",
-      "author": "Matt Wolfe (YouTube)",
-      "source": "Matt Wolfe (YouTube)",
-      "date": "2026-04-24T15:00:00.000Z"
+      "author": "Matt Wolfe",
+      "source": "Matt Wolfe",
+      "date": "2026-04-24T15:00:00.000Z",
+      "kind": "youtube"
     },
     {
       "title": "What Do Models Still Suck At? - Peter Gostev, Arena.ai, BullshitBench",
       "link": "https://www.youtube.com/watch?v=R7A8rX-09Zw",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-24T14:30:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-24T14:30:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Charts of the Week: Software Ate the World",
@@ -340,9 +348,10 @@
     {
       "title": "Deepseek v4: Best Opensource Model Ever? (Fully Tested)",
       "link": "https://www.youtube.com/watch?v=eV3lAY77IpU",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-24T07:31:43.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-24T07:31:43.000Z",
+      "kind": "youtube"
     },
     {
       "title": "DeepSeek V4 - almost on the frontier, a fraction of the price",
@@ -379,9 +388,10 @@
     {
       "title": "OpenAI GPT-5.5: BEST AI Model Ever! Beats Opus 4.7 & Gemini 3.1! Powerful & Fast! (Fully Tested)",
       "link": "https://www.youtube.com/watch?v=v4M9hy_JY5E",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-23T22:40:49.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-23T22:40:49.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Extract PDF text in your browser with LiteParse for the web",
@@ -432,16 +442,18 @@
     {
       "title": "The End of Apps — Kitze, Sizzy.co",
       "link": "https://www.youtube.com/watch?v=4fntwuOoedA",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-23T15:15:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-23T15:15:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "\"Software Fundamentals Matter More Than Ever\" — Matt Pocock",
       "link": "https://www.youtube.com/watch?v=v4F1gFy-hqg",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-23T15:15:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-23T15:15:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Deep Learning Weekly: Issue 452",
@@ -453,9 +465,10 @@
     {
       "title": "How Anthropic’s product team moves faster than anyone else | Cat Wu (Head of Product, Claude Code)",
       "link": "https://www.youtube.com/watch?v=PplmzlgE0kg",
-      "author": "Lenny's Podcast (YouTube)",
-      "source": "Lenny's Podcast (YouTube)",
-      "date": "2026-04-23T15:00:43.000Z"
+      "author": "Lenny's Podcast",
+      "source": "Lenny's Podcast",
+      "date": "2026-04-23T15:00:43.000Z",
+      "kind": "youtube"
     },
     {
       "title": "DoW Contracting for Startups 101",
@@ -490,9 +503,10 @@
     {
       "title": "Kimi K2.6: BEST Opensource AI Model That Beats Opus 4.6 and Gemini 3.1 Pro (Fully Tested)",
       "link": "https://www.youtube.com/watch?v=_9zecUHs21c",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-23T06:18:00.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-23T06:18:00.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Equity for Europeans",
@@ -542,16 +556,18 @@
     {
       "title": "Designing Data-intensive Applications with Martin Kleppmann",
       "link": "https://www.youtube.com/watch?v=SVOrURyOu_U",
-      "author": "Pragmatic Engineer (YouTube)",
-      "source": "Pragmatic Engineer (YouTube)",
-      "date": "2026-04-22T16:16:18.000Z"
+      "author": "Pragmatic Engineer",
+      "source": "Pragmatic Engineer",
+      "date": "2026-04-22T16:16:18.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Agents need more than a chat - Jacob Lauritzen, CTO Legora",
       "link": "https://www.youtube.com/watch?v=XNtkiQJ49Ps",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-22T15:15:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-22T15:15:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Why We Need Continual Learning",
@@ -571,9 +587,10 @@
     {
       "title": "Bart Mode + Claude Code: NEW Spec Toolkit Ends Vibe Coding! 100x Better Than Vibe Coding (Tutorial)",
       "link": "https://www.youtube.com/watch?v=nD24henxjT8",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-22T05:59:41.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-22T05:59:41.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Is Claude Code going to cost $100/month? Probably not - it's all very confusing",
@@ -616,9 +633,10 @@
     {
       "title": "AIE Miami Day 2 ft. Cerebras, OpenCode, Cursor, Arize AI, and more!",
       "link": "https://www.youtube.com/watch?v=DeM_u2Ik0sk",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-21T21:30:46.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-21T21:30:46.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Where's the raccoon with the ham radio? (ChatGPT Images 2.0)",
@@ -631,16 +649,18 @@
     {
       "title": "Building Generative Image & Video models at Scale - Sander Dieleman (Veo and Nano Banana)",
       "link": "https://www.youtube.com/watch?v=xOP1PM8fwnk",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-21T19:33:38.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-21T19:33:38.000Z",
+      "kind": "youtube"
     },
     {
       "title": "How AI is changing Software Engineering: A Conversation with Gergely Orosz, @pragmaticengineer",
       "link": "https://www.youtube.com/watch?v=CS5Cmz5FssI",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-21T16:00:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-21T16:00:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "What Makes Knowledge Graphs AI-Ready",
@@ -674,9 +694,10 @@
     {
       "title": "Taste & Craft: A Conversation with Tuomas Artman, CTO Linear & Gergely Orosz, @pragmaticengineer",
       "link": "https://www.youtube.com/watch?v=wjk0ulMAkbc",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-21T14:00:06.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-21T14:00:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Learnings from conducting ~1,000 interviews at Amazon",
@@ -705,9 +726,10 @@
     {
       "title": "Kimi K2.6, GPT 5.5, Deepseek V4, Codex Superapp, Gemini 3.5, Grok 5 = AGI, & More! Huge AI NEWS!",
       "link": "https://www.youtube.com/watch?v=F1POR_pzsew",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-21T07:17:15.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-21T07:17:15.000Z",
+      "kind": "youtube"
     },
     {
       "title": "No, America is not in a \"stealth manufacturing boom\"",
@@ -720,23 +742,26 @@
     {
       "title": "Running LLMs on your iPhone: 40 tok/s Gemma 4 with MLX — Adrien Grondin, Locally AI",
       "link": "https://www.youtube.com/watch?v=a2muGkT4WD4",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-20T21:53:25.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-20T21:53:25.000Z",
+      "kind": "youtube"
     },
     {
       "title": "AIE Miami Keynote & Talks ft. OpenCode. Google Deepmind, OpenAI, and more!",
       "link": "https://www.youtube.com/watch?v=6IxSbMhT7v4",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-20T21:17:38.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-20T21:17:38.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Full Workshop: Build Your Own Deep Research Agents - Louis-François Bouchard, Paul Iusztin, Samridhi",
       "link": "https://www.youtube.com/watch?v=mYSRn6PC1mc",
-      "author": "AI Engineer (YouTube)",
-      "source": "AI Engineer (YouTube)",
-      "date": "2026-04-20T18:45:16.000Z"
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-20T18:45:16.000Z",
+      "kind": "youtube"
     },
     {
       "title": "The Security Architecture of GitHub Agentic Workflow",
@@ -771,9 +796,10 @@
     {
       "title": "OpenAI GPT-5.5 Leaked: Super Powerful AI Model! Beats Opus 4.7, Gemini 3.1! Cheap & Fast! (Tested)",
       "link": "https://www.youtube.com/watch?v=UfUBW9QcTjU",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-20T06:23:32.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-20T06:23:32.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Updated thoughts on industrial policy",
@@ -793,9 +819,10 @@
     {
       "title": "Why half of product managers are in trouble | Nikhyl Singhal (Meta, Google)",
       "link": "https://www.youtube.com/watch?v=yUohoaC8_Hs",
-      "author": "Lenny's Podcast (YouTube)",
-      "source": "Lenny's Podcast (YouTube)",
-      "date": "2026-04-19T12:31:14.000Z"
+      "author": "Lenny's Podcast",
+      "source": "Lenny's Podcast",
+      "date": "2026-04-19T12:31:14.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Joy & Curiosity #82",
@@ -808,9 +835,10 @@
     {
       "title": "Full AI Agent Tutorial for Beginners 2026 - How to Build AI Agents in Minutes",
       "link": "https://www.youtube.com/watch?v=OfEcMXLOAtE",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-19T04:45:06.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-19T04:45:06.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Agent Harness Engineering",
@@ -852,9 +880,10 @@
     {
       "title": "Claude Design Is INCREDIBLE! RIP Frontend Developers...",
       "link": "https://www.youtube.com/watch?v=uhQfErAzdiA",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-18T00:16:15.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-18T00:16:15.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Some secret management belongs in your HTTP proxy",
@@ -898,9 +927,10 @@
     {
       "title": "AI News: Huge Updates From Anthropic, OpenAI and Google",
       "link": "https://www.youtube.com/watch?v=bIrzOQtnp8w",
-      "author": "Matt Wolfe (YouTube)",
-      "source": "Matt Wolfe (YouTube)",
-      "date": "2026-04-17T15:00:00.000Z"
+      "author": "Matt Wolfe",
+      "source": "Matt Wolfe",
+      "date": "2026-04-17T15:00:00.000Z",
+      "kind": "youtube"
     },
     {
       "title": "It takes too long to do things in the government",
@@ -935,9 +965,10 @@
     {
       "title": "Claude Opus 4.7: Most Powerful Coding Model Ever! Beats EVERYTHING! (Fully Tested)",
       "link": "https://www.youtube.com/watch?v=lzdmb_Z-yZc",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-16T23:27:22.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-16T23:27:22.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7",
@@ -1017,9 +1048,10 @@
     {
       "title": "I Built an AI Agent To Automate My Life!",
       "link": "https://www.youtube.com/watch?v=mqnWsUggIk8",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-16T02:29:22.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-16T02:29:22.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Who even uses jemalloc in 2026 anyway? (many major projects)",
@@ -1046,9 +1078,10 @@
     {
       "title": "The Truth About My Channel (And How Much $$ I Make)",
       "link": "https://www.youtube.com/watch?v=ncVQneK7FlE",
-      "author": "Matt Wolfe (YouTube)",
-      "source": "Matt Wolfe (YouTube)",
-      "date": "2026-04-15T22:03:19.000Z"
+      "author": "Matt Wolfe",
+      "source": "Matt Wolfe",
+      "date": "2026-04-15T22:03:19.000Z",
+      "kind": "youtube"
     },
     {
       "title": "Investing in Hilbert",
@@ -1083,9 +1116,10 @@
     {
       "title": "Claude Code 2.0: New Desktop/CLI App, Routines + Opus 4.7 This Week!",
       "link": "https://www.youtube.com/watch?v=CdtJyjCWISI",
-      "author": "In the World of AI (YouTube)",
-      "source": "In the World of AI (YouTube)",
-      "date": "2026-04-15T05:05:04.000Z"
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-15T05:05:04.000Z",
+      "kind": "youtube"
     },
     {
       "title": "High Amplitude Disagreeableness",
@@ -1143,9 +1177,10 @@
     {
       "title": "DHH: how to escape the \"Apple bubble\"",
       "link": "https://www.youtube.com/watch?v=w4q-aKyHuA4",
-      "author": "Pragmatic Engineer (YouTube)",
-      "source": "Pragmatic Engineer (YouTube)",
-      "date": "2026-04-13T19:45:56.000Z"
+      "author": "Pragmatic Engineer",
+      "source": "Pragmatic Engineer",
+      "date": "2026-04-13T19:45:56.000Z",
+      "kind": "youtube"
     },
     {
       "title": "How LinkedIn Feed Uses LLMs to Serve 1.3 Billion Users",
@@ -1167,14 +1202,6 @@
       "author": "Dia Adams",
       "source": "Modern Data 101",
       "date": "2026-04-13T12:22:30.000Z"
-    },
-    {
-      "title": "Anti-patterns in event modelling - Passive-Aggressive Events",
-      "link": "https://www.architecture-weekly.com/p/passive-aggresive-event",
-      "author": "Oskar Dudycz",
-      "source": "Architecture Weekly",
-      "date": "2026-04-13T11:00:45.000Z",
-      "authorUrl": "https://x.com/oskar_at_net"
     }
   ]
 }

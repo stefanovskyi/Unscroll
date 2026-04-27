@@ -136,6 +136,15 @@ function withinLastDays(iso, cutoffMs) {
 const htmlEscapes = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => htmlEscapes[c]);
 
+// Inline YouTube glyph rendered before the channel name in the byline of
+// any article whose `kind` is "youtube". Inlined (not background-image) so
+// the icon ships with the pre-rendered HTML and needs no extra request.
+const YOUTUBE_ICON =
+  '<svg class="article__media-icon article__media-icon--youtube" viewBox="0 0 24 24" width="14" height="14" aria-label="YouTube" role="img">' +
+  '<path fill="#ff0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>' +
+  '<path fill="#fff" d="M9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>' +
+  "</svg>";
+
 const dayHeadingFmt = new Intl.DateTimeFormat("en", {
   weekday: "long",
   month: "long",
@@ -164,11 +173,12 @@ function renderArticle(a) {
   const authorNode = a.authorUrl
     ? `<a class="article__author-link" href="${esc(a.authorUrl)}" rel="noopener" target="_blank">${esc(a.author)}</a>`
     : esc(a.author);
+  const icon = a.kind === "youtube" ? YOUTUBE_ICON : "";
   const sameByAndSource =
     (a.author || "").trim().toLowerCase() === (a.source || "").trim().toLowerCase();
   const byline = sameByAndSource
-    ? `<p class="article__byline">${authorNode}</p>`
-    : `<p class="article__byline">${authorNode}<span class="article__source"> · ${esc(a.source)}</span></p>`;
+    ? `<p class="article__byline">${icon}${authorNode}</p>`
+    : `<p class="article__byline">${icon}${authorNode}<span class="article__source"> · ${esc(a.source)}</span></p>`;
   return `<li class="article" data-source="${esc(a.source)}">${title}${byline}</li>`;
 }
 

@@ -294,40 +294,39 @@ export const feeds = [
     candidates: ["https://www.deeplearningweekly.com/feed"],
   },
   {
-    source: "Matt Wolfe (YouTube)",
-    fetch: () =>
-      fetchYouTubeChannel({ handle: "mreflow", source: "Matt Wolfe (YouTube)" }),
+    source: "Matt Wolfe",
+    fetch: () => fetchYouTubeChannel({ handle: "mreflow", source: "Matt Wolfe" }),
   },
   {
-    source: "Pragmatic Engineer (YouTube)",
+    // Newsletter source above already uses "The Pragmatic Engineer"; the
+    // YouTube channel goes by the slightly shorter handle to keep the two
+    // distinct in the source filter.
+    source: "Pragmatic Engineer",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "pragmaticengineer",
-        source: "Pragmatic Engineer (YouTube)",
+        source: "Pragmatic Engineer",
       }),
   },
   {
-    source: "AI Engineer (YouTube)",
+    source: "AI Engineer",
     fetch: () =>
-      fetchYouTubeChannel({
-        handle: "aiDotEngineer",
-        source: "AI Engineer (YouTube)",
-      }),
+      fetchYouTubeChannel({ handle: "aiDotEngineer", source: "AI Engineer" }),
   },
   {
-    source: "In the World of AI (YouTube)",
+    source: "In the World of AI",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "intheworldofai",
-        source: "In the World of AI (YouTube)",
+        source: "In the World of AI",
       }),
   },
   {
-    source: "Lenny's Podcast (YouTube)",
+    source: "Lenny's Podcast",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "LennysPodcast",
-        source: "Lenny's Podcast (YouTube)",
+        source: "Lenny's Podcast",
       }),
   },
 ];
@@ -541,6 +540,7 @@ async function fetchYouTubeChannel({ handle, source }) {
       author: source,
       source,
       date: date.toISOString(),
+      kind: "youtube",
     });
   }
   return articles;
