@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-23T13:33:53.518Z",
+  "generatedAt": "2026-04-27T10:47:43.550Z",
   "windowDays": 14,
-  "sources": 38,
-  "count": 90,
+  "sources": 43,
+  "count": 135,
   "failures": [],
   "writers": [
     {
@@ -12,6 +12,10 @@
     {
       "name": "Addy Osmani",
       "xUrl": "https://x.com/addyosmani"
+    },
+    {
+      "name": "AI Engineer (YouTube)",
+      "xUrl": null
     },
     {
       "name": "Alex Xu",
@@ -86,8 +90,20 @@
       "xUrl": "https://x.com/hnletter"
     },
     {
+      "name": "In the World of AI (YouTube)",
+      "xUrl": null
+    },
+    {
+      "name": "Lenny's Podcast (YouTube)",
+      "xUrl": null
+    },
+    {
       "name": "Martin Fowler",
       "xUrl": "https://x.com/martinfowler"
+    },
+    {
+      "name": "Matt Wolfe (YouTube)",
+      "xUrl": null
     },
     {
       "name": "Max Woolf",
@@ -116,6 +132,10 @@
     {
       "name": "Phil Eaton",
       "xUrl": "https://x.com/eatonphil"
+    },
+    {
+      "name": "Pragmatic Engineer (YouTube)",
+      "xUrl": null
     },
     {
       "name": "Programmer Weekly",
@@ -156,6 +176,295 @@
   ],
   "articles": [
     {
+      "title": "AI Hardware, Meta Display, Redefining VR and AR",
+      "link": "https://stratechery.com/2026/ai-hardware-meta-display-redefining-vr-and-ar/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-27T10:00:00.000Z",
+      "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "The moderately easy problem of consciousness",
+      "link": "https://www.noahpinion.blog/p/the-moderately-easy-problem-of-consciousness",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-27T09:58:07.000Z",
+      "authorUrl": "https://x.com/Noahpinion"
+    },
+    {
+      "title": "Vibing, Harness and OODA loop",
+      "link": "https://www.architecture-weekly.com/p/vibing-harness-and-ooda-loop",
+      "author": "Oskar Dudycz",
+      "source": "Architecture Weekly",
+      "date": "2026-04-27T05:27:27.000Z",
+      "authorUrl": "https://x.com/oskar_at_net"
+    },
+    {
+      "title": "🥇Top AI Papers of the Week",
+      "link": "https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-f2f",
+      "author": "elvis",
+      "source": "NLP Newsletter (Elvis Saravia)",
+      "date": "2026-04-26T15:02:38.000Z"
+    },
+    {
+      "title": "Collaborative AI Engineering: One Dev, Two Dozen Agents, Zero Alignment — Maggie Appleton, GitHub",
+      "link": "https://www.youtube.com/watch?v=ClWD8OEYgp8",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-26T15:00:06.000Z"
+    },
+    {
+      "title": "The AI era has made distribution the most important moat | Evan Spiegel (Snapchat CEO)",
+      "link": "https://www.youtube.com/watch?v=-7Yol5vX5xw",
+      "author": "Lenny's Podcast (YouTube)",
+      "source": "Lenny's Podcast (YouTube)",
+      "date": "2026-04-26T12:30:00.000Z"
+    },
+    {
+      "title": "Qwen 3.6 Max: NEW Powerful AI Model EVER! Beats Opus 4.5, Gemini 3, Deepseek v4! (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=CEVSgJIYSqs",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-26T06:01:35.000Z"
+    },
+    {
+      "title": "Joy & Curiosity #83",
+      "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-83",
+      "author": "Thorsten Ball",
+      "source": "Thorsten Ball — Register Spill",
+      "date": "2026-04-26T05:31:16.000Z",
+      "authorUrl": "https://x.com/thorstenball"
+    },
+    {
+      "title": "Branimir Lambov from IBM on Cassandra",
+      "link": "http://notes.eatonphil.com/2026-04-26-branimir-lambov-from-ibm-on-cassandra.html",
+      "author": "Phil Eaton",
+      "source": "Phil Eaton",
+      "date": "2026-04-26T00:00:00.000Z",
+      "authorUrl": "https://x.com/eatonphil"
+    },
+    {
+      "title": "MCP = Mega Context Problem - Matt Carey",
+      "link": "https://www.youtube.com/watch?v=YBYUvGOuotE",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-25T17:00:06.000Z"
+    },
+    {
+      "title": "AgentCraft: Putting the Orc in Orchestration — Ido Salomon",
+      "link": "https://www.youtube.com/watch?v=kR64LOqBBCU",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-25T16:00:06.000Z"
+    },
+    {
+      "title": "EP212: Data Warehouse vs Data Lake vs Data Mesh",
+      "link": "https://blog.bytebytego.com/p/ep212-data-warehouse-vs-data-lake",
+      "author": "ByteByteGo",
+      "source": "ByteByteGo",
+      "date": "2026-04-25T15:30:59.000Z"
+    },
+    {
+      "title": "🤖 AI Agents Weekly: GPT-5.5, DeepSeek-V4 Preview, Kimi K2.6 Agent Swarm, Diversity Collapse, Sakana Fugu, and More",
+      "link": "https://nlp.elvissaravia.com/p/ai-agents-weekly-gpt-55-deepseek",
+      "author": "elvis",
+      "source": "NLP Newsletter (Elvis Saravia)",
+      "date": "2026-04-25T15:02:05.000Z"
+    },
+    {
+      "title": "Tim Cook's Apple",
+      "link": "https://www.readtrung.com/p/tim-cooks-apple",
+      "author": "Trungphan2",
+      "source": "Read Trung (Trung Phan)",
+      "date": "2026-04-24T23:49:34.000Z"
+    },
+    {
+      "title": "Why shoplifting is bad",
+      "link": "https://www.noahpinion.blog/p/why-shoplifting-is-bad",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-24T22:30:08.000Z",
+      "authorUrl": "https://x.com/Noahpinion"
+    },
+    {
+      "title": "2026.17: He Came, He Saw, He Cooked",
+      "link": "https://stratechery.com/2026/he-came-he-saw-he-cooked/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-24T17:00:00.000Z",
+      "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Essential Skills for AI Coding from Planning to Production — Matt Pocock (@mattpocockuk )",
+      "link": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-24T15:15:38.000Z"
+    },
+    {
+      "title": "AI News: The Biggest Leap We've Seen This Year!",
+      "link": "https://www.youtube.com/watch?v=jsP-eRriC0k",
+      "author": "Matt Wolfe (YouTube)",
+      "source": "Matt Wolfe (YouTube)",
+      "date": "2026-04-24T15:00:00.000Z"
+    },
+    {
+      "title": "What Do Models Still Suck At? - Peter Gostev, Arena.ai, BullshitBench",
+      "link": "https://www.youtube.com/watch?v=R7A8rX-09Zw",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-24T14:30:06.000Z"
+    },
+    {
+      "title": "Charts of the Week: Software Ate the World",
+      "link": "https://www.a16z.news/p/charts-of-the-week-software-ate-the",
+      "author": "a16z New Media",
+      "source": "a16z",
+      "date": "2026-04-24T14:03:10.000Z"
+    },
+    {
+      "title": "Ontologies in the Age of AI: Why Better Models Still Depend on Better Meaning",
+      "link": "https://moderndata101.substack.com/p/ontologies-in-the-age-of-ai",
+      "author": "Sonam",
+      "source": "Modern Data 101",
+      "date": "2026-04-24T12:13:11.000Z"
+    },
+    {
+      "title": "Welcome to Gas City",
+      "link": "https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607?source=rss-c1ec701babb7------2",
+      "author": "Steve Yegge",
+      "source": "Steve Yegge",
+      "date": "2026-04-24T07:41:25.000Z",
+      "authorUrl": "https://x.com/Steve_Yegge"
+    },
+    {
+      "title": "Deepseek v4: Best Opensource Model Ever? (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=eV3lAY77IpU",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-24T07:31:43.000Z"
+    },
+    {
+      "title": "DeepSeek V4 - almost on the frontier, a fraction of the price",
+      "link": "https://simonwillison.net/2026/Apr/24/deepseek-v4/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-24T06:01:04.000Z",
+      "authorUrl": "https://x.com/simonw"
+    },
+    {
+      "title": "Software engineering may no longer be a lifetime career",
+      "link": "https://seangoedecke.com/software-engineering-may-no-longer-be-a-lifetime-career/",
+      "author": "Sean Goedecke",
+      "source": "Sean Goedecke",
+      "date": "2026-04-24T00:00:00.000Z",
+      "authorUrl": "https://x.com/sjgoedecke"
+    },
+    {
+      "title": "You should try contra dancing",
+      "link": "https://www.benkuhn.net/contra/",
+      "author": "Ben Kuhn",
+      "source": "Ben Kuhn",
+      "date": "2026-04-24T00:00:00.000Z",
+      "authorUrl": "https://x.com/benkuhn"
+    },
+    {
+      "title": "Software Lead Weekly #700",
+      "link": "https://softwareleadweekly.com/issues/700",
+      "author": "Oren Ellenbogen",
+      "source": "Software Lead Weekly",
+      "date": "2026-04-24T00:00:00.000Z",
+      "authorUrl": "https://x.com/orenellenbogen"
+    },
+    {
+      "title": "OpenAI GPT-5.5: BEST AI Model Ever! Beats Opus 4.7 & Gemini 3.1! Powerful & Fast! (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=v4M9hy_JY5E",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-23T22:40:49.000Z"
+    },
+    {
+      "title": "Extract PDF text in your browser with LiteParse for the web",
+      "link": "https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-23T21:54:24.000Z",
+      "authorUrl": "https://x.com/simonw"
+    },
+    {
+      "title": "Sign of the future: GPT-5.5",
+      "link": "https://www.oneusefulthing.org/p/sign-of-the-future-gpt-55",
+      "author": "Ethan Mollick",
+      "source": "One Useful Thing (Ethan Mollick)",
+      "date": "2026-04-23T20:00:38.000Z",
+      "authorUrl": "https://x.com/emollick"
+    },
+    {
+      "title": "A pelican for GPT-5.5 via the semi-official Codex backdoor API",
+      "link": "https://simonwillison.net/2026/Apr/23/gpt-5-5/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-23T19:59:47.000Z",
+      "authorUrl": "https://x.com/simonw"
+    },
+    {
+      "title": "Investing in Glif",
+      "link": "https://www.a16z.news/p/investing-in-glif",
+      "author": "Justine Moore",
+      "source": "a16z",
+      "date": "2026-04-23T17:01:06.000Z"
+    },
+    {
+      "title": "The Pulse: AI token spending out of control – what’s next?",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-ai-token-spending-out-of",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-23T16:51:01.000Z",
+      "authorUrl": "https://x.com/GergelyOrosz"
+    },
+    {
+      "title": "B-Trees vs LSM Trees: Comparison and Trade-Offs",
+      "link": "https://blog.bytebytego.com/p/b-trees-vs-lsm-trees-comparison-and",
+      "author": "ByteByteGo",
+      "source": "ByteByteGo",
+      "date": "2026-04-23T15:30:59.000Z"
+    },
+    {
+      "title": "The End of Apps — Kitze, Sizzy.co",
+      "link": "https://www.youtube.com/watch?v=4fntwuOoedA",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-23T15:15:06.000Z"
+    },
+    {
+      "title": "\"Software Fundamentals Matter More Than Ever\" — Matt Pocock",
+      "link": "https://www.youtube.com/watch?v=v4F1gFy-hqg",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-23T15:15:06.000Z"
+    },
+    {
+      "title": "Deep Learning Weekly: Issue 452",
+      "link": "https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-452",
+      "author": "Miko Planas",
+      "source": "Deep Learning Weekly",
+      "date": "2026-04-23T15:01:16.000Z"
+    },
+    {
+      "title": "How Anthropic’s product team moves faster than anyone else | Cat Wu (Head of Product, Claude Code)",
+      "link": "https://www.youtube.com/watch?v=PplmzlgE0kg",
+      "author": "Lenny's Podcast (YouTube)",
+      "source": "Lenny's Podcast (YouTube)",
+      "date": "2026-04-23T15:00:43.000Z"
+    },
+    {
+      "title": "DoW Contracting for Startups 101",
+      "link": "https://www.a16z.news/p/dow-contracting-for-startups-101",
+      "author": "Ryan McEntush",
+      "source": "a16z",
+      "date": "2026-04-23T14:01:00.000Z"
+    },
+    {
       "title": "Investing in Petual",
       "link": "https://www.a16z.news/p/investing-in-petual",
       "author": "Kimberly Tan",
@@ -177,6 +486,35 @@
       "source": "Stratechery",
       "date": "2026-04-23T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Kimi K2.6: BEST Opensource AI Model That Beats Opus 4.6 and Gemini 3.1 Pro (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=_9zecUHs21c",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-23T06:18:00.000Z"
+    },
+    {
+      "title": "Equity for Europeans",
+      "link": "https://lucumr.pocoo.org/2026/4/23/equity-for-europeans/",
+      "author": "Armin Ronacher",
+      "source": "Armin Ronacher",
+      "date": "2026-04-23T00:00:00.000Z",
+      "authorUrl": "https://x.com/mitsuhiko"
+    },
+    {
+      "title": "Programmer Weekly #297",
+      "link": "https://www.programmerweekly.com/p/programmer-weekly-issue-297-apr-23-2026",
+      "author": "Programmer Weekly",
+      "source": "Programmer Weekly",
+      "date": "2026-04-23T00:00:00.000Z"
+    },
+    {
+      "title": "Python Weekly #742",
+      "link": "https://www.pythonweekly.com/p/python-weekly-issue-742-april-23-2026",
+      "author": "Rahul Chaudhary",
+      "source": "Python Weekly",
+      "date": "2026-04-23T00:00:00.000Z"
     },
     {
       "title": "Is China's soft power really rising, or is America's just crumbling?",
@@ -202,6 +540,20 @@
       "authorUrl": "https://x.com/GergelyOrosz"
     },
     {
+      "title": "Designing Data-intensive Applications with Martin Kleppmann",
+      "link": "https://www.youtube.com/watch?v=SVOrURyOu_U",
+      "author": "Pragmatic Engineer (YouTube)",
+      "source": "Pragmatic Engineer (YouTube)",
+      "date": "2026-04-22T16:16:18.000Z"
+    },
+    {
+      "title": "Agents need more than a chat - Jacob Lauritzen, CTO Legora",
+      "link": "https://www.youtube.com/watch?v=XNtkiQJ49Ps",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-22T15:15:06.000Z"
+    },
+    {
       "title": "Why We Need Continual Learning",
       "link": "https://www.a16z.news/p/why-we-need-continual-learning",
       "author": "Malika Aubakirova",
@@ -215,6 +567,13 @@
       "source": "Stratechery",
       "date": "2026-04-22T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Bart Mode + Claude Code: NEW Spec Toolkit Ends Vibe Coding! 100x Better Than Vibe Coding (Tutorial)",
+      "link": "https://www.youtube.com/watch?v=nD24henxjT8",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-22T05:59:41.000Z"
     },
     {
       "title": "Is Claude Code going to cost $100/month? Probably not - it's all very confusing",
@@ -232,7 +591,7 @@
       "date": "2026-04-22T00:00:00.000Z"
     },
     {
-      "title": "Luddites and AI datacenters",
+      "title": "Luddites and burning down AI datacenters",
       "link": "https://seangoedecke.com/luddites-and-ai-datacenters/",
       "author": "Sean Goedecke",
       "source": "Sean Goedecke",
@@ -255,12 +614,33 @@
       "date": "2026-04-22T00:00:00.000Z"
     },
     {
+      "title": "AIE Miami Day 2 ft. Cerebras, OpenCode, Cursor, Arize AI, and more!",
+      "link": "https://www.youtube.com/watch?v=DeM_u2Ik0sk",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-21T21:30:46.000Z"
+    },
+    {
       "title": "Where's the raccoon with the ham radio? (ChatGPT Images 2.0)",
       "link": "https://simonwillison.net/2026/Apr/21/gpt-image-2/",
       "author": "Simon Willison",
       "source": "Simon Willison",
       "date": "2026-04-21T20:32:24.000Z",
       "authorUrl": "https://x.com/simonw"
+    },
+    {
+      "title": "Building Generative Image & Video models at Scale - Sander Dieleman (Veo and Nano Banana)",
+      "link": "https://www.youtube.com/watch?v=xOP1PM8fwnk",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-21T19:33:38.000Z"
+    },
+    {
+      "title": "How AI is changing Software Engineering: A Conversation with Gergely Orosz, @pragmaticengineer",
+      "link": "https://www.youtube.com/watch?v=CS5Cmz5FssI",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-21T16:00:06.000Z"
     },
     {
       "title": "What Makes Knowledge Graphs AI-Ready",
@@ -292,6 +672,13 @@
       "date": "2026-04-21T14:04:23.000Z"
     },
     {
+      "title": "Taste & Craft: A Conversation with Tuomas Artman, CTO Linear & Gergely Orosz, @pragmaticengineer",
+      "link": "https://www.youtube.com/watch?v=wjk0ulMAkbc",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-21T14:00:06.000Z"
+    },
+    {
       "title": "Learnings from conducting ~1,000 interviews at Amazon",
       "link": "https://newsletter.pragmaticengineer.com/p/learnings-from-conducting-1000-interviews",
       "author": "Gergely Orosz",
@@ -316,12 +703,40 @@
       "authorUrl": "https://x.com/benthompson"
     },
     {
+      "title": "Kimi K2.6, GPT 5.5, Deepseek V4, Codex Superapp, Gemini 3.5, Grok 5 = AGI, & More! Huge AI NEWS!",
+      "link": "https://www.youtube.com/watch?v=F1POR_pzsew",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-21T07:17:15.000Z"
+    },
+    {
       "title": "No, America is not in a \"stealth manufacturing boom\"",
       "link": "https://www.noahpinion.blog/p/no-america-is-not-in-a-stealth-manufacturing",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
       "date": "2026-04-21T05:30:49.000Z",
       "authorUrl": "https://x.com/Noahpinion"
+    },
+    {
+      "title": "Running LLMs on your iPhone: 40 tok/s Gemma 4 with MLX — Adrien Grondin, Locally AI",
+      "link": "https://www.youtube.com/watch?v=a2muGkT4WD4",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-20T21:53:25.000Z"
+    },
+    {
+      "title": "AIE Miami Keynote & Talks ft. OpenCode. Google Deepmind, OpenAI, and more!",
+      "link": "https://www.youtube.com/watch?v=6IxSbMhT7v4",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-20T21:17:38.000Z"
+    },
+    {
+      "title": "Full Workshop: Build Your Own Deep Research Agents - Louis-François Bouchard, Paul Iusztin, Samridhi",
+      "link": "https://www.youtube.com/watch?v=mYSRn6PC1mc",
+      "author": "AI Engineer (YouTube)",
+      "source": "AI Engineer (YouTube)",
+      "date": "2026-04-20T18:45:16.000Z"
     },
     {
       "title": "The Security Architecture of GitHub Agentic Workflow",
@@ -354,6 +769,13 @@
       "authorUrl": "https://x.com/benthompson"
     },
     {
+      "title": "OpenAI GPT-5.5 Leaked: Super Powerful AI Model! Beats Opus 4.7, Gemini 3.1! Cheap & Fast! (Tested)",
+      "link": "https://www.youtube.com/watch?v=UfUBW9QcTjU",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-20T06:23:32.000Z"
+    },
+    {
       "title": "Updated thoughts on industrial policy",
       "link": "https://www.noahpinion.blog/p/updated-thoughts-on-industrial-policy",
       "author": "Noah Smith",
@@ -369,12 +791,26 @@
       "date": "2026-04-19T15:03:17.000Z"
     },
     {
+      "title": "Why half of product managers are in trouble | Nikhyl Singhal (Meta, Google)",
+      "link": "https://www.youtube.com/watch?v=yUohoaC8_Hs",
+      "author": "Lenny's Podcast (YouTube)",
+      "source": "Lenny's Podcast (YouTube)",
+      "date": "2026-04-19T12:31:14.000Z"
+    },
+    {
       "title": "Joy & Curiosity #82",
       "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-82",
       "author": "Thorsten Ball",
       "source": "Thorsten Ball — Register Spill",
       "date": "2026-04-19T05:23:09.000Z",
       "authorUrl": "https://x.com/thorstenball"
+    },
+    {
+      "title": "Full AI Agent Tutorial for Beginners 2026 - How to Build AI Agents in Minutes",
+      "link": "https://www.youtube.com/watch?v=OfEcMXLOAtE",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-19T04:45:06.000Z"
     },
     {
       "title": "Agent Harness Engineering",
@@ -412,6 +848,13 @@
       "author": "Trungphan2",
       "source": "Read Trung (Trung Phan)",
       "date": "2026-04-18T00:19:34.000Z"
+    },
+    {
+      "title": "Claude Design Is INCREDIBLE! RIP Frontend Developers...",
+      "link": "https://www.youtube.com/watch?v=uhQfErAzdiA",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-18T00:16:15.000Z"
     },
     {
       "title": "Some secret management belongs in your HTTP proxy",
@@ -453,6 +896,13 @@
       "authorUrl": "https://x.com/benthompson"
     },
     {
+      "title": "AI News: Huge Updates From Anthropic, OpenAI and Google",
+      "link": "https://www.youtube.com/watch?v=bIrzOQtnp8w",
+      "author": "Matt Wolfe (YouTube)",
+      "source": "Matt Wolfe (YouTube)",
+      "date": "2026-04-17T15:00:00.000Z"
+    },
+    {
       "title": "It takes too long to do things in the government",
       "link": "https://www.a16z.news/p/it-takes-too-long-to-do-things-in",
       "author": "Zachary Long",
@@ -481,6 +931,13 @@
       "source": "Software Lead Weekly",
       "date": "2026-04-17T00:00:00.000Z",
       "authorUrl": "https://x.com/orenellenbogen"
+    },
+    {
+      "title": "Claude Opus 4.7: Most Powerful Coding Model Ever! Beats EVERYTHING! (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=lzdmb_Z-yZc",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-16T23:27:22.000Z"
     },
     {
       "title": "Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7",
@@ -558,6 +1015,13 @@
       "authorUrl": "https://x.com/Noahpinion"
     },
     {
+      "title": "I Built an AI Agent To Automate My Life!",
+      "link": "https://www.youtube.com/watch?v=mqnWsUggIk8",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-16T02:29:22.000Z"
+    },
+    {
       "title": "Who even uses jemalloc in 2026 anyway? (many major projects)",
       "link": "http://notes.eatonphil.com/2026-04-16-who-even-uses-jemalloc-anyway.html",
       "author": "Phil Eaton",
@@ -578,6 +1042,13 @@
       "author": "Rahul Chaudhary",
       "source": "Python Weekly",
       "date": "2026-04-16T00:00:00.000Z"
+    },
+    {
+      "title": "The Truth About My Channel (And How Much $$ I Make)",
+      "link": "https://www.youtube.com/watch?v=ncVQneK7FlE",
+      "author": "Matt Wolfe (YouTube)",
+      "source": "Matt Wolfe (YouTube)",
+      "date": "2026-04-15T22:03:19.000Z"
     },
     {
       "title": "Investing in Hilbert",
@@ -608,6 +1079,13 @@
       "source": "Stratechery",
       "date": "2026-04-15T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Claude Code 2.0: New Desktop/CLI App, Routines + Opus 4.7 This Week!",
+      "link": "https://www.youtube.com/watch?v=CdtJyjCWISI",
+      "author": "In the World of AI (YouTube)",
+      "source": "In the World of AI (YouTube)",
+      "date": "2026-04-15T05:05:04.000Z"
     },
     {
       "title": "High Amplitude Disagreeableness",
@@ -663,6 +1141,13 @@
       "authorUrl": "https://x.com/benthompson"
     },
     {
+      "title": "DHH: how to escape the \"Apple bubble\"",
+      "link": "https://www.youtube.com/watch?v=w4q-aKyHuA4",
+      "author": "Pragmatic Engineer (YouTube)",
+      "source": "Pragmatic Engineer (YouTube)",
+      "date": "2026-04-13T19:45:56.000Z"
+    },
+    {
       "title": "How LinkedIn Feed Uses LLMs to Serve 1.3 Billion Users",
       "link": "https://blog.bytebytego.com/p/how-linkedin-feed-uses-llms-to-serve",
       "author": "ByteByteGo",
@@ -690,149 +1175,6 @@
       "source": "Architecture Weekly",
       "date": "2026-04-13T11:00:45.000Z",
       "authorUrl": "https://x.com/oskar_at_net"
-    },
-    {
-      "title": "Mythos, Muse, and the Opportunity Cost of Compute",
-      "link": "https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/",
-      "author": "Ben Thompson",
-      "source": "Stratechery",
-      "date": "2026-04-13T10:00:00.000Z",
-      "authorUrl": "https://x.com/benthompson"
-    },
-    {
-      "title": "What if a few AI companies end up with all the money and power?",
-      "link": "https://www.noahpinion.blog/p/what-if-a-few-ai-companies-end-up",
-      "author": "Noah Smith",
-      "source": "Noahpinion (Noah Smith)",
-      "date": "2026-04-13T00:50:34.000Z",
-      "authorUrl": "https://x.com/Noahpinion"
-    },
-    {
-      "title": "🥇Top AI Papers of the Week",
-      "link": "https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-831",
-      "author": "elvis",
-      "source": "NLP Newsletter (Elvis Saravia)",
-      "date": "2026-04-12T15:02:34.000Z"
-    },
-    {
-      "title": "Joy & Curiosity #81",
-      "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-81",
-      "author": "Thorsten Ball",
-      "source": "Thorsten Ball — Register Spill",
-      "date": "2026-04-12T06:25:54.000Z",
-      "authorUrl": "https://x.com/thorstenball"
-    },
-    {
-      "title": "EP210: Monolithic vs Microservices vs Serverless",
-      "link": "https://blog.bytebytego.com/p/ep210-monolithic-vs-microservices",
-      "author": "ByteByteGo",
-      "source": "ByteByteGo",
-      "date": "2026-04-11T15:30:48.000Z"
-    },
-    {
-      "title": "🤖 AI Agents Weekly: Claude Managed Agents, Muse Spark, Project Glasswing, Advisor Strategy, GLM-5.1, Memento, and More",
-      "link": "https://nlp.elvissaravia.com/p/ai-agents-weekly-claude-managed-agents",
-      "author": "elvis",
-      "source": "NLP Newsletter (Elvis Saravia)",
-      "date": "2026-04-11T15:01:39.000Z"
-    },
-    {
-      "title": "Alan Turing play in Cambridge MA",
-      "link": "https://martinfowler.com/articles/202604-turing.html",
-      "author": "Martin Fowler",
-      "source": "Martin Fowler",
-      "date": "2026-04-11T13:01:00.000Z",
-      "authorUrl": "https://x.com/martinfowler"
-    },
-    {
-      "title": "Will Americans want more housing if it looks prettier?",
-      "link": "https://www.noahpinion.blog/p/will-americans-want-more-housing",
-      "author": "Noah Smith",
-      "source": "Noahpinion (Noah Smith)",
-      "date": "2026-04-11T09:17:36.000Z",
-      "authorUrl": "https://x.com/Noahpinion"
-    },
-    {
-      "title": "Closer compute 🇺🇸 🇬🇧 🇯🇵 🇩🇪 🇦🇺",
-      "link": "https://blog.exe.dev/regions",
-      "author": "David Crawshaw",
-      "source": "blog.exe.dev",
-      "date": "2026-04-11T00:00:00.000Z"
-    },
-    {
-      "title": "Agentic Engine Optimization (AEO)",
-      "link": "https://addyosmani.com/blog/agentic-engine-optimization/",
-      "author": "Addy Osmani",
-      "source": "Addy Osmani",
-      "date": "2026-04-11T00:00:00.000Z",
-      "authorUrl": "https://x.com/addyosmani"
-    },
-    {
-      "title": "The Center Has a Bias",
-      "link": "https://lucumr.pocoo.org/2026/4/11/the-center-has-a-bias/",
-      "author": "Armin Ronacher",
-      "source": "Armin Ronacher",
-      "date": "2026-04-11T00:00:00.000Z",
-      "authorUrl": "https://x.com/mitsuhiko"
-    },
-    {
-      "title": "Shohei Ohtani $125m Sponsorship Bag",
-      "link": "https://www.readtrung.com/p/shohei-ohtani-the-125m-ad-man",
-      "author": "Trungphan2",
-      "source": "Read Trung (Trung Phan)",
-      "date": "2026-04-10T22:12:01.000Z"
-    },
-    {
-      "title": "2026.15: Myth and Mythos",
-      "link": "https://stratechery.com/2026/myth-and-mythos/",
-      "author": "Ben Thompson",
-      "source": "Stratechery",
-      "date": "2026-04-10T17:00:00.000Z",
-      "authorUrl": "https://x.com/benthompson"
-    },
-    {
-      "title": "Charts of the Week: Venture's $300B Quarter",
-      "link": "https://www.a16z.news/p/charts-of-the-week-ventures-300b",
-      "author": "a16z New Media",
-      "source": "a16z",
-      "date": "2026-04-10T14:02:48.000Z"
-    },
-    {
-      "title": "Hacker Newsletter #789",
-      "link": "https://buttondown.com/hacker-newsletter/archive/789/",
-      "author": "Hacker Newsletter",
-      "source": "Hacker Newsletter",
-      "date": "2026-04-10T11:00:00.000Z",
-      "authorUrl": "https://x.com/hnletter"
-    },
-    {
-      "title": "Software Lead Weekly #698",
-      "link": "https://softwareleadweekly.com/issues/698",
-      "author": "Oren Ellenbogen",
-      "source": "Software Lead Weekly",
-      "date": "2026-04-10T00:00:00.000Z",
-      "authorUrl": "https://x.com/orenellenbogen"
-    },
-    {
-      "title": "Must-Know Cross-Cutting Concerns in API Development",
-      "link": "https://blog.bytebytego.com/p/must-know-cross-cutting-concerns",
-      "author": "ByteByteGo",
-      "source": "ByteByteGo",
-      "date": "2026-04-09T15:30:31.000Z"
-    },
-    {
-      "title": "Deep Learning Weekly: Issue 450",
-      "link": "https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-450",
-      "author": "Miko Planas",
-      "source": "Deep Learning Weekly",
-      "date": "2026-04-09T15:01:40.000Z"
-    },
-    {
-      "title": "SF is back - and the tech social scene is being run by the terminally online",
-      "link": "https://www.a16z.news/p/sf-is-back-and-the-tech-social-scene",
-      "author": "Katie Kirsch",
-      "source": "a16z",
-      "date": "2026-04-09T14:02:24.000Z"
     }
   ]
 }

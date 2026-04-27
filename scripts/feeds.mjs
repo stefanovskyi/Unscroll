@@ -293,6 +293,43 @@ export const feeds = [
     fallbackAuthor: "Deep Learning Weekly",
     candidates: ["https://www.deeplearningweekly.com/feed"],
   },
+  {
+    source: "Matt Wolfe (YouTube)",
+    fetch: () =>
+      fetchYouTubeChannel({ handle: "mreflow", source: "Matt Wolfe (YouTube)" }),
+  },
+  {
+    source: "Pragmatic Engineer (YouTube)",
+    fetch: () =>
+      fetchYouTubeChannel({
+        handle: "pragmaticengineer",
+        source: "Pragmatic Engineer (YouTube)",
+      }),
+  },
+  {
+    source: "AI Engineer (YouTube)",
+    fetch: () =>
+      fetchYouTubeChannel({
+        handle: "aiDotEngineer",
+        source: "AI Engineer (YouTube)",
+      }),
+  },
+  {
+    source: "In the World of AI (YouTube)",
+    fetch: () =>
+      fetchYouTubeChannel({
+        handle: "intheworldofai",
+        source: "In the World of AI (YouTube)",
+      }),
+  },
+  {
+    source: "Lenny's Podcast (YouTube)",
+    fetch: () =>
+      fetchYouTubeChannel({
+        handle: "LennysPodcast",
+        source: "Lenny's Podcast (YouTube)",
+      }),
+  },
 ];
 
 // --- Paul Graham scraper -------------------------------------------
@@ -452,6 +489,61 @@ async function fetchSoftwareLeadWeekly() {
     }),
   );
   return articles.filter(Boolean);
+}
+
+// --- YouTube channel scraper ---------------------------------------
+//
+// YouTube's Atom feed lives at /feeds/videos.xml?channel_id=UCxxx, but
+// the user-facing URLs use @handles. The channel page embeds its UC id
+// in many places — `/channel/UC...` is the most reliable to grep for.
+// Once resolved we parse the Atom feed directly to avoid pulling
+// rss-parser into this module (other custom fetchers here also do
+// minimal regex parsing for the same reason).
+
+const xmlEntities = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&apos;": "'",
+  "&#39;": "'",
+};
+
+function decodeXml(s) {
+  return s
+    .replace(/&(?:amp|lt|gt|quot|apos|#39);/g, (m) => xmlEntities[m])
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCodePoint(parseInt(n, 16)));
+}
+
+async function fetchYouTubeChannel({ handle, source }) {
+  const channelHtml = await fetchText(`https://www.youtube.com/@${handle}`);
+  const idMatch = channelHtml.match(/\/channel\/(UC[A-Za-z0-9_-]{20,})/);
+  if (!idMatch) throw new Error(`Cannot resolve channel ID for @${handle}`);
+  const xml = await fetchText(
+    `https://www.youtube.com/feeds/videos.xml?channel_id=${idMatch[1]}`,
+  );
+  const articles = [];
+  for (const [, body] of xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)) {
+    const titleM = body.match(/<title>([\s\S]*?)<\/title>/);
+    const linkM = body.match(/<link[^>]*rel="alternate"[^>]*href="([^"]+)"/);
+    const publishedM = body.match(/<published>([^<]+)<\/published>/);
+    if (!titleM || !linkM || !publishedM) continue;
+    const link = linkM[1].trim();
+    // The Atom feed mixes Shorts (/shorts/<id>) into the same stream as
+    // long-form videos (/watch?v=<id>). Drop Shorts.
+    if (link.includes("/shorts/")) continue;
+    const date = new Date(publishedM[1]);
+    if (Number.isNaN(date.getTime())) continue;
+    articles.push({
+      title: decodeXml(titleM[1].trim()),
+      link,
+      author: source,
+      source,
+      date: date.toISOString(),
+    });
+  }
+  return articles;
 }
 
 async function fetchPaulGraham() {
