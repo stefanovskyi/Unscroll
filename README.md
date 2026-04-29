@@ -11,19 +11,22 @@ grouped by date (most recent first), showing each article's title and author.
 Only the **last 14 days** of items (relative to the build snapshot) are shown.
 
 The page is plain HTML, CSS, and JS — no runtime framework, no client bundle,
-no server. The build pipeline pre-renders the article list into `index.html`
-and produces `articles.json`; GitHub Actions regenerates and redeploys daily.
+no server. The build pipeline pre-renders the article list from `template.html`
+into `index.html` and produces `articles.json`; GitHub Actions regenerates and
+redeploys daily. `index.html` and `articles.json` are build outputs and are
+not committed.
 
 ## Key files (reference)
 
 | Path | Role |
 | --- | --- |
-| `index.html` | Page **template** and build **output**; the generator rewrites the `<!--@name-->` / `<!--/@name-->` regions (styles, content, meta, blogroll, etc.). |
+| `template.html` | Page **template** with `<!--@name-->` / `<!--/@name-->` regions (styles, content, meta, failures, colophon) the generator fills in. |
+| `index.html` | Build **output** (gitignored); produced by the generator from `template.html`. |
 | `styles.css` | Paper-toned, pastel look; the generator inlines it into the built `index.html`. |
 | `app.js` | **Runtime:** source filter on the pre-rendered list. **Dev:** if the content placeholder is still there, fetches `articles.json` and renders. |
-| `articles.json` | Build output: snapshot for CI/local use (do not edit by hand). |
+| `articles.json` | Build output (gitignored): snapshot for CI/local use. |
 | `scripts/feeds.mjs` | Authoritative list of sources, candidate feed URLs, optional per-source `transform` hooks. |
-| `scripts/generate.mjs` | Fetches feeds, 14-day window, writes `articles.json`, patches `index.html`. |
+| `scripts/generate.mjs` | Fetches feeds, 14-day window, writes `articles.json`, renders `template.html` → `index.html`. |
 | `.github/workflows/build.yml` | `npm run build` + GitHub Pages deploy (push, daily cron, manual). |
 
 ## Local preview

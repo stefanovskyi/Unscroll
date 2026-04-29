@@ -208,15 +208,16 @@ function replaceMarker(html, name, replacement) {
   const close = `<!--/@${name}-->`;
   const start = html.indexOf(open);
   const end = html.indexOf(close, start + open.length);
-  if (start < 0 || end < 0) throw new Error(`Missing marker @${name} in index.html`);
+  if (start < 0 || end < 0) throw new Error(`Missing marker @${name} in template.html`);
   return html.slice(0, start + open.length) + replacement + html.slice(end);
 }
 
 async function writeIndexHtml(snapshot, rootDir) {
+  const templatePath = path.join(rootDir, "template.html");
   const indexPath = path.join(rootDir, "index.html");
   const stylesPath = path.join(rootDir, "styles.css");
   const [template, styles] = await Promise.all([
-    readFile(indexPath, "utf8"),
+    readFile(templatePath, "utf8"),
     readFile(stylesPath, "utf8"),
   ]);
   let html = template;
