@@ -51,6 +51,7 @@ export const feeds = [
     source: "Simon Willison",
     fallbackAuthor: "Simon Willison",
     xHandle: "simonw",
+    category: "article",
     candidates: ["https://simonwillison.net/atom/entries/"],
     transform: simonWillisonTransform,
   },
@@ -58,6 +59,7 @@ export const feeds = [
     source: "The Pragmatic Engineer",
     fallbackAuthor: "Gergely Orosz",
     xHandle: "GergelyOrosz",
+    category: "newsletter",
     candidates: [
       "https://newsletter.pragmaticengineer.com/feed",
       "https://www.pragmaticengineer.com/rss/",
@@ -67,18 +69,21 @@ export const feeds = [
     source: "DHH — HEY World",
     fallbackAuthor: "David Heinemeier Hansson",
     xHandle: "dhh",
+    category: "article",
     candidates: ["https://world.hey.com/dhh/feed.atom"],
   },
   {
     source: "Martin Fowler",
     fallbackAuthor: "Martin Fowler",
     xHandle: "martinfowler",
+    category: "article",
     candidates: ["https://martinfowler.com/feed.atom"],
   },
   {
     source: "Thorsten Ball — Register Spill",
     fallbackAuthor: "Thorsten Ball",
     xHandle: "thorstenball",
+    category: "newsletter",
     candidates: [
       "https://registerspill.thorstenball.com/feed",
       "https://registerspill.substack.com/feed",
@@ -87,6 +92,7 @@ export const feeds = [
   {
     source: "blog.exe.dev",
     fallbackAuthor: "exe.dev",
+    category: "article",
     candidates: [
       "https://blog.exe.dev/atom.xml",
       "https://blog.exe.dev/rss.xml",
@@ -98,12 +104,14 @@ export const feeds = [
     source: "Sean Goedecke",
     fallbackAuthor: "Sean Goedecke",
     xHandle: "sjgoedecke",
+    category: "article",
     candidates: ["https://www.seangoedecke.com/rss.xml"],
   },
   {
     source: "Derek Thompson",
     fallbackAuthor: "Derek Thompson",
     xHandle: "DKThomp",
+    category: "newsletter",
     candidates: [
       "https://www.derekthompson.org/feed",
       "https://derekthompson.substack.com/feed",
@@ -113,6 +121,7 @@ export const feeds = [
     source: "Addy Osmani",
     fallbackAuthor: "Addy Osmani",
     xHandle: "addyosmani",
+    category: "article",
     candidates: [
       "https://addyosmani.com/feed.xml",
       "https://addyosmani.com/blog/feed.xml",
@@ -122,72 +131,84 @@ export const feeds = [
   {
     source: "Humanager (Dima Maleev)",
     fallbackAuthor: "Dima Maleev",
+    category: "newsletter",
     candidates: ["https://sonerdy.substack.com/feed"],
   },
   {
     source: "Armin Ronacher",
     fallbackAuthor: "Armin Ronacher",
     xHandle: "mitsuhiko",
+    category: "article",
     candidates: ["https://lucumr.pocoo.org/feed.atom"],
   },
   {
     source: "Boris Tane",
     fallbackAuthor: "Boris Tane",
     xHandle: "boristane",
+    category: "article",
     candidates: ["https://boristane.com/rss.xml"],
   },
   {
     source: "David Crawshaw",
     fallbackAuthor: "David Crawshaw",
     xHandle: "davidcrawshaw",
+    category: "article",
     candidates: ["https://crawshaw.io/atom.xml"],
   },
   {
     source: "Phil Eaton",
     fallbackAuthor: "Phil Eaton",
     xHandle: "eatonphil",
+    category: "article",
     candidates: ["https://notes.eatonphil.com/rss.xml"],
   },
   {
     source: "Stay SaaSy",
     fallbackAuthor: "Stay SaaSy",
     xHandle: "staysaasy",
+    category: "article",
     candidates: ["https://staysaasy.com/feed.xml"],
   },
   {
     source: "Paul Graham",
     xHandle: "paulg",
     xAuthor: "Paul Graham",
+    category: "article",
     fetch: fetchPaulGraham,
   },
   {
     source: "Naval",
     fallbackAuthor: "Naval",
     xHandle: "naval",
+    category: "article",
     candidates: ["https://nav.al/feed"],
   },
   {
     source: "Geoffrey Litt",
     fallbackAuthor: "Geoffrey Litt",
     xHandle: "geoffreylitt",
+    category: "article",
     candidates: ["https://www.geoffreylitt.com/feed.xml"],
   },
   {
     source: "Ben Kuhn",
     fallbackAuthor: "Ben Kuhn",
     xHandle: "benkuhn",
+    category: "article",
     candidates: ["https://www.benkuhn.net/index.xml"],
   },
   {
     source: "Stratechery",
     fallbackAuthor: "Ben Thompson",
     xHandle: "benthompson",
+    category: "newsletter",
     candidates: ["https://stratechery.com/feed/"],
   },
   {
     source: "Charity Majors",
     fallbackAuthor: "Charity Majors",
     xHandle: "mipsytipsy",
+    category: "article",
     candidates: ["https://charity.wtf/feed/"],
   },
   {
@@ -198,30 +219,35 @@ export const feeds = [
     source: "Work in Progress (The Atlantic)",
     fallbackAuthor: "Derek Thompson",
     xHandle: "DKThomp",
+    category: "newsletter",
     candidates: ["https://www.theatlantic.com/feed/author/derek-thompson/"],
   },
   {
     source: "One Useful Thing (Ethan Mollick)",
     fallbackAuthor: "Ethan Mollick",
     xHandle: "emollick",
+    category: "newsletter",
     candidates: ["https://www.oneusefulthing.org/feed"],
   },
   {
     source: "Max Woolf",
     fallbackAuthor: "Max Woolf",
     xHandle: "minimaxir",
+    category: "article",
     candidates: ["https://minimaxir.com/index.xml"],
   },
   {
     source: "Noahpinion (Noah Smith)",
     fallbackAuthor: "Noah Smith",
     xHandle: "Noahpinion",
+    category: "newsletter",
     candidates: ["https://www.noahpinion.blog/feed"],
   },
   {
     source: "Steve Yegge",
     fallbackAuthor: "Steve Yegge",
     xHandle: "Steve_Yegge",
+    category: "article",
     candidates: [
       "https://steve-yegge.medium.com/feed",
       "https://medium.com/feed/@steve-yegge",
@@ -231,24 +257,28 @@ export const feeds = [
     source: "Read Trung (Trung Phan)",
     fallbackAuthor: "Trung Phan",
     xHandle: "TrungTPhan",
+    category: "newsletter",
     candidates: ["https://www.readtrung.com/feed"],
   },
   {
     source: "Val Town",
     fallbackAuthor: "Val Town",
     xHandle: "ValDotTown",
+    category: "article",
     candidates: ["https://blog.val.town/rss.xml"],
   },
   {
     source: "NLP Newsletter (Elvis Saravia)",
     fallbackAuthor: "Elvis Saravia",
     xHandle: "omarsar0",
+    category: "newsletter",
     candidates: ["https://nlp.elvissaravia.com/feed"],
   },
   {
     source: "Architecture Weekly",
     fallbackAuthor: "Oskar Dudycz",
     xHandle: "oskar_at_net",
+    category: "newsletter",
     candidates: ["https://www.architecture-weekly.com/feed"],
   },
   {
@@ -257,50 +287,60 @@ export const feeds = [
     source: "a16z",
     fallbackAuthor: "a16z",
     xHandle: "a16z",
+    category: "article",
     candidates: ["https://www.a16z.news/feed"],
   },
   {
     source: "ByteByteGo",
     fallbackAuthor: "Alex Xu",
     xHandle: "alexxubyte",
+    category: "newsletter",
     candidates: ["https://blog.bytebytego.com/feed"],
   },
   {
     source: "Hacker Newsletter",
     fallbackAuthor: "Hacker Newsletter",
     xHandle: "hnletter",
+    category: "newsletter",
     candidates: ["https://buttondown.com/hacker-newsletter/rss"],
   },
   {
     source: "Software Lead Weekly",
     xHandle: "orenellenbogen",
     xAuthor: "Oren Ellenbogen",
+    category: "newsletter",
     fetch: fetchSoftwareLeadWeekly,
   },
   {
     source: "Founder Weekly",
+    category: "newsletter",
     fetch: fetchFounderWeekly,
   },
   {
     source: "Programmer Weekly",
+    category: "newsletter",
     fetch: fetchProgrammerWeekly,
   },
   {
     source: "Python Weekly",
+    category: "newsletter",
     fetch: fetchPythonWeekly,
   },
   {
     source: "Modern Data 101",
     fallbackAuthor: "Modern Data 101",
+    category: "newsletter",
     candidates: ["https://moderndata101.substack.com/feed"],
   },
   {
     source: "Deep Learning Weekly",
     fallbackAuthor: "Deep Learning Weekly",
+    category: "newsletter",
     candidates: ["https://www.deeplearningweekly.com/feed"],
   },
   {
     source: "Matt Wolfe",
+    category: "youtube",
     fetch: () => fetchYouTubeChannel({ handle: "mreflow", source: "Matt Wolfe" }),
   },
   {
@@ -308,6 +348,7 @@ export const feeds = [
     // YouTube channel goes by the slightly shorter handle to keep the two
     // distinct in the source filter.
     source: "Pragmatic Engineer",
+    category: "youtube",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "pragmaticengineer",
@@ -316,11 +357,13 @@ export const feeds = [
   },
   {
     source: "AI Engineer",
+    category: "youtube",
     fetch: () =>
       fetchYouTubeChannel({ handle: "aiDotEngineer", source: "AI Engineer" }),
   },
   {
     source: "In the World of AI",
+    category: "youtube",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "intheworldofai",
@@ -329,6 +372,7 @@ export const feeds = [
   },
   {
     source: "Lenny's Podcast",
+    category: "youtube",
     fetch: () =>
       fetchYouTubeChannel({
         handle: "LennysPodcast",

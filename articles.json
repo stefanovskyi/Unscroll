@@ -1,26 +1,9 @@
 {
-  "generatedAt": "2026-04-29T12:40:43.089Z",
+  "generatedAt": "2026-04-29T12:54:13.051Z",
   "windowDays": 14,
   "sources": 44,
-  "count": 132,
-  "failures": [
-    {
-      "source": "Phil Eaton",
-      "reason": "No candidate feed worked for Phil Eaton"
-    },
-    {
-      "source": "Charity Majors",
-      "reason": "No candidate feed worked for Charity Majors"
-    },
-    {
-      "source": "Read Trung (Trung Phan)",
-      "reason": "No candidate feed worked for Read Trung (Trung Phan)"
-    },
-    {
-      "source": "Hacker Newsletter",
-      "reason": "No candidate feed worked for Hacker Newsletter"
-    }
-  ],
+  "count": 138,
+  "failures": [],
   "writers": [
     {
       "name": "a16z",
@@ -202,13 +185,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-29T12:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Intel Earnings, Intel’s Differentiation?, Whither Terafab",
       "link": "https://stratechery.com/2026/intel-earnings-intels-differentiation-whither-terafab/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-29T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -218,13 +203,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-29T05:51:05.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Scoring the Jensen-Dwarkesh debate",
       "link": "https://www.noahpinion.blog/p/scoring-the-jensen-dwarkesh-debate",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-29T00:38:56.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -233,6 +220,7 @@
       "link": "https://nav.al/code",
       "author": "Naval",
       "source": "Naval",
+      "category": "article",
       "date": "2026-04-28T19:18:48.000Z",
       "authorUrl": "https://x.com/naval"
     },
@@ -242,7 +230,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-28T18:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "ChatGPT Images Just Got Way Better (Here's Why)",
@@ -250,13 +239,15 @@
       "author": "Matt Wolfe",
       "source": "Matt Wolfe",
       "date": "2026-04-28T17:37:44.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "An Interview with OpenAI CEO Sam Altman and AWS CEO Matt Garman About Bedrock Managed Agents",
       "link": "https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-28T17:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -266,13 +257,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-28T16:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "How will AI change operating systems? Part 1: Ubuntu and Linux",
       "link": "https://newsletter.pragmaticengineer.com/p/ubuntu-and-ai",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
+      "category": "newsletter",
       "date": "2026-04-28T14:25:18.000Z",
       "authorUrl": "https://x.com/GergelyOrosz"
     },
@@ -281,6 +274,7 @@
       "link": "https://www.a16z.news/p/workdays-last-workday",
       "author": "Joe Schmidt IV",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-28T14:03:22.000Z"
     },
     {
@@ -289,13 +283,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-28T14:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Structured-Prompt-Driven Development (SPDD)",
       "link": "https://martinfowler.com/articles/structured-prompt-driven/",
       "author": "Martin Fowler",
       "source": "Martin Fowler",
+      "category": "article",
       "date": "2026-04-28T13:02:00.000Z",
       "authorUrl": "https://x.com/martinfowler"
     },
@@ -305,13 +301,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-28T06:39:15.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "How Stripe Detects Fraudulent Transactions Within 100 ms",
       "link": "https://blog.bytebytego.com/p/how-stripe-detects-fraudulent-transactions",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-28T03:03:50.000Z"
     },
     {
@@ -319,6 +317,7 @@
       "link": "https://addyosmani.com/blog/long-running-agents/",
       "author": "Addy Osmani",
       "source": "Addy Osmani",
+      "category": "article",
       "date": "2026-04-28T00:00:00.000Z",
       "authorUrl": "https://x.com/addyosmani"
     },
@@ -327,6 +326,7 @@
       "link": "https://lucumr.pocoo.org/2026/4/28/before-github/",
       "author": "Armin Ronacher",
       "source": "Armin Ronacher",
+      "category": "article",
       "date": "2026-04-28T00:00:00.000Z",
       "authorUrl": "https://x.com/mitsuhiko"
     },
@@ -335,6 +335,7 @@
       "link": "https://blog.val.town/octolens",
       "author": "Val Town",
       "source": "Val Town",
+      "category": "article",
       "date": "2026-04-28T00:00:00.000Z",
       "authorUrl": "https://x.com/ValDotTown"
     },
@@ -344,7 +345,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-27T23:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Lessons from Scaling GitHub's Remote MCP Server — Sam Morrow, GitHub",
@@ -352,7 +354,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-27T22:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "What we learned scaling MCPs to Enterprise — Karan Sampath, Anthropic",
@@ -360,13 +363,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-27T21:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Tracking the history of the now-deceased OpenAI Microsoft AGI clause",
       "link": "https://simonwillison.net/2026/Apr/27/now-deceased-agi-clause/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-27T18:38:17.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -375,6 +380,7 @@
       "link": "https://blog.bytebytego.com/p/how-amazon-uses-llms-to-recommend",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-27T15:30:57.000Z"
     },
     {
@@ -382,13 +388,24 @@
       "link": "https://moderndata101.substack.com/p/data-product-maturity-assessment",
       "author": "Animesh Kumar",
       "source": "Modern Data 101",
+      "category": "newsletter",
       "date": "2026-04-27T14:19:21.000Z"
+    },
+    {
+      "title": "Hacker Newsletter #791",
+      "link": "https://buttondown.com/hacker-newsletter/archive/791/",
+      "author": "Hacker Newsletter",
+      "source": "Hacker Newsletter",
+      "category": "newsletter",
+      "date": "2026-04-27T11:00:00.000Z",
+      "authorUrl": "https://x.com/hnletter"
     },
     {
       "title": "AI Hardware, Meta Display, Redefining VR and AR",
       "link": "https://stratechery.com/2026/ai-hardware-meta-display-redefining-vr-and-ar/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-27T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -397,6 +414,7 @@
       "link": "https://www.noahpinion.blog/p/the-moderately-easy-problem-of-consciousness",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-27T09:58:07.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -405,6 +423,7 @@
       "link": "https://www.architecture-weekly.com/p/vibing-harness-and-ooda-loop",
       "author": "Oskar Dudycz",
       "source": "Architecture Weekly",
+      "category": "newsletter",
       "date": "2026-04-27T05:27:27.000Z",
       "authorUrl": "https://x.com/oskar_at_net"
     },
@@ -413,6 +432,7 @@
       "link": "https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-f2f",
       "author": "elvis",
       "source": "NLP Newsletter (Elvis Saravia)",
+      "category": "newsletter",
       "date": "2026-04-26T15:02:38.000Z"
     },
     {
@@ -421,7 +441,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-26T15:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "The AI era has made distribution the most important moat | Evan Spiegel (Snapchat CEO)",
@@ -429,7 +450,8 @@
       "author": "Lenny's Podcast",
       "source": "Lenny's Podcast",
       "date": "2026-04-26T12:30:00.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Qwen 3.6 Max: NEW Powerful AI Model EVER! Beats Opus 4.5, Gemini 3, Deepseek v4! (Fully Tested)",
@@ -437,15 +459,26 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-26T06:01:35.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Joy & Curiosity #83",
       "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-83",
       "author": "Thorsten Ball",
       "source": "Thorsten Ball — Register Spill",
+      "category": "newsletter",
       "date": "2026-04-26T05:31:16.000Z",
       "authorUrl": "https://x.com/thorstenball"
+    },
+    {
+      "title": "Branimir Lambov from IBM on Cassandra",
+      "link": "http://notes.eatonphil.com/2026-04-26-branimir-lambov-from-ibm-on-cassandra.html",
+      "author": "Phil Eaton",
+      "source": "Phil Eaton",
+      "category": "article",
+      "date": "2026-04-26T00:00:00.000Z",
+      "authorUrl": "https://x.com/eatonphil"
     },
     {
       "title": "MCP = Mega Context Problem - Matt Carey",
@@ -453,7 +486,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-25T17:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "AgentCraft: Putting the Orc in Orchestration — Ido Salomon",
@@ -461,13 +495,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-25T16:00:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "EP212: Data Warehouse vs Data Lake vs Data Mesh",
       "link": "https://blog.bytebytego.com/p/ep212-data-warehouse-vs-data-lake",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-25T15:30:59.000Z"
     },
     {
@@ -475,13 +511,23 @@
       "link": "https://nlp.elvissaravia.com/p/ai-agents-weekly-gpt-55-deepseek",
       "author": "elvis",
       "source": "NLP Newsletter (Elvis Saravia)",
+      "category": "newsletter",
       "date": "2026-04-25T15:02:05.000Z"
+    },
+    {
+      "title": "Tim Cook's Apple",
+      "link": "https://www.readtrung.com/p/tim-cooks-apple",
+      "author": "Trungphan2",
+      "source": "Read Trung (Trung Phan)",
+      "category": "newsletter",
+      "date": "2026-04-24T23:49:34.000Z"
     },
     {
       "title": "Why shoplifting is bad",
       "link": "https://www.noahpinion.blog/p/why-shoplifting-is-bad",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-24T22:30:08.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -490,6 +536,7 @@
       "link": "https://stratechery.com/2026/he-came-he-saw-he-cooked/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-24T17:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -499,7 +546,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-24T15:15:38.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "AI News: The Biggest Leap We've Seen This Year!",
@@ -507,7 +555,8 @@
       "author": "Matt Wolfe",
       "source": "Matt Wolfe",
       "date": "2026-04-24T15:00:00.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "What Do Models Still Suck At? - Peter Gostev, Arena.ai, BullshitBench",
@@ -515,13 +564,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-24T14:30:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Charts of the Week: Software Ate the World",
       "link": "https://www.a16z.news/p/charts-of-the-week-software-ate-the",
       "author": "a16z New Media",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-24T14:03:10.000Z"
     },
     {
@@ -529,6 +580,7 @@
       "link": "https://moderndata101.substack.com/p/ontologies-in-the-age-of-ai",
       "author": "Sonam",
       "source": "Modern Data 101",
+      "category": "newsletter",
       "date": "2026-04-24T12:13:11.000Z"
     },
     {
@@ -536,6 +588,7 @@
       "link": "https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607?source=rss-c1ec701babb7------2",
       "author": "Steve Yegge",
       "source": "Steve Yegge",
+      "category": "article",
       "date": "2026-04-24T07:41:25.000Z",
       "authorUrl": "https://x.com/Steve_Yegge"
     },
@@ -545,13 +598,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-24T07:31:43.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "DeepSeek V4 - almost on the frontier, a fraction of the price",
       "link": "https://simonwillison.net/2026/Apr/24/deepseek-v4/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-24T06:01:04.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -560,6 +615,7 @@
       "link": "https://seangoedecke.com/software-engineering-may-no-longer-be-a-lifetime-career/",
       "author": "Sean Goedecke",
       "source": "Sean Goedecke",
+      "category": "article",
       "date": "2026-04-24T00:00:00.000Z",
       "authorUrl": "https://x.com/sjgoedecke"
     },
@@ -568,6 +624,7 @@
       "link": "https://www.benkuhn.net/contra/",
       "author": "Ben Kuhn",
       "source": "Ben Kuhn",
+      "category": "article",
       "date": "2026-04-24T00:00:00.000Z",
       "authorUrl": "https://x.com/benkuhn"
     },
@@ -577,6 +634,7 @@
       "author": "Oren Ellenbogen",
       "source": "Software Lead Weekly",
       "date": "2026-04-24T00:00:00.000Z",
+      "category": "newsletter",
       "authorUrl": "https://x.com/orenellenbogen"
     },
     {
@@ -585,13 +643,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-23T22:40:49.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Extract PDF text in your browser with LiteParse for the web",
       "link": "https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-23T21:54:24.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -600,6 +660,7 @@
       "link": "https://www.oneusefulthing.org/p/sign-of-the-future-gpt-55",
       "author": "Ethan Mollick",
       "source": "One Useful Thing (Ethan Mollick)",
+      "category": "newsletter",
       "date": "2026-04-23T20:00:38.000Z",
       "authorUrl": "https://x.com/emollick"
     },
@@ -608,6 +669,7 @@
       "link": "https://simonwillison.net/2026/Apr/23/gpt-5-5/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-23T19:59:47.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -616,6 +678,7 @@
       "link": "https://www.a16z.news/p/investing-in-glif",
       "author": "Justine Moore",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-23T17:01:06.000Z"
     },
     {
@@ -623,6 +686,7 @@
       "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-ai-token-spending-out-of",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
+      "category": "newsletter",
       "date": "2026-04-23T16:51:01.000Z",
       "authorUrl": "https://x.com/GergelyOrosz"
     },
@@ -631,6 +695,7 @@
       "link": "https://blog.bytebytego.com/p/b-trees-vs-lsm-trees-comparison-and",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-23T15:30:59.000Z"
     },
     {
@@ -639,7 +704,8 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-23T15:15:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "\"Software Fundamentals Matter More Than Ever\" — Matt Pocock",
@@ -647,13 +713,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-23T15:15:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Deep Learning Weekly: Issue 452",
       "link": "https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-452",
       "author": "Miko Planas",
       "source": "Deep Learning Weekly",
+      "category": "newsletter",
       "date": "2026-04-23T15:01:16.000Z"
     },
     {
@@ -662,13 +730,15 @@
       "author": "Lenny's Podcast",
       "source": "Lenny's Podcast",
       "date": "2026-04-23T15:00:43.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "DoW Contracting for Startups 101",
       "link": "https://www.a16z.news/p/dow-contracting-for-startups-101",
       "author": "Ryan McEntush",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-23T14:01:00.000Z"
     },
     {
@@ -676,6 +746,7 @@
       "link": "https://www.a16z.news/p/investing-in-petual",
       "author": "Kimberly Tan",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-23T12:00:58.000Z"
     },
     {
@@ -683,6 +754,7 @@
       "link": "https://www.derekthompson.org/p/if-americas-so-rich-howd-it-get-so",
       "author": "Derek Thompson",
       "source": "Derek Thompson",
+      "category": "newsletter",
       "date": "2026-04-23T10:01:44.000Z",
       "authorUrl": "https://x.com/DKThomp"
     },
@@ -691,6 +763,7 @@
       "link": "https://stratechery.com/2026/an-interview-with-google-cloud-ceo-thomas-kurian-about-the-agentic-moment/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-23T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -700,13 +773,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-23T06:18:00.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Equity for Europeans",
       "link": "https://lucumr.pocoo.org/2026/4/23/equity-for-europeans/",
       "author": "Armin Ronacher",
       "source": "Armin Ronacher",
+      "category": "article",
       "date": "2026-04-23T00:00:00.000Z",
       "authorUrl": "https://x.com/mitsuhiko"
     },
@@ -715,20 +790,23 @@
       "link": "https://www.programmerweekly.com/p/programmer-weekly-issue-297-apr-23-2026",
       "author": "Programmer Weekly",
       "source": "Programmer Weekly",
-      "date": "2026-04-23T00:00:00.000Z"
+      "date": "2026-04-23T00:00:00.000Z",
+      "category": "newsletter"
     },
     {
       "title": "Python Weekly #742",
       "link": "https://www.pythonweekly.com/p/python-weekly-issue-742-april-23-2026",
       "author": "Rahul Chaudhary",
       "source": "Python Weekly",
-      "date": "2026-04-23T00:00:00.000Z"
+      "date": "2026-04-23T00:00:00.000Z",
+      "category": "newsletter"
     },
     {
       "title": "Is China's soft power really rising, or is America's just crumbling?",
       "link": "https://www.noahpinion.blog/p/is-chinas-soft-power-really-rising",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-22T21:01:40.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -737,6 +815,7 @@
       "link": "https://moderndata101.substack.com/p/data-products-the-essential-context",
       "author": "Animesh Kumar",
       "source": "Modern Data 101",
+      "category": "newsletter",
       "date": "2026-04-22T17:11:14.000Z"
     },
     {
@@ -744,6 +823,7 @@
       "link": "https://newsletter.pragmaticengineer.com/p/designing-data-intensive-applications",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
+      "category": "newsletter",
       "date": "2026-04-22T16:19:26.000Z",
       "authorUrl": "https://x.com/GergelyOrosz"
     },
@@ -753,7 +833,8 @@
       "author": "Pragmatic Engineer",
       "source": "Pragmatic Engineer",
       "date": "2026-04-22T16:16:18.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Agents need more than a chat - Jacob Lauritzen, CTO Legora",
@@ -761,13 +842,15 @@
       "author": "AI Engineer",
       "source": "AI Engineer",
       "date": "2026-04-22T15:15:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Why We Need Continual Learning",
       "link": "https://www.a16z.news/p/why-we-need-continual-learning",
       "author": "Malika Aubakirova",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-22T14:02:22.000Z"
     },
     {
@@ -775,6 +858,7 @@
       "link": "https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-22T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -784,13 +868,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-22T05:59:41.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Is Claude Code going to cost $100/month? Probably not - it's all very confusing",
       "link": "https://simonwillison.net/2026/Apr/22/claude-code-confusion/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-22T02:07:34.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -799,6 +885,7 @@
       "link": "https://blog.exe.dev/series-a",
       "author": "David Crawshaw",
       "source": "blog.exe.dev",
+      "category": "article",
       "date": "2026-04-22T00:00:00.000Z"
     },
     {
@@ -806,6 +893,7 @@
       "link": "https://seangoedecke.com/luddites-and-ai-datacenters/",
       "author": "Sean Goedecke",
       "source": "Sean Goedecke",
+      "category": "article",
       "date": "2026-04-22T00:00:00.000Z",
       "authorUrl": "https://x.com/sjgoedecke"
     },
@@ -814,6 +902,7 @@
       "link": "https://crawshaw.io/blog/building-a-cloud",
       "author": "David Crawshaw",
       "source": "David Crawshaw",
+      "category": "article",
       "date": "2026-04-22T00:00:00.000Z",
       "authorUrl": "https://x.com/davidcrawshaw"
     },
@@ -822,13 +911,15 @@
       "link": "https://www.founderweekly.com/p/founder-weekly-issue-728-april-22-2026",
       "author": "Founder Weekly",
       "source": "Founder Weekly",
-      "date": "2026-04-22T00:00:00.000Z"
+      "date": "2026-04-22T00:00:00.000Z",
+      "category": "newsletter"
     },
     {
       "title": "Fragments: April 21",
       "link": "https://martinfowler.com/fragments/2026-04-21.html",
       "author": "Martin Fowler",
       "source": "Martin Fowler",
+      "category": "article",
       "date": "2026-04-21T20:34:00.000Z",
       "authorUrl": "https://x.com/martinfowler"
     },
@@ -837,6 +928,7 @@
       "link": "https://simonwillison.net/2026/Apr/21/gpt-image-2/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-21T20:32:24.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -845,6 +937,7 @@
       "link": "https://moderndata101.substack.com/p/knowledge-graphs-for-ai",
       "author": "Animesh Kumar",
       "source": "Modern Data 101",
+      "category": "newsletter",
       "date": "2026-04-21T15:54:22.000Z"
     },
     {
@@ -852,6 +945,7 @@
       "link": "https://blog.bytebytego.com/p/how-doordash-launches-a-new-country",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-21T15:30:21.000Z"
     },
     {
@@ -859,6 +953,7 @@
       "link": "https://www.a16z.news/p/the-internet-is-real-life",
       "author": "Erik Torenberg",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-21T14:04:23.000Z"
     },
     {
@@ -866,6 +961,7 @@
       "link": "https://newsletter.pragmaticengineer.com/p/learnings-from-conducting-1000-interviews",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
+      "category": "newsletter",
       "date": "2026-04-21T12:49:16.000Z",
       "authorUrl": "https://x.com/GergelyOrosz"
     },
@@ -874,6 +970,7 @@
       "link": "https://world.hey.com/dhh/celebrating-computers-at-omacon-163eb568",
       "author": "David Heinemeier Hansson",
       "source": "DHH — HEY World",
+      "category": "article",
       "date": "2026-04-21T10:56:33.000Z",
       "authorUrl": "https://x.com/dhh"
     },
@@ -882,6 +979,7 @@
       "link": "https://stratechery.com/2026/tim-cooks-impeccable-timing/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-21T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -891,13 +989,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-21T07:17:15.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "No, America is not in a \"stealth manufacturing boom\"",
       "link": "https://www.noahpinion.blog/p/no-america-is-not-in-a-stealth-manufacturing",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-21T05:30:49.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -906,6 +1006,7 @@
       "link": "https://blog.bytebytego.com/p/the-security-architecture-of-github",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-20T15:30:47.000Z"
     },
     {
@@ -913,6 +1014,7 @@
       "link": "https://www.a16z.news/p/monitoring-the-situation",
       "author": "Erik Torenberg",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-20T15:10:20.000Z"
     },
     {
@@ -920,6 +1022,7 @@
       "link": "https://www.architecture-weekly.com/p/yoda-principle-for-better-integrations",
       "author": "Oskar Dudycz",
       "source": "Architecture Weekly",
+      "category": "newsletter",
       "date": "2026-04-20T13:17:33.000Z",
       "authorUrl": "https://x.com/oskar_at_net"
     },
@@ -928,6 +1031,7 @@
       "link": "https://stratechery.com/2026/tsmc-earnings-new-n3-fabs-the-nvidia-ramp/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-20T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -937,13 +1041,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-20T06:23:32.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Updated thoughts on industrial policy",
       "link": "https://www.noahpinion.blog/p/updated-thoughts-on-industrial-policy",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-20T05:07:55.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -952,6 +1058,7 @@
       "link": "https://nlp.elvissaravia.com/p/top-ai-papers-of-the-week-717",
       "author": "elvis",
       "source": "NLP Newsletter (Elvis Saravia)",
+      "category": "newsletter",
       "date": "2026-04-19T15:03:17.000Z"
     },
     {
@@ -960,13 +1067,15 @@
       "author": "Lenny's Podcast",
       "source": "Lenny's Podcast",
       "date": "2026-04-19T12:31:14.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Joy & Curiosity #82",
       "link": "https://registerspill.thorstenball.com/p/joy-and-curiosity-82",
       "author": "Thorsten Ball",
       "source": "Thorsten Ball — Register Spill",
+      "category": "newsletter",
       "date": "2026-04-19T05:23:09.000Z",
       "authorUrl": "https://x.com/thorstenball"
     },
@@ -976,13 +1085,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-19T04:45:06.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Agent Harness Engineering",
       "link": "https://addyosmani.com/blog/agent-harness-engineering/",
       "author": "Addy Osmani",
       "source": "Addy Osmani",
+      "category": "article",
       "date": "2026-04-19T00:00:00.000Z",
       "authorUrl": "https://x.com/addyosmani"
     },
@@ -991,6 +1102,7 @@
       "link": "https://simonwillison.net/2026/Apr/18/opus-system-prompt/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-18T23:59:40.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -999,6 +1111,7 @@
       "link": "https://blog.bytebytego.com/p/ep211-how-the-jvm-works",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-18T15:30:39.000Z"
     },
     {
@@ -1006,7 +1119,16 @@
       "link": "https://nlp.elvissaravia.com/p/ai-agents-weekly-claude-opus-47-codex",
       "author": "elvis",
       "source": "NLP Newsletter (Elvis Saravia)",
+      "category": "newsletter",
       "date": "2026-04-18T15:01:10.000Z"
+    },
+    {
+      "title": "Live Nation x Ticketmaster Monopoly, explained",
+      "link": "https://www.readtrung.com/p/live-nation-x-ticketmaster-monopoly",
+      "author": "Trungphan2",
+      "source": "Read Trung (Trung Phan)",
+      "category": "newsletter",
+      "date": "2026-04-18T00:19:34.000Z"
     },
     {
       "title": "Claude Design Is INCREDIBLE! RIP Frontend Developers...",
@@ -1014,13 +1136,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-18T00:16:15.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Some secret management belongs in your HTTP proxy",
       "link": "https://blog.exe.dev/http-proxy-secrets",
       "author": "David Crawshaw and Philip Zeyliger",
       "source": "blog.exe.dev",
+      "category": "article",
       "date": "2026-04-18T00:00:00.000Z"
     },
     {
@@ -1028,6 +1152,7 @@
       "link": "https://seangoedecke.com/many-anti-ai-arguments-are-conservative/",
       "author": "Sean Goedecke",
       "source": "Sean Goedecke",
+      "category": "article",
       "date": "2026-04-18T00:00:00.000Z",
       "authorUrl": "https://x.com/sjgoedecke"
     },
@@ -1036,6 +1161,7 @@
       "link": "https://simonwillison.net/2026/Apr/17/pycon-us-2026/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-17T23:59:03.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -1044,6 +1170,7 @@
       "link": "https://www.noahpinion.blog/p/hasan-piker-is-bad-for-the-democrats",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-17T20:45:24.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -1052,6 +1179,7 @@
       "link": "https://stratechery.com/2026/servers-satellites-and-stars/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-17T17:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -1061,13 +1189,15 @@
       "author": "Matt Wolfe",
       "source": "Matt Wolfe",
       "date": "2026-04-17T15:00:00.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "It takes too long to do things in the government",
       "link": "https://www.a16z.news/p/it-takes-too-long-to-do-things-in",
       "author": "Zachary Long",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-17T14:02:02.000Z"
     },
     {
@@ -1075,7 +1205,17 @@
       "link": "https://www.a16z.news/p/charts-of-the-week-is-tech-cheap",
       "author": "a16z New Media",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-17T14:00:54.000Z"
+    },
+    {
+      "title": "Hacker Newsletter #790",
+      "link": "https://buttondown.com/hacker-newsletter/archive/790/",
+      "author": "Hacker Newsletter",
+      "source": "Hacker Newsletter",
+      "category": "newsletter",
+      "date": "2026-04-17T11:00:00.000Z",
+      "authorUrl": "https://x.com/hnletter"
     },
     {
       "title": "Software Lead Weekly #699",
@@ -1083,6 +1223,7 @@
       "author": "Oren Ellenbogen",
       "source": "Software Lead Weekly",
       "date": "2026-04-17T00:00:00.000Z",
+      "category": "newsletter",
       "authorUrl": "https://x.com/orenellenbogen"
     },
     {
@@ -1091,13 +1232,15 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-16T23:27:22.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
     },
     {
       "title": "Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7",
       "link": "https://simonwillison.net/2026/Apr/16/qwen-beats-opus/",
       "author": "Simon Willison",
       "source": "Simon Willison",
+      "category": "article",
       "date": "2026-04-16T17:16:52.000Z",
       "authorUrl": "https://x.com/simonw"
     },
@@ -1106,6 +1249,7 @@
       "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tokenmaxxing-as-a-weird",
       "author": "Gergely Orosz",
       "source": "The Pragmatic Engineer",
+      "category": "newsletter",
       "date": "2026-04-16T16:47:08.000Z",
       "authorUrl": "https://x.com/GergelyOrosz"
     },
@@ -1114,6 +1258,7 @@
       "link": "https://moderndata101.substack.com/p/who-owns-the-ai",
       "author": "Animesh Kumar",
       "source": "Modern Data 101",
+      "category": "newsletter",
       "date": "2026-04-16T15:59:52.000Z"
     },
     {
@@ -1121,6 +1266,7 @@
       "link": "https://blog.bytebytego.com/p/a-guide-to-relational-database-design",
       "author": "ByteByteGo",
       "source": "ByteByteGo",
+      "category": "newsletter",
       "date": "2026-04-16T15:31:26.000Z"
     },
     {
@@ -1128,6 +1274,7 @@
       "link": "https://www.deeplearningweekly.com/p/deep-learning-weekly-issue-451",
       "author": "Miko Planas",
       "source": "Deep Learning Weekly",
+      "category": "newsletter",
       "date": "2026-04-16T15:03:11.000Z"
     },
     {
@@ -1135,6 +1282,7 @@
       "link": "https://www.a16z.news/p/prediction-markets-they-grow-up-so",
       "author": "Alex Immerman",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-16T14:01:35.000Z"
     },
     {
@@ -1142,6 +1290,7 @@
       "link": "https://www.a16z.news/p/investing-in-ulysses",
       "author": "Erin Price-Wright",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-16T14:01:25.000Z"
     },
     {
@@ -1149,6 +1298,7 @@
       "link": "https://www.derekthompson.org/p/the-ai-vibe-shift-is-here",
       "author": "Derek Thompson",
       "source": "Derek Thompson",
+      "category": "newsletter",
       "date": "2026-04-16T10:08:39.000Z",
       "authorUrl": "https://x.com/DKThomp"
     },
@@ -1157,6 +1307,7 @@
       "link": "https://stratechery.com/2026/an-interview-with-f1-driver-and-venture-capitalist-nico-rosberg-about-the-drive-to-win/",
       "author": "Ben Thompson",
       "source": "Stratechery",
+      "category": "newsletter",
       "date": "2026-04-16T10:00:00.000Z",
       "authorUrl": "https://x.com/benthompson"
     },
@@ -1165,6 +1316,7 @@
       "link": "https://www.noahpinion.blog/p/you-are-what-you-consume",
       "author": "Noah Smith",
       "source": "Noahpinion (Noah Smith)",
+      "category": "newsletter",
       "date": "2026-04-16T07:57:14.000Z",
       "authorUrl": "https://x.com/Noahpinion"
     },
@@ -1174,27 +1326,40 @@
       "author": "In the World of AI",
       "source": "In the World of AI",
       "date": "2026-04-16T02:29:22.000Z",
-      "kind": "youtube"
+      "kind": "youtube",
+      "category": "youtube"
+    },
+    {
+      "title": "Who even uses jemalloc in 2026 anyway? (many major projects)",
+      "link": "http://notes.eatonphil.com/2026-04-16-who-even-uses-jemalloc-anyway.html",
+      "author": "Phil Eaton",
+      "source": "Phil Eaton",
+      "category": "article",
+      "date": "2026-04-16T00:00:00.000Z",
+      "authorUrl": "https://x.com/eatonphil"
     },
     {
       "title": "Programmer Weekly #296",
       "link": "https://www.programmerweekly.com/p/programmer-weekly-issue-296-apr-16-2026",
       "author": "Programmer Weekly",
       "source": "Programmer Weekly",
-      "date": "2026-04-16T00:00:00.000Z"
+      "date": "2026-04-16T00:00:00.000Z",
+      "category": "newsletter"
     },
     {
       "title": "Python Weekly #741",
       "link": "https://www.pythonweekly.com/p/python-weekly-issue-741-april-16-2026",
       "author": "Rahul Chaudhary",
       "source": "Python Weekly",
-      "date": "2026-04-16T00:00:00.000Z"
+      "date": "2026-04-16T00:00:00.000Z",
+      "category": "newsletter"
     },
     {
       "title": "Investing in Hilbert",
       "link": "https://www.a16z.news/p/investing-in-hilbert",
       "author": "Bryan Kim",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-15T15:13:12.000Z"
     },
     {
@@ -1202,6 +1367,7 @@
       "link": "https://world.hey.com/dhh/the-malleable-computer-7c187a9b",
       "author": "David Heinemeier Hansson",
       "source": "DHH — HEY World",
+      "category": "article",
       "date": "2026-04-15T15:06:27.000Z",
       "authorUrl": "https://x.com/dhh"
     },
@@ -1210,6 +1376,7 @@
       "link": "https://www.a16z.news/p/frontier-systems-for-the-physical",
       "author": "Oliver Hsu",
       "source": "a16z",
+      "category": "article",
       "date": "2026-04-15T14:01:35.000Z"
     }
   ]

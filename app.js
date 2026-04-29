@@ -48,7 +48,8 @@ function renderArticleHtml(a) {
   const byline = sameByAndSource
     ? `<p class="article__byline">${icon}${authorNode}</p>`
     : `<p class="article__byline">${icon}${authorNode}<span class="article__source"> · ${esc(a.source)}</span></p>`;
-  return `<li class="article" data-source="${esc(a.source)}">${title}${byline}</li>`;
+  const category = a.category || (a.kind === "youtube" ? "youtube" : "article");
+  return `<li class="article" data-source="${esc(a.source)}" data-category="${esc(category)}">${title}${byline}</li>`;
 }
 
 function renderArticlesHtml(articles) {
@@ -160,19 +161,35 @@ async function hydrateIfNeeded() {
 function setupFilter() {
   const filterSelect = document.getElementById("filter-source");
   const contentEl = document.getElementById("content");
+  const quickFilter = document.getElementById("quick-filter");
   if (!filterSelect || !contentEl) return;
 
   const existingEmpty = contentEl.querySelector(".empty");
   let emptyState = null;
 
-  filterSelect.addEventListener("change", () => {
+  const pills = quickFilter
+    ? [...quickFilter.querySelectorAll(".quick-filter__pill")]
+    : [];
+
+  function activeCategories() {
+    return new Set(
+      pills.filter((p) => p.classList.contains("is-active")).map((p) => p.dataset.category),
+    );
+  }
+
+  function applyFilter() {
     const source = filterSelect.value;
+    const categories = activeCategories();
+    const filterByCategory = pills.length > 0;
     let visibleArticles = 0;
 
     for (const day of contentEl.querySelectorAll(".day")) {
       let anyVisible = false;
       for (const li of day.querySelectorAll(".article")) {
-        const matches = !source || li.dataset.source === source;
+        const sourceMatch = !source || li.dataset.source === source;
+        const categoryMatch =
+          !filterByCategory || categories.has(li.dataset.category || "article");
+        const matches = sourceMatch && categoryMatch;
         li.hidden = !matches;
         if (matches) {
           anyVisible = true;
@@ -190,12 +207,22 @@ function setupFilter() {
       }
       emptyState.textContent = source
         ? `No recent articles from ${source}.`
-        : "No articles published in the last window.";
+        : "No articles match the selected filters.";
       emptyState.hidden = false;
     } else if (emptyState) {
       emptyState.hidden = true;
     }
-  });
+  }
+
+  filterSelect.addEventListener("change", applyFilter);
+
+  for (const pill of pills) {
+    pill.addEventListener("click", () => {
+      const isActive = pill.classList.toggle("is-active");
+      pill.setAttribute("aria-pressed", isActive ? "true" : "false");
+      applyFilter();
+    });
+  }
 }
 
 async function main() {

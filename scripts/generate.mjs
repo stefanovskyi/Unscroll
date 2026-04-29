@@ -74,6 +74,7 @@ function normalize(parsed, feedConfig) {
       link,
       author: pickAuthor(item, feedAuthor, feedConfig.fallbackAuthor),
       source: feedConfig.source,
+      category: feedConfig.category || "article",
       date: date.toISOString(),
     };
     if (typeof feedConfig.transform === "function") {
@@ -179,7 +180,8 @@ function renderArticle(a) {
   const byline = sameByAndSource
     ? `<p class="article__byline">${icon}${authorNode}</p>`
     : `<p class="article__byline">${icon}${authorNode}<span class="article__source"> · ${esc(a.source)}</span></p>`;
-  return `<li class="article" data-source="${esc(a.source)}">${title}${byline}</li>`;
+  const category = a.category || (a.kind === "youtube" ? "youtube" : "article");
+  return `<li class="article" data-source="${esc(a.source)}" data-category="${esc(category)}">${title}${byline}</li>`;
 }
 
 function renderArticlesHtml(articles) {
@@ -281,6 +283,10 @@ async function main() {
         const parsed = await fetchFeed(feed);
         items = normalize(parsed.parsed, feed);
         label = parsed.url;
+      }
+      const fallbackCategory = feed.category || "article";
+      for (const item of items) {
+        if (!item.category) item.category = fallbackCategory;
       }
       attachAuthorUrls(items, feed);
       const recent = items.filter((a) => withinLastDays(a.date, cutoffMs));
