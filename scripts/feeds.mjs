@@ -59,7 +59,7 @@ export const feeds = [
     source: "The Pragmatic Engineer",
     fallbackAuthor: "Gergely Orosz",
     xHandle: "GergelyOrosz",
-    category: "newsletter",
+    category: "article",
     candidates: [
       "https://newsletter.pragmaticengineer.com/feed",
       "https://www.pragmaticengineer.com/rss/",
@@ -240,7 +240,7 @@ export const feeds = [
     source: "Noahpinion (Noah Smith)",
     fallbackAuthor: "Noah Smith",
     xHandle: "Noahpinion",
-    category: "newsletter",
+    category: "article",
     candidates: ["https://www.noahpinion.blog/feed"],
   },
   {
