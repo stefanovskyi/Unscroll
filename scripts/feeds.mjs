@@ -161,6 +161,12 @@ export const feeds = [
     fetch: fetchPaulGraham,
   },
   {
+    source: "Naval",
+    fallbackAuthor: "Naval",
+    xHandle: "naval",
+    candidates: ["https://nav.al/feed"],
+  },
+  {
     source: "Geoffrey Litt",
     fallbackAuthor: "Geoffrey Litt",
     xHandle: "geoffreylitt",
