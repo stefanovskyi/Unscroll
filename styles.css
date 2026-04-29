@@ -249,29 +249,6 @@ body {
   line-height: 1.7;
 }
 
-.blogroll {
-  margin-bottom: 1rem;
-  word-spacing: 0.05em;
-}
-
-.blogroll a {
-  color: var(--accent-soft);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.blogroll a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-.blogroll__plain {
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
-
 .colophon {
   text-align: center;
   color: #bbb;

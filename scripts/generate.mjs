@@ -86,24 +86,6 @@ function normalize(parsed, feedConfig) {
   return items;
 }
 
-// Build a deduped, alphabetized list of writers for the page footer
-// blogroll. Two feeds may represent the same writer (e.g. Derek Thompson
-// has both his Substack and his Atlantic author feed); merge by X handle
-// so the reader sees one entry per person. Feeds without an xHandle fall
-// back to a plain name (no link).
-function buildWriters(feedList) {
-  const map = new Map();
-  for (const f of feedList) {
-    const name = f.xAuthor || f.fallbackAuthor || f.source;
-    const xUrl = f.xHandle ? `https://x.com/${f.xHandle}` : null;
-    const key = xUrl ?? `name:${name.toLowerCase()}`;
-    if (!map.has(key)) map.set(key, { name, xUrl });
-  }
-  return [...map.values()].sort((a, b) =>
-    a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
-  );
-}
-
 // Attach https://x.com/<handle> to articles whose author matches the
 // feed's primary-author name (xAuthor, falling back to fallbackAuthor).
 // The match is case-insensitive and trimmed so minor feed inconsistencies
@@ -207,17 +189,6 @@ function renderMetaHtml(snapshot) {
   return `${sources} source${sources === 1 ? "" : "s"} · last ${windowDays} days · updated ${esc(when)}`;
 }
 
-function renderBlogrollHtml(writers) {
-  if (!writers?.length) return "";
-  return writers
-    .map((w) =>
-      w.xUrl
-        ? `<a href="${esc(w.xUrl)}" rel="noopener" target="_blank">${esc(w.name)}</a>`
-        : `<span class="blogroll__plain">${esc(w.name)}</span>`,
-    )
-    .join(" · ");
-}
-
 function renderColophonHtml(snapshot) {
   const stamp = new Date(snapshot.generatedAt);
   const when = stamp.toISOString().replace("T", " ").slice(0, 16) + " UTC";
@@ -253,7 +224,6 @@ async function writeIndexHtml(snapshot, rootDir) {
   html = replaceMarker(html, "meta", renderMetaHtml(snapshot));
   html = replaceMarker(html, "content", renderArticlesHtml(snapshot.articles));
   html = replaceMarker(html, "failures", renderFailuresHtml(snapshot.failures));
-  html = replaceMarker(html, "blogroll", renderBlogrollHtml(snapshot.writers));
   html = replaceMarker(html, "colophon", renderColophonHtml(snapshot));
   await writeFile(indexPath, html, "utf8");
   return indexPath;
@@ -306,7 +276,6 @@ async function main() {
     sources: feeds.length,
     count: articles.length,
     failures,
-    writers: buildWriters(feeds),
     articles,
   };
 

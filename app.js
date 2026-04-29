@@ -75,17 +75,6 @@ function renderMetaHtml(snapshot) {
   return `${sources} source${sources === 1 ? "" : "s"} · last ${windowDays} days · updated ${esc(when)}`;
 }
 
-function renderBlogrollHtml(writers) {
-  if (!writers?.length) return "";
-  return writers
-    .map((w) =>
-      w.xUrl
-        ? `<a href="${esc(w.xUrl)}" rel="noopener" target="_blank">${esc(w.name)}</a>`
-        : `<span class="blogroll__plain">${esc(w.name)}</span>`,
-    )
-    .join(" · ");
-}
-
 function renderColophonHtml(snapshot) {
   const stamp = new Date(snapshot.generatedAt);
   const when = stamp.toISOString().replace("T", " ").slice(0, 16) + " UTC";
@@ -116,12 +105,6 @@ async function hydrateIfNeeded() {
     }
 
     contentEl.innerHTML = renderArticlesHtml(snapshot.articles);
-
-    const blogroll = document.getElementById("blogroll");
-    if (blogroll) {
-      blogroll.innerHTML = renderBlogrollHtml(snapshot.writers);
-      blogroll.hidden = !snapshot.writers?.length;
-    }
 
     const colophon = document.getElementById("colophon");
     if (colophon) {
