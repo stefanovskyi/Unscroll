@@ -111,39 +111,6 @@ body {
   border-color: var(--accent);
 }
 
-.filter {
-  margin-top: 0.6rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-}
-
-.filter label {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.filter select {
-  font: inherit;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  padding: 0.2rem 0.45rem;
-  cursor: pointer;
-}
-
-.filter select:hover {
-  border-color: var(--accent-soft);
-}
-
-.filter select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 /* Status / empty / failure states ---------------------------------- */
 
 .status {
@@ -357,18 +324,11 @@ body {
     <main class="page">
       <header class="page__header">
         <h1>Reading list</h1>
-        <p class="meta" id="meta"><!--@meta-->44 sources · last 14 days · updated 2026-04-29 12:54 UTC<!--/@meta--></p>
+        <p class="meta" id="meta"><!--@meta-->44 sources · last 14 days · updated 2026-04-29 13:00 UTC<!--/@meta--></p>
         <div class="quick-filter" id="quick-filter" role="group" aria-label="Filter by category">
           <button type="button" class="quick-filter__pill is-active" data-category="newsletter" aria-pressed="true">Newsletters</button>
           <button type="button" class="quick-filter__pill is-active" data-category="youtube" aria-pressed="true">YouTube</button>
           <button type="button" class="quick-filter__pill is-active" data-category="article" aria-pressed="true">Articles</button>
-        </div>
-        <div class="filter" id="filter">
-          <label for="filter-source">Source</label>
-          <select id="filter-source">
-            <option value="">All sources</option>
-            <!--@filter-options--><option value="a16z">a16z</option><option value="Addy Osmani">Addy Osmani</option><option value="AI Engineer">AI Engineer</option><option value="Architecture Weekly">Architecture Weekly</option><option value="Armin Ronacher">Armin Ronacher</option><option value="Ben Kuhn">Ben Kuhn</option><option value="blog.exe.dev">blog.exe.dev</option><option value="ByteByteGo">ByteByteGo</option><option value="David Crawshaw">David Crawshaw</option><option value="Deep Learning Weekly">Deep Learning Weekly</option><option value="Derek Thompson">Derek Thompson</option><option value="DHH — HEY World">DHH — HEY World</option><option value="Founder Weekly">Founder Weekly</option><option value="Hacker Newsletter">Hacker Newsletter</option><option value="In the World of AI">In the World of AI</option><option value="Lenny&#39;s Podcast">Lenny&#39;s Podcast</option><option value="Martin Fowler">Martin Fowler</option><option value="Matt Wolfe">Matt Wolfe</option><option value="Modern Data 101">Modern Data 101</option><option value="Naval">Naval</option><option value="NLP Newsletter (Elvis Saravia)">NLP Newsletter (Elvis Saravia)</option><option value="Noahpinion (Noah Smith)">Noahpinion (Noah Smith)</option><option value="One Useful Thing (Ethan Mollick)">One Useful Thing (Ethan Mollick)</option><option value="Phil Eaton">Phil Eaton</option><option value="Pragmatic Engineer">Pragmatic Engineer</option><option value="Programmer Weekly">Programmer Weekly</option><option value="Python Weekly">Python Weekly</option><option value="Read Trung (Trung Phan)">Read Trung (Trung Phan)</option><option value="Sean Goedecke">Sean Goedecke</option><option value="Simon Willison">Simon Willison</option><option value="Software Lead Weekly">Software Lead Weekly</option><option value="Steve Yegge">Steve Yegge</option><option value="Stratechery">Stratechery</option><option value="The Pragmatic Engineer">The Pragmatic Engineer</option><option value="Thorsten Ball — Register Spill">Thorsten Ball — Register Spill</option><option value="Val Town">Val Town</option><!--/@filter-options-->
-          </select>
         </div>
       </header>
 
@@ -380,7 +340,7 @@ body {
 
       <footer class="page__footer">
         <p class="blogroll" id="blogroll"><!--@blogroll--><a href="https://x.com/a16z" rel="noopener" target="_blank">a16z</a> · <a href="https://x.com/addyosmani" rel="noopener" target="_blank">Addy Osmani</a> · <span class="blogroll__plain">AI Engineer</span> · <a href="https://x.com/alexxubyte" rel="noopener" target="_blank">Alex Xu</a> · <a href="https://x.com/mitsuhiko" rel="noopener" target="_blank">Armin Ronacher</a> · <a href="https://x.com/benkuhn" rel="noopener" target="_blank">Ben Kuhn</a> · <a href="https://x.com/benthompson" rel="noopener" target="_blank">Ben Thompson</a> · <a href="https://x.com/boristane" rel="noopener" target="_blank">Boris Tane</a> · <a href="https://x.com/mipsytipsy" rel="noopener" target="_blank">Charity Majors</a> · <a href="https://x.com/davidcrawshaw" rel="noopener" target="_blank">David Crawshaw</a> · <a href="https://x.com/dhh" rel="noopener" target="_blank">David Heinemeier Hansson</a> · <span class="blogroll__plain">Deep Learning Weekly</span> · <a href="https://x.com/DKThomp" rel="noopener" target="_blank">Derek Thompson</a> · <span class="blogroll__plain">Dima Maleev</span> · <a href="https://x.com/omarsar0" rel="noopener" target="_blank">Elvis Saravia</a> · <a href="https://x.com/emollick" rel="noopener" target="_blank">Ethan Mollick</a> · <span class="blogroll__plain">exe.dev</span> · <span class="blogroll__plain">Founder Weekly</span> · <a href="https://x.com/geoffreylitt" rel="noopener" target="_blank">Geoffrey Litt</a> · <a href="https://x.com/GergelyOrosz" rel="noopener" target="_blank">Gergely Orosz</a> · <a href="https://x.com/hnletter" rel="noopener" target="_blank">Hacker Newsletter</a> · <span class="blogroll__plain">In the World of AI</span> · <span class="blogroll__plain">Lenny&#39;s Podcast</span> · <a href="https://x.com/martinfowler" rel="noopener" target="_blank">Martin Fowler</a> · <span class="blogroll__plain">Matt Wolfe</span> · <a href="https://x.com/minimaxir" rel="noopener" target="_blank">Max Woolf</a> · <span class="blogroll__plain">Modern Data 101</span> · <a href="https://x.com/naval" rel="noopener" target="_blank">Naval</a> · <a href="https://x.com/Noahpinion" rel="noopener" target="_blank">Noah Smith</a> · <a href="https://x.com/orenellenbogen" rel="noopener" target="_blank">Oren Ellenbogen</a> · <a href="https://x.com/oskar_at_net" rel="noopener" target="_blank">Oskar Dudycz</a> · <a href="https://x.com/paulg" rel="noopener" target="_blank">Paul Graham</a> · <a href="https://x.com/eatonphil" rel="noopener" target="_blank">Phil Eaton</a> · <span class="blogroll__plain">Pragmatic Engineer</span> · <span class="blogroll__plain">Programmer Weekly</span> · <span class="blogroll__plain">Python Weekly</span> · <a href="https://x.com/sjgoedecke" rel="noopener" target="_blank">Sean Goedecke</a> · <a href="https://x.com/simonw" rel="noopener" target="_blank">Simon Willison</a> · <a href="https://x.com/staysaasy" rel="noopener" target="_blank">Stay SaaSy</a> · <a href="https://x.com/Steve_Yegge" rel="noopener" target="_blank">Steve Yegge</a> · <a href="https://x.com/thorstenball" rel="noopener" target="_blank">Thorsten Ball</a> · <a href="https://x.com/TrungTPhan" rel="noopener" target="_blank">Trung Phan</a> · <a href="https://x.com/ValDotTown" rel="noopener" target="_blank">Val Town</a><!--/@blogroll--></p>
-        <p class="colophon" id="colophon"><!--@colophon-->Snapshot 2026-04-29 12:54 UTC · 138 articles.<!--/@colophon--></p>
+        <p class="colophon" id="colophon"><!--@colophon-->Snapshot 2026-04-29 13:00 UTC · 138 articles.<!--/@colophon--></p>
       </footer>
     </main>
     <script src="./app.js" defer></script>

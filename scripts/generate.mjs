@@ -200,13 +200,6 @@ function renderArticlesHtml(articles) {
     .join("");
 }
 
-function renderFilterOptionsHtml(articles) {
-  const sources = [...new Set(articles.map((a) => a.source))].sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: "base" }),
-  );
-  return sources.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
-}
-
 function renderMetaHtml(snapshot) {
   const { sources, windowDays, generatedAt } = snapshot;
   const stamp = new Date(generatedAt);
@@ -258,7 +251,6 @@ async function writeIndexHtml(snapshot, rootDir) {
   let html = template;
   html = replaceMarker(html, "styles", `<style>${styles}</style>`);
   html = replaceMarker(html, "meta", renderMetaHtml(snapshot));
-  html = replaceMarker(html, "filter-options", renderFilterOptionsHtml(snapshot.articles));
   html = replaceMarker(html, "content", renderArticlesHtml(snapshot.articles));
   html = replaceMarker(html, "failures", renderFailuresHtml(snapshot.failures));
   html = replaceMarker(html, "blogroll", renderBlogrollHtml(snapshot.writers));

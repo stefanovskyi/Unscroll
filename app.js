@@ -68,16 +68,6 @@ function renderArticlesHtml(articles) {
     .join("");
 }
 
-function renderFilterOptionsHtml(articles) {
-  const sources = [...new Set(articles.map((a) => a.source))].sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: "base" }),
-  );
-  return (
-    '<option value="">All sources</option>' +
-    sources.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("")
-  );
-}
-
 function renderMetaHtml(snapshot) {
   const { sources, windowDays, generatedAt } = snapshot;
   const stamp = new Date(generatedAt);
@@ -125,14 +115,6 @@ async function hydrateIfNeeded() {
       meta.hidden = false;
     }
 
-    const select = document.getElementById("filter-source");
-    if (select) {
-      select.innerHTML = renderFilterOptionsHtml(snapshot.articles);
-    }
-
-    const filter = document.getElementById("filter");
-    if (filter) filter.hidden = false;
-
     contentEl.innerHTML = renderArticlesHtml(snapshot.articles);
 
     const blogroll = document.getElementById("blogroll");
@@ -159,37 +141,26 @@ async function hydrateIfNeeded() {
 }
 
 function setupFilter() {
-  const filterSelect = document.getElementById("filter-source");
   const contentEl = document.getElementById("content");
   const quickFilter = document.getElementById("quick-filter");
-  if (!filterSelect || !contentEl) return;
+  if (!contentEl || !quickFilter) return;
+
+  const pills = [...quickFilter.querySelectorAll(".quick-filter__pill")];
+  if (!pills.length) return;
 
   const existingEmpty = contentEl.querySelector(".empty");
   let emptyState = null;
 
-  const pills = quickFilter
-    ? [...quickFilter.querySelectorAll(".quick-filter__pill")]
-    : [];
-
-  function activeCategories() {
-    return new Set(
+  function applyFilter() {
+    const categories = new Set(
       pills.filter((p) => p.classList.contains("is-active")).map((p) => p.dataset.category),
     );
-  }
-
-  function applyFilter() {
-    const source = filterSelect.value;
-    const categories = activeCategories();
-    const filterByCategory = pills.length > 0;
     let visibleArticles = 0;
 
     for (const day of contentEl.querySelectorAll(".day")) {
       let anyVisible = false;
       for (const li of day.querySelectorAll(".article")) {
-        const sourceMatch = !source || li.dataset.source === source;
-        const categoryMatch =
-          !filterByCategory || categories.has(li.dataset.category || "article");
-        const matches = sourceMatch && categoryMatch;
+        const matches = categories.has(li.dataset.category || "article");
         li.hidden = !matches;
         if (matches) {
           anyVisible = true;
@@ -205,16 +176,12 @@ function setupFilter() {
         emptyState.className = "empty";
         contentEl.appendChild(emptyState);
       }
-      emptyState.textContent = source
-        ? `No recent articles from ${source}.`
-        : "No articles match the selected filters.";
+      emptyState.textContent = "No articles match the selected filters.";
       emptyState.hidden = false;
     } else if (emptyState) {
       emptyState.hidden = true;
     }
   }
-
-  filterSelect.addEventListener("change", applyFilter);
 
   for (const pill of pills) {
     pill.addEventListener("click", () => {
