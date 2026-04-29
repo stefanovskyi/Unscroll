@@ -1,8 +1,6 @@
-# Unscroll (reading list)
+# Unscroll
 
 **Live site:** [unscroll.stefanovskyi.com](https://unscroll.stefanovskyi.com)
-
-## Idea
 
 **Unscroll** is a small, single-page “reverse timeline” of writing you care about: a curated set of author feeds, rolled into one calm list, newest first. The goal is to skim what actually published in the last couple of weeks without opening dozens of sites or social feeds. Feeds are fetched at **build time** (RSS has no useful browser CORS for most sites), the page is **static HTML** on GitHub Pages, and CI rebuilds and redeploys on a daily schedule so the list stays current.
 
@@ -16,18 +14,6 @@ into `index.html` and produces `articles.json`; GitHub Actions regenerates and
 redeploys daily. `index.html` and `articles.json` are build outputs and are
 not committed.
 
-## Key files (reference)
-
-| Path | Role |
-| --- | --- |
-| `template.html` | Page **template** with `<!--@name-->` / `<!--/@name-->` regions (styles, content, meta, failures, colophon) the generator fills in. |
-| `index.html` | Build **output** (gitignored); produced by the generator from `template.html`. |
-| `styles.css` | Paper-toned, pastel look; the generator inlines it into the built `index.html`. |
-| `app.js` | **Runtime:** source filter on the pre-rendered list. **Dev:** if the content placeholder is still there, fetches `articles.json` and renders. |
-| `articles.json` | Build output (gitignored): snapshot for CI/local use. |
-| `scripts/feeds.mjs` | Authoritative list of sources, candidate feed URLs, optional per-source `transform` hooks. |
-| `scripts/generate.mjs` | Fetches feeds, 14-day window, writes `articles.json`, renders `template.html` → `index.html`. |
-| `.github/workflows/build.yml` | `npm run build` + GitHub Pages deploy (push, daily cron, manual). |
 
 ## Local preview
 
