@@ -1,9 +1,26 @@
 {
-  "generatedAt": "2026-04-27T11:09:20.696Z",
+  "generatedAt": "2026-04-29T12:40:43.089Z",
   "windowDays": 14,
-  "sources": 43,
-  "count": 134,
-  "failures": [],
+  "sources": 44,
+  "count": 132,
+  "failures": [
+    {
+      "source": "Phil Eaton",
+      "reason": "No candidate feed worked for Phil Eaton"
+    },
+    {
+      "source": "Charity Majors",
+      "reason": "No candidate feed worked for Charity Majors"
+    },
+    {
+      "source": "Read Trung (Trung Phan)",
+      "reason": "No candidate feed worked for Read Trung (Trung Phan)"
+    },
+    {
+      "source": "Hacker Newsletter",
+      "reason": "No candidate feed worked for Hacker Newsletter"
+    }
+  ],
   "writers": [
     {
       "name": "a16z",
@@ -114,6 +131,10 @@
       "xUrl": null
     },
     {
+      "name": "Naval",
+      "xUrl": "https://x.com/naval"
+    },
+    {
       "name": "Noah Smith",
       "xUrl": "https://x.com/Noahpinion"
     },
@@ -175,6 +196,194 @@
     }
   ],
   "articles": [
+    {
+      "title": "Everything I Learned Training Frontier Small Models — Maxime Labonne, Liquid AI",
+      "link": "https://www.youtube.com/watch?v=fLUtUkqYHnQ",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-29T12:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "Intel Earnings, Intel’s Differentiation?, Whither Terafab",
+      "link": "https://stratechery.com/2026/intel-earnings-intels-differentiation-whither-terafab/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-29T10:00:00.000Z",
+      "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Gemini 4.0 Soon, GPT 5.6 Spotted, NEW Open AI Labs, Codex Model, AI Robots & More! HUGE AI NEWS!",
+      "link": "https://www.youtube.com/watch?v=3TIL611HgvE",
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-29T05:51:05.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "Scoring the Jensen-Dwarkesh debate",
+      "link": "https://www.noahpinion.blog/p/scoring-the-jensen-dwarkesh-debate",
+      "author": "Noah Smith",
+      "source": "Noahpinion (Noah Smith)",
+      "date": "2026-04-29T00:38:56.000Z",
+      "authorUrl": "https://x.com/Noahpinion"
+    },
+    {
+      "title": "A Return to Code",
+      "link": "https://nav.al/code",
+      "author": "Naval",
+      "source": "Naval",
+      "date": "2026-04-28T19:18:48.000Z",
+      "authorUrl": "https://x.com/naval"
+    },
+    {
+      "title": "Building your own software factory — Eric Zakariasson, Cursor",
+      "link": "https://www.youtube.com/watch?v=rnDm57Py54A",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-28T18:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "ChatGPT Images Just Got Way Better (Here's Why)",
+      "link": "https://www.youtube.com/watch?v=2u_T68P9H_U",
+      "author": "Matt Wolfe",
+      "source": "Matt Wolfe",
+      "date": "2026-04-28T17:37:44.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "An Interview with OpenAI CEO Sam Altman and AWS CEO Matt Garman About Bedrock Managed Agents",
+      "link": "https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/",
+      "author": "Ben Thompson",
+      "source": "Stratechery",
+      "date": "2026-04-28T17:00:00.000Z",
+      "authorUrl": "https://x.com/benthompson"
+    },
+    {
+      "title": "Why building eval platforms is hard — Phil Hetzel, Braintrust",
+      "link": "https://www.youtube.com/watch?v=_fQ7Z_Wfouk",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-28T16:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "How will AI change operating systems? Part 1: Ubuntu and Linux",
+      "link": "https://newsletter.pragmaticengineer.com/p/ubuntu-and-ai",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "date": "2026-04-28T14:25:18.000Z",
+      "authorUrl": "https://x.com/GergelyOrosz"
+    },
+    {
+      "title": "Workday's Last Workday?",
+      "link": "https://www.a16z.news/p/workdays-last-workday",
+      "author": "Joe Schmidt IV",
+      "source": "a16z",
+      "date": "2026-04-28T14:03:22.000Z"
+    },
+    {
+      "title": "One Login to Rule Them All: Cross-App Access for MCP — Garrett Galow, WorkOS",
+      "link": "https://www.youtube.com/watch?v=EmhRyw6xeT0",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-28T14:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "Structured-Prompt-Driven Development (SPDD)",
+      "link": "https://martinfowler.com/articles/structured-prompt-driven/",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-28T13:02:00.000Z",
+      "authorUrl": "https://x.com/martinfowler"
+    },
+    {
+      "title": "Xiaomi MiMo V2.5 Pro IS INSANE! New Opensource Frontier AI Model Beats Deepseek v4! (Fully Tested)",
+      "link": "https://www.youtube.com/watch?v=popj1l3LA-I",
+      "author": "In the World of AI",
+      "source": "In the World of AI",
+      "date": "2026-04-28T06:39:15.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "How Stripe Detects Fraudulent Transactions Within 100 ms",
+      "link": "https://blog.bytebytego.com/p/how-stripe-detects-fraudulent-transactions",
+      "author": "ByteByteGo",
+      "source": "ByteByteGo",
+      "date": "2026-04-28T03:03:50.000Z"
+    },
+    {
+      "title": "Long-running Agents",
+      "link": "https://addyosmani.com/blog/long-running-agents/",
+      "author": "Addy Osmani",
+      "source": "Addy Osmani",
+      "date": "2026-04-28T00:00:00.000Z",
+      "authorUrl": "https://x.com/addyosmani"
+    },
+    {
+      "title": "Before GitHub",
+      "link": "https://lucumr.pocoo.org/2026/4/28/before-github/",
+      "author": "Armin Ronacher",
+      "source": "Armin Ronacher",
+      "date": "2026-04-28T00:00:00.000Z",
+      "authorUrl": "https://x.com/mitsuhiko"
+    },
+    {
+      "title": "Your ears are burning—listen in with Octolens and Val Town",
+      "link": "https://blog.val.town/octolens",
+      "author": "Val Town",
+      "source": "Val Town",
+      "date": "2026-04-28T00:00:00.000Z",
+      "authorUrl": "https://x.com/ValDotTown"
+    },
+    {
+      "title": "Open Models at Google DeepMind — Cassidy Hardin, Google DeepMind",
+      "link": "https://www.youtube.com/watch?v=_A367W_qvc8",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-27T23:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "Lessons from Scaling GitHub's Remote MCP Server — Sam Morrow, GitHub",
+      "link": "https://www.youtube.com/watch?v=0n3MKk7r60w",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-27T22:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "What we learned scaling MCPs to Enterprise — Karan Sampath, Anthropic",
+      "link": "https://www.youtube.com/watch?v=CD6R4Wf3jnY",
+      "author": "AI Engineer",
+      "source": "AI Engineer",
+      "date": "2026-04-27T21:00:06.000Z",
+      "kind": "youtube"
+    },
+    {
+      "title": "Tracking the history of the now-deceased OpenAI Microsoft AGI clause",
+      "link": "https://simonwillison.net/2026/Apr/27/now-deceased-agi-clause/",
+      "author": "Simon Willison",
+      "source": "Simon Willison",
+      "date": "2026-04-27T18:38:17.000Z",
+      "authorUrl": "https://x.com/simonw"
+    },
+    {
+      "title": "How Amazon Uses LLMs to Recommend Products",
+      "link": "https://blog.bytebytego.com/p/how-amazon-uses-llms-to-recommend",
+      "author": "ByteByteGo",
+      "source": "ByteByteGo",
+      "date": "2026-04-27T15:30:57.000Z"
+    },
+    {
+      "title": "Data Product Maturity Assessment: Measure Your Unit of Context",
+      "link": "https://moderndata101.substack.com/p/data-product-maturity-assessment",
+      "author": "Animesh Kumar",
+      "source": "Modern Data 101",
+      "date": "2026-04-27T14:19:21.000Z"
+    },
     {
       "title": "AI Hardware, Meta Display, Redefining VR and AR",
       "link": "https://stratechery.com/2026/ai-hardware-meta-display-redefining-vr-and-ar/",
@@ -239,14 +448,6 @@
       "authorUrl": "https://x.com/thorstenball"
     },
     {
-      "title": "Branimir Lambov from IBM on Cassandra",
-      "link": "http://notes.eatonphil.com/2026-04-26-branimir-lambov-from-ibm-on-cassandra.html",
-      "author": "Phil Eaton",
-      "source": "Phil Eaton",
-      "date": "2026-04-26T00:00:00.000Z",
-      "authorUrl": "https://x.com/eatonphil"
-    },
-    {
       "title": "MCP = Mega Context Problem - Matt Carey",
       "link": "https://www.youtube.com/watch?v=YBYUvGOuotE",
       "author": "AI Engineer",
@@ -277,13 +478,6 @@
       "date": "2026-04-25T15:02:05.000Z"
     },
     {
-      "title": "Tim Cook's Apple",
-      "link": "https://www.readtrung.com/p/tim-cooks-apple",
-      "author": "Trungphan2",
-      "source": "Read Trung (Trung Phan)",
-      "date": "2026-04-24T23:49:34.000Z"
-    },
-    {
       "title": "Why shoplifting is bad",
       "link": "https://www.noahpinion.blog/p/why-shoplifting-is-bad",
       "author": "Noah Smith",
@@ -300,7 +494,7 @@
       "authorUrl": "https://x.com/benthompson"
     },
     {
-      "title": "Essential Skills for AI Coding from Planning to Production — Matt Pocock (@mattpocockuk )",
+      "title": "Full Walkthrough: Workflow for AI Coding — Matt Pocock",
       "link": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
       "author": "AI Engineer",
       "source": "AI Engineer",
@@ -631,12 +825,12 @@
       "date": "2026-04-22T00:00:00.000Z"
     },
     {
-      "title": "AIE Miami Day 2 ft. Cerebras, OpenCode, Cursor, Arize AI, and more!",
-      "link": "https://www.youtube.com/watch?v=DeM_u2Ik0sk",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-21T21:30:46.000Z",
-      "kind": "youtube"
+      "title": "Fragments: April 21",
+      "link": "https://martinfowler.com/fragments/2026-04-21.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "date": "2026-04-21T20:34:00.000Z",
+      "authorUrl": "https://x.com/martinfowler"
     },
     {
       "title": "Where's the raccoon with the ham radio? (ChatGPT Images 2.0)",
@@ -645,22 +839,6 @@
       "source": "Simon Willison",
       "date": "2026-04-21T20:32:24.000Z",
       "authorUrl": "https://x.com/simonw"
-    },
-    {
-      "title": "Building Generative Image & Video models at Scale - Sander Dieleman (Veo and Nano Banana)",
-      "link": "https://www.youtube.com/watch?v=xOP1PM8fwnk",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-21T19:33:38.000Z",
-      "kind": "youtube"
-    },
-    {
-      "title": "How AI is changing Software Engineering: A Conversation with Gergely Orosz, @pragmaticengineer",
-      "link": "https://www.youtube.com/watch?v=CS5Cmz5FssI",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-21T16:00:06.000Z",
-      "kind": "youtube"
     },
     {
       "title": "What Makes Knowledge Graphs AI-Ready",
@@ -677,27 +855,11 @@
       "date": "2026-04-21T15:30:21.000Z"
     },
     {
-      "title": "Fragments: April 21",
-      "link": "https://martinfowler.com/fragments/2026-04-21.html",
-      "author": "Martin Fowler",
-      "source": "Martin Fowler",
-      "date": "2026-04-21T14:34:00.000Z",
-      "authorUrl": "https://x.com/martinfowler"
-    },
-    {
       "title": "The Internet is Real Life",
       "link": "https://www.a16z.news/p/the-internet-is-real-life",
       "author": "Erik Torenberg",
       "source": "a16z",
       "date": "2026-04-21T14:04:23.000Z"
-    },
-    {
-      "title": "Taste & Craft: A Conversation with Tuomas Artman, CTO Linear & Gergely Orosz, @pragmaticengineer",
-      "link": "https://www.youtube.com/watch?v=wjk0ulMAkbc",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-21T14:00:06.000Z",
-      "kind": "youtube"
     },
     {
       "title": "Learnings from conducting ~1,000 interviews at Amazon",
@@ -738,30 +900,6 @@
       "source": "Noahpinion (Noah Smith)",
       "date": "2026-04-21T05:30:49.000Z",
       "authorUrl": "https://x.com/Noahpinion"
-    },
-    {
-      "title": "Running LLMs on your iPhone: 40 tok/s Gemma 4 with MLX — Adrien Grondin, Locally AI",
-      "link": "https://www.youtube.com/watch?v=a2muGkT4WD4",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-20T21:53:25.000Z",
-      "kind": "youtube"
-    },
-    {
-      "title": "AIE Miami Keynote & Talks ft. OpenCode. Google Deepmind, OpenAI, and more!",
-      "link": "https://www.youtube.com/watch?v=6IxSbMhT7v4",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-20T21:17:38.000Z",
-      "kind": "youtube"
-    },
-    {
-      "title": "Full Workshop: Build Your Own Deep Research Agents - Louis-François Bouchard, Paul Iusztin, Samridhi",
-      "link": "https://www.youtube.com/watch?v=mYSRn6PC1mc",
-      "author": "AI Engineer",
-      "source": "AI Engineer",
-      "date": "2026-04-20T18:45:16.000Z",
-      "kind": "youtube"
     },
     {
       "title": "The Security Architecture of GitHub Agentic Workflow",
@@ -871,13 +1009,6 @@
       "date": "2026-04-18T15:01:10.000Z"
     },
     {
-      "title": "Live Nation x Ticketmaster Monopoly, explained",
-      "link": "https://www.readtrung.com/p/live-nation-x-ticketmaster-monopoly",
-      "author": "Trungphan2",
-      "source": "Read Trung (Trung Phan)",
-      "date": "2026-04-18T00:19:34.000Z"
-    },
-    {
       "title": "Claude Design Is INCREDIBLE! RIP Frontend Developers...",
       "link": "https://www.youtube.com/watch?v=uhQfErAzdiA",
       "author": "In the World of AI",
@@ -945,14 +1076,6 @@
       "author": "a16z New Media",
       "source": "a16z",
       "date": "2026-04-17T14:00:54.000Z"
-    },
-    {
-      "title": "Hacker Newsletter #790",
-      "link": "https://buttondown.com/hacker-newsletter/archive/790/",
-      "author": "Hacker Newsletter",
-      "source": "Hacker Newsletter",
-      "date": "2026-04-17T11:00:00.000Z",
-      "authorUrl": "https://x.com/hnletter"
     },
     {
       "title": "Software Lead Weekly #699",
@@ -1054,14 +1177,6 @@
       "kind": "youtube"
     },
     {
-      "title": "Who even uses jemalloc in 2026 anyway? (many major projects)",
-      "link": "http://notes.eatonphil.com/2026-04-16-who-even-uses-jemalloc-anyway.html",
-      "author": "Phil Eaton",
-      "source": "Phil Eaton",
-      "date": "2026-04-16T00:00:00.000Z",
-      "authorUrl": "https://x.com/eatonphil"
-    },
-    {
       "title": "Programmer Weekly #296",
       "link": "https://www.programmerweekly.com/p/programmer-weekly-issue-296-apr-16-2026",
       "author": "Programmer Weekly",
@@ -1074,14 +1189,6 @@
       "author": "Rahul Chaudhary",
       "source": "Python Weekly",
       "date": "2026-04-16T00:00:00.000Z"
-    },
-    {
-      "title": "The Truth About My Channel (And How Much $$ I Make)",
-      "link": "https://www.youtube.com/watch?v=ncVQneK7FlE",
-      "author": "Matt Wolfe",
-      "source": "Matt Wolfe",
-      "date": "2026-04-15T22:03:19.000Z",
-      "kind": "youtube"
     },
     {
       "title": "Investing in Hilbert",
@@ -1104,104 +1211,6 @@
       "author": "Oliver Hsu",
       "source": "a16z",
       "date": "2026-04-15T14:01:35.000Z"
-    },
-    {
-      "title": "Amazon Buys Globalstar, Delta to Add Leo, The Apple Angle",
-      "link": "https://stratechery.com/2026/amazon-buys-globalstar-delta-to-add-leo-the-apple-angle/",
-      "author": "Ben Thompson",
-      "source": "Stratechery",
-      "date": "2026-04-15T10:00:00.000Z",
-      "authorUrl": "https://x.com/benthompson"
-    },
-    {
-      "title": "Claude Code 2.0: New Desktop/CLI App, Routines + Opus 4.7 This Week!",
-      "link": "https://www.youtube.com/watch?v=CdtJyjCWISI",
-      "author": "In the World of AI",
-      "source": "In the World of AI",
-      "date": "2026-04-15T05:05:04.000Z",
-      "kind": "youtube"
-    },
-    {
-      "title": "High Amplitude Disagreeableness",
-      "link": "https://staysaasy.com/startups/2026/04/15/high-amplitude-disagreeableness.html",
-      "author": "Stay SaaSy",
-      "source": "Stay SaaSy",
-      "date": "2026-04-15T00:00:00.000Z",
-      "authorUrl": "https://x.com/staysaasy"
-    },
-    {
-      "title": "Founder Weekly #727",
-      "link": "https://www.founderweekly.com/p/founder-weekly-issue-727-april-15-2026",
-      "author": "Founder Weekly",
-      "source": "Founder Weekly",
-      "date": "2026-04-15T00:00:00.000Z"
-    },
-    {
-      "title": "The impact of AI on software engineers in 2026: key trends",
-      "link": "https://newsletter.pragmaticengineer.com/p/the-impact-of-ai-on-software-engineers-2026",
-      "author": "Gergely Orosz",
-      "source": "The Pragmatic Engineer",
-      "date": "2026-04-14T16:01:02.000Z",
-      "authorUrl": "https://x.com/GergelyOrosz"
-    },
-    {
-      "title": "Figma Design to Code, Code to Design: Clearly Explained",
-      "link": "https://blog.bytebytego.com/p/figma-design-to-code-code-to-design",
-      "author": "ByteByteGo",
-      "source": "ByteByteGo",
-      "date": "2026-04-14T15:31:25.000Z"
-    },
-    {
-      "title": "The Evidence Gap: Why Courts Can't Balance State AI Regulation",
-      "link": "https://www.a16z.news/p/the-evidence-gap-why-courts-cant",
-      "author": "Jai Ramaswamy",
-      "source": "a16z",
-      "date": "2026-04-14T14:02:28.000Z"
-    },
-    {
-      "title": "Fragments: April 14",
-      "link": "https://martinfowler.com/fragments/2026-04-14.html",
-      "author": "Martin Fowler",
-      "source": "Martin Fowler",
-      "date": "2026-04-14T13:16:00.000Z",
-      "authorUrl": "https://x.com/martinfowler"
-    },
-    {
-      "title": "OpenAI’s Memos, Frontier, Amazon and Anthropic",
-      "link": "https://stratechery.com/2026/openais-memos-frontier-amazon-and-anthropic/",
-      "author": "Ben Thompson",
-      "source": "Stratechery",
-      "date": "2026-04-14T10:00:00.000Z",
-      "authorUrl": "https://x.com/benthompson"
-    },
-    {
-      "title": "DHH: how to escape the \"Apple bubble\"",
-      "link": "https://www.youtube.com/watch?v=w4q-aKyHuA4",
-      "author": "Pragmatic Engineer",
-      "source": "Pragmatic Engineer",
-      "date": "2026-04-13T19:45:56.000Z",
-      "kind": "youtube"
-    },
-    {
-      "title": "How LinkedIn Feed Uses LLMs to Serve 1.3 Billion Users",
-      "link": "https://blog.bytebytego.com/p/how-linkedin-feed-uses-llms-to-serve",
-      "author": "ByteByteGo",
-      "source": "ByteByteGo",
-      "date": "2026-04-13T15:31:28.000Z"
-    },
-    {
-      "title": "Surviving AI Price Wars Without Destroying Your Business",
-      "link": "https://www.a16z.news/p/surviving-ai-price-wars-without-destroying",
-      "author": "Tugce Erten",
-      "source": "a16z",
-      "date": "2026-04-13T14:03:37.000Z"
-    },
-    {
-      "title": "How AI Is Reshaping Enterprise Data Governance",
-      "link": "https://moderndata101.substack.com/p/how-ai-is-reshaping-data-governance",
-      "author": "Dia Adams",
-      "source": "Modern Data 101",
-      "date": "2026-04-13T12:22:30.000Z"
     }
   ]
 }
