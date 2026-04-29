@@ -173,6 +173,8 @@ function setupFilter() {
       applyFilter();
     });
   }
+
+  applyFilter();
 }
 
 async function main() {

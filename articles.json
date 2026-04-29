@@ -1,10 +1,19 @@
 {
-  "generatedAt": "2026-04-29T13:19:56.508Z",
+  "generatedAt": "2026-04-29T13:24:46.573Z",
   "windowDays": 14,
   "sources": 44,
-  "count": 138,
+  "count": 139,
   "failures": [],
   "articles": [
+    {
+      "title": "Fragments: April 29",
+      "link": "https://martinfowler.com/fragments/2026-04-29.html",
+      "author": "Martin Fowler",
+      "source": "Martin Fowler",
+      "category": "article",
+      "date": "2026-04-29T13:23:00.000Z",
+      "authorUrl": "https://x.com/martinfowler"
+    },
     {
       "title": "Everything I Learned Training Frontier Small Models — Maxime Labonne, Liquid AI",
       "link": "https://www.youtube.com/watch?v=fLUtUkqYHnQ",
