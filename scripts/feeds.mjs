@@ -371,6 +371,13 @@ export const feeds = [
       }),
   },
   {
+    source: "Anthropic Engineering",
+    xHandle: "AnthropicAI",
+    xAuthor: "Anthropic",
+    category: "article",
+    fetch: fetchAnthropicEngineering,
+  },
+  {
     source: "Lenny's Podcast",
     category: "youtube",
     fetch: () =>
@@ -592,6 +599,54 @@ async function fetchYouTubeChannel({ handle, source }) {
       date: date.toISOString(),
       kind: "youtube",
     });
+  }
+  return articles;
+}
+
+// --- Anthropic Engineering scraper ---------------------------------
+//
+// anthropic.com/engineering is a Next.js page with no RSS. Its initial
+// payload embeds a list of articles as escaped JSON inside the document,
+// one block per article shaped like:
+//   {"_type":"engineeringArticle", ... ,"publishedOn":"YYYY-MM-DD",
+//    "slug":{..."current":"<slug>"}, ... ,"title":"<title>"}
+// We split on the "engineeringArticle" marker and pull publishedOn, slug,
+// and title from each block. Authors are not in the index payload, so we
+// label everything "Anthropic" — accurate for the brand blog, even though
+// individual posts have named bylines on their own pages.
+
+async function fetchAnthropicEngineering() {
+  const html = await fetchText("https://www.anthropic.com/engineering");
+  const blockRe = /\\"_type\\":\\"engineeringArticle\\"([\s\S]*?)(?=\\"_type\\":\\"engineeringArticle\\"|<\/script>)/g;
+  const slugRe = /\\"slug\\":\{\\"_type\\":\\"slug\\",\\"current\\":\\"([^"\\]+)\\"/;
+  const dateRe = /\\"publishedOn\\":\\"(\d{4}-\d{2}-\d{2})\\"/;
+  const titleRe = /\\"title\\":\\"((?:[^"\\]|\\.)+?)\\"/;
+
+  const seen = new Set();
+  const articles = [];
+  for (const [, block] of html.matchAll(blockRe)) {
+    const slugM = block.match(slugRe);
+    const dateM = block.match(dateRe);
+    const titleM = block.match(titleRe);
+    if (!slugM || !dateM || !titleM) continue;
+    const slug = slugM[1];
+    if (seen.has(slug)) continue;
+    seen.add(slug);
+    // Date is YYYY-MM-DD with no time; treat as midday UTC so it lands on
+    // the intended calendar day in any sane timezone.
+    const date = new Date(`${dateM[1]}T12:00:00Z`);
+    if (Number.isNaN(date.getTime())) continue;
+    const title = decodeXml(titleM[1].replace(/\\u0026/g, "&").replace(/\\"/g, '"').replace(/\\\\/g, "\\"));
+    articles.push({
+      title,
+      link: `https://www.anthropic.com/engineering/${slug}`,
+      author: "Anthropic",
+      source: "Anthropic Engineering",
+      date: date.toISOString(),
+    });
+  }
+  if (articles.length === 0) {
+    throw new Error("No engineeringArticle entries found on anthropic.com/engineering");
   }
   return articles;
 }
