@@ -84,7 +84,12 @@ function renderColophonHtml(snapshot) {
 function renderFailuresHtml(failures) {
   if (!failures?.length) return "";
   const items = failures
-    .map((f) => `<li>${esc(f.source)} — ${esc(f.reason)}</li>`)
+    .map((f) => {
+      const note = f.backfilled
+        ? ` (showing ${f.backfilled} article(s) from the previous build)`
+        : "";
+      return `<li>${esc(f.source)} — ${esc(f.reason)}${esc(note)}</li>`;
+    })
     .join("");
   return `<div class="failures"><details><summary>${failures.length} feed(s) failed in the last build</summary><ul>${items}</ul></details></div>`;
 }

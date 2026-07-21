@@ -341,7 +341,12 @@ export const feeds = [
   {
     source: "Matt Wolfe",
     category: "youtube",
-    fetch: () => fetchYouTubeChannel({ handle: "mreflow", source: "Matt Wolfe" }),
+    fetch: () =>
+      fetchYouTubeChannel({
+        handle: "mreflow",
+        channelId: "UChpleBmo18P08aKCIgti38g",
+        source: "Matt Wolfe",
+      }),
   },
   {
     // Newsletter source above already uses "The Pragmatic Engineer"; the
@@ -352,6 +357,7 @@ export const feeds = [
     fetch: () =>
       fetchYouTubeChannel({
         handle: "pragmaticengineer",
+        channelId: "UCPbwhExawYrn9xxI21TFfyw",
         source: "Pragmatic Engineer",
       }),
   },
@@ -359,7 +365,11 @@ export const feeds = [
     source: "AI Engineer",
     category: "youtube",
     fetch: () =>
-      fetchYouTubeChannel({ handle: "aiDotEngineer", source: "AI Engineer" }),
+      fetchYouTubeChannel({
+        handle: "aiDotEngineer",
+        channelId: "UCLKPca3kwwd-B59HNr-_lvA",
+        source: "AI Engineer",
+      }),
   },
   {
     source: "In the World of AI",
@@ -367,6 +377,7 @@ export const feeds = [
     fetch: () =>
       fetchYouTubeChannel({
         handle: "intheworldofai",
+        channelId: "UC2WmuBuFq6gL08QYG-JjXKw",
         source: "In the World of AI",
       }),
   },
@@ -383,6 +394,7 @@ export const feeds = [
     fetch: () =>
       fetchYouTubeChannel({
         handle: "LennysPodcast",
+        channelId: "UC6t1O76G0jYXOAoYCm153dA",
         source: "Lenny's Podcast",
       }),
   },
@@ -550,11 +562,15 @@ async function fetchSoftwareLeadWeekly() {
 // --- YouTube channel scraper ---------------------------------------
 //
 // YouTube's Atom feed lives at /feeds/videos.xml?channel_id=UCxxx, but
-// the user-facing URLs use @handles. The channel page embeds its UC id
-// in many places — `/channel/UC...` is the most reliable to grep for.
-// Once resolved we parse the Atom feed directly to avoid pulling
-// rss-parser into this module (other custom fetchers here also do
-// minimal regex parsing for the same reason).
+// the user-facing URLs use @handles. Channel IDs are permanent, so each
+// feed entry pins its `channelId` and the build goes straight to the
+// Atom feed. Resolving the ID from the channel HTML page is kept only
+// as a fallback for newly added channels — that page is large and
+// YouTube often serves consent walls / bot checks to datacenter IPs
+// like GitHub runners, so it must not be on the every-build path.
+// We parse the Atom feed directly to avoid pulling rss-parser into
+// this module (other custom fetchers here also do minimal regex
+// parsing for the same reason).
 
 const xmlEntities = {
   "&amp;": "&",
@@ -572,12 +588,20 @@ function decodeXml(s) {
     .replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCodePoint(parseInt(n, 16)));
 }
 
-async function fetchYouTubeChannel({ handle, source }) {
+async function resolveChannelId(handle) {
   const channelHtml = await fetchText(`https://www.youtube.com/@${handle}`);
   const idMatch = channelHtml.match(/\/channel\/(UC[A-Za-z0-9_-]{20,})/);
   if (!idMatch) throw new Error(`Cannot resolve channel ID for @${handle}`);
+  console.warn(
+    `  · resolved @${handle} → ${idMatch[1]} — pin it as channelId in feeds.mjs`,
+  );
+  return idMatch[1];
+}
+
+async function fetchYouTubeChannel({ handle, channelId, source }) {
+  const id = channelId || (await resolveChannelId(handle));
   const xml = await fetchText(
-    `https://www.youtube.com/feeds/videos.xml?channel_id=${idMatch[1]}`,
+    `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`,
   );
   const articles = [];
   for (const [, body] of xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)) {

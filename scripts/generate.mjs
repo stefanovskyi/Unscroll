@@ -9,6 +9,18 @@ const USER_AGENT =
   "reading-list-news/1.0 (+https://github.com/) feed-aggregator";
 const TIMEOUT_MS = 20_000;
 
+// The previous build's articles.json, as currently deployed. Sources that
+// fail this build are backfilled from it so a transient feed error degrades
+// to "one day staler" instead of the source vanishing from the page.
+const PREVIOUS_SNAPSHOT_URL =
+  process.env.PREVIOUS_SNAPSHOT_URL ||
+  "https://unscroll.stefanovskyi.com/articles.json";
+
+// Deploy guard: a build with no articles, or with this share of sources
+// failing and no previous snapshot to backfill from, exits non-zero so CI
+// keeps the previous deploy live instead of shipping a gutted page.
+const MAX_FAILURE_RATIO = 1 / 3;
+
 const parser = new Parser({
   timeout: TIMEOUT_MS,
   headers: { "User-Agent": USER_AGENT, Accept: "application/atom+xml, application/rss+xml, application/xml;q=0.9, */*;q=0.8" },
@@ -107,6 +119,24 @@ function withinLastDays(iso, cutoffMs) {
   return new Date(iso).getTime() >= cutoffMs;
 }
 
+async function fetchPreviousSnapshot() {
+  try {
+    const res = await fetch(PREVIOUS_SNAPSHOT_URL, {
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+      headers: { "User-Agent": USER_AGENT },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const snapshot = await res.json();
+    if (!Array.isArray(snapshot.articles)) throw new Error("no articles array");
+    return snapshot;
+  } catch (err) {
+    console.warn(
+      `Previous snapshot unavailable (${PREVIOUS_SNAPSHOT_URL}): ${err.message}`,
+    );
+    return null;
+  }
+}
+
 // HTML rendering --------------------------------------------------
 //
 // The site pre-renders articles into index.html at build time. This
@@ -198,7 +228,12 @@ function renderColophonHtml(snapshot) {
 function renderFailuresHtml(failures) {
   if (!failures?.length) return "";
   const items = failures
-    .map((f) => `<li>${esc(f.source)} — ${esc(f.reason)}</li>`)
+    .map((f) => {
+      const note = f.backfilled
+        ? ` (showing ${f.backfilled} article(s) from the previous build)`
+        : "";
+      return `<li>${esc(f.source)} — ${esc(f.reason)}${esc(note)}</li>`;
+    })
     .join("");
   return `<div class="failures"><details><summary>${failures.length} feed(s) failed in the last build</summary><ul>${items}</ul></details></div>`;
 }
@@ -235,6 +270,7 @@ async function main() {
   const cutoffMs = now.getTime() - DAYS * 24 * 60 * 60 * 1000;
 
   console.log(`Fetching ${feeds.length} feeds…`);
+  const previousPromise = fetchPreviousSnapshot();
   const results = await Promise.allSettled(
     feeds.map(async (feed) => {
       console.log(`→ ${feed.source}`);
@@ -258,16 +294,40 @@ async function main() {
     }),
   );
 
+  const previous = await previousPromise;
+
   const articles = [];
   const failures = [];
   results.forEach((r, i) => {
     if (r.status === "fulfilled") {
       articles.push(...r.value);
     } else {
-      failures.push({ source: feeds[i].source, reason: String(r.reason?.message ?? r.reason) });
-      console.warn(`✗ ${feeds[i].source}: ${r.reason?.message ?? r.reason}`);
+      const feed = feeds[i];
+      const reason = String(r.reason?.message ?? r.reason);
+      const cached = previous
+        ? previous.articles.filter(
+            (a) => a.source === feed.source && withinLastDays(a.date, cutoffMs),
+          )
+        : [];
+      articles.push(...cached);
+      failures.push({ source: feed.source, reason, backfilled: cached.length });
+      console.warn(
+        `✗ ${feed.source}: ${reason}` +
+          (cached.length ? ` — backfilled ${cached.length} article(s) from previous snapshot` : ""),
+      );
     }
   });
+
+  if (articles.length === 0) {
+    throw new Error(
+      "Deploy guard: build produced 0 articles; keeping the previous deploy.",
+    );
+  }
+  if (!previous && failures.length > feeds.length * MAX_FAILURE_RATIO) {
+    throw new Error(
+      `Deploy guard: ${failures.length}/${feeds.length} sources failed and no previous snapshot was available to backfill from; keeping the previous deploy.`,
+    );
+  }
 
   articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
