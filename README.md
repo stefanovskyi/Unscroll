@@ -27,6 +27,47 @@ python3 -m http.server 8000   # or any static server
 The generator prints which feeds succeeded or failed; failed feeds are also
 recorded in `articles.json` under `failures` so the page can surface them.
 
+## Public API
+
+Two read-only JSON endpoints, generated at build time and served as static
+files. No auth, no rate limits, `Access-Control-Allow-Origin: *`, so they are
+callable directly from a browser. They refresh once a day with the site.
+
+| Endpoint | Returns |
+| --- | --- |
+| [`/api/v1/latest.json`](https://unscroll.stefanovskyi.com/api/v1/latest.json) | The most recent day that has articles |
+| [`/api/v1/last-2-days.json`](https://unscroll.stefanovskyi.com/api/v1/last-2-days.json) | The two most recent days that have articles |
+
+```json
+{
+  "generatedAt": "2026-08-01T05:59:12.345Z",
+  "dates": ["2026-08-01", "2026-07-31"],
+  "count": 12,
+  "items": [
+    {
+      "date": "2026-08-01T16:52:07.000Z",
+      "author": "Gergely Orosz",
+      "title": "Pushing software engineering limits with “napkin math”",
+      "link": "https://newsletter.pragmaticengineer.com/p/..."
+    }
+  ]
+}
+```
+
+Notes on the contract:
+
+- Days are **UTC** calendar days, matching how the page groups them.
+- A day with no articles is skipped rather than returned empty, so
+  `last-2-days.json` always spans two days that have content. Read `dates` to
+  see which days you actually got — they need not be consecutive.
+- `items` is sorted newest first, and `date` is a full ISO 8601 timestamp, so
+  items remain sortable within a day.
+- Endpoints always answer `200`; an empty result is `"items": []`, never a 404.
+- Responses are cached by the GitHub Pages CDN for 10 minutes.
+- `articles.json` is *not* part of this contract — it is an internal build
+  output whose shape can change without notice. Breaking changes to the API
+  ship as `/api/v2/`, leaving `v1` in place.
+
 ## Sources
 
 Feeds are listed in `scripts/feeds.mjs`. Each source can list multiple

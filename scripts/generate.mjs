@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import Parser from "rss-parser";
@@ -157,6 +157,54 @@ const YOUTUBE_ICON =
   '<path fill="#ff0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>' +
   '<path fill="#fff" d="M9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>' +
   "</svg>";
+
+// Public API (v1). Static, versioned projections of the snapshot, served off
+// Pages with `Access-Control-Allow-Origin: *`. "Last N days" means the N most
+// recent days that actually have articles, so a quiet calendar day never
+// shortens the response — `dates` reports which days a caller got. Unlike
+// articles.json (an internal build output), the shape here is a contract:
+// change it by adding a v2, not by editing v1.
+const API_DIR = ["api", "v1"];
+
+function buildApiPayload(days, generatedAt) {
+  const items = days.flatMap((day) => day.items);
+  return {
+    generatedAt,
+    dates: days.map((day) => day.key),
+    count: items.length,
+    items: items.map((a) => ({
+      date: a.date,
+      author: a.author,
+      title: a.title,
+      link: a.link,
+    })),
+  };
+}
+
+async function writeApi(snapshot, rootDir) {
+  const days = groupArticlesByUtcDay(snapshot.articles);
+  const dir = path.join(rootDir, ...API_DIR);
+  await mkdir(dir, { recursive: true });
+
+  const written = [];
+  for (const [file, dayCount] of [
+    ["latest.json", 1],
+    ["last-2-days.json", 2],
+  ]) {
+    // slice() on a short list yields an empty payload rather than throwing:
+    // an endpoint always answers 200 with `items: []`.
+    const payload = buildApiPayload(days.slice(0, dayCount), snapshot.generatedAt);
+    await writeFile(
+      path.join(dir, file),
+      JSON.stringify(payload, null, 2) + "\n",
+      "utf8",
+    );
+    written.push(
+      `${path.posix.join(...API_DIR, file)} — ${payload.count} item(s) across ${payload.dates.length} day(s)`,
+    );
+  }
+  return written;
+}
 
 const dayHeadingFmt = new Intl.DateTimeFormat("en", {
   weekday: "long",
@@ -347,10 +395,12 @@ async function main() {
   const outPath = path.join(rootDir, "articles.json");
   await writeFile(outPath, JSON.stringify(snapshot, null, 2) + "\n", "utf8");
   const indexPath = await writeIndexHtml(snapshot, rootDir);
+  const apiFiles = await writeApi(snapshot, rootDir);
   console.log(
     `\nWrote ${articles.length} article(s) from ${feeds.length - failures.length}/${feeds.length} feeds to ${path.relative(process.cwd(), outPath)}`,
   );
   console.log(`Patched pre-rendered HTML into ${path.relative(process.cwd(), indexPath)}`);
+  for (const line of apiFiles) console.log(`Wrote ${line}`);
 }
 
 main().catch((err) => {
