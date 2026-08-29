@@ -314,6 +314,7 @@ async function writeIndexHtml(snapshot, rootDir) {
 }
 
 async function main() {
+  const buildStartedAt = performance.now();
   const now = new Date();
   const cutoffMs = now.getTime() - DAYS * 24 * 60 * 60 * 1000;
 
@@ -321,24 +322,41 @@ async function main() {
   const previousPromise = fetchPreviousSnapshot();
   const results = await Promise.allSettled(
     feeds.map(async (feed) => {
+      const startedAt = performance.now();
       console.log(`→ ${feed.source}`);
-      let items, label;
-      if (typeof feed.fetch === "function") {
-        items = await feed.fetch();
-        label = `${feed.source} (custom)`;
-      } else {
-        const parsed = await fetchFeed(feed);
-        items = normalize(parsed.parsed, feed);
-        label = parsed.url;
+      try {
+        let items, label;
+        if (typeof feed.fetch === "function") {
+          items = await feed.fetch();
+          label = `${feed.source} (custom)`;
+        } else {
+          const parsed = await fetchFeed(feed);
+          items = normalize(parsed.parsed, feed);
+          label = parsed.url;
+        }
+        if (items.length === 0) {
+          console.warn(
+            `  · warning: ${feed.source} returned zero raw items; the source may be empty or its parser may need attention`,
+          );
+        }
+        const fallbackCategory = feed.category || "article";
+        for (const item of items) {
+          if (!item.category) item.category = fallbackCategory;
+        }
+        attachAuthorUrls(items, feed);
+        const recent = items.filter((a) => withinLastDays(a.date, cutoffMs));
+        const durationMs = Math.round(performance.now() - startedAt);
+        console.log(
+          `  ✓ ${label} — ${items.length} raw, ${recent.length} recent item(s) — ${durationMs} ms`,
+        );
+        return recent;
+      } catch (err) {
+        const durationMs = Math.round(performance.now() - startedAt);
+        console.warn(
+          `  · ${feed.source} failed after ${durationMs} ms: ${err.message}`,
+        );
+        throw err;
       }
-      const fallbackCategory = feed.category || "article";
-      for (const item of items) {
-        if (!item.category) item.category = fallbackCategory;
-      }
-      attachAuthorUrls(items, feed);
-      const recent = items.filter((a) => withinLastDays(a.date, cutoffMs));
-      console.log(`  ✓ ${label} — ${recent.length} recent item(s)`);
-      return recent;
     }),
   );
 
@@ -401,6 +419,7 @@ async function main() {
   );
   console.log(`Patched pre-rendered HTML into ${path.relative(process.cwd(), indexPath)}`);
   for (const line of apiFiles) console.log(`Wrote ${line}`);
+  console.log(`Build completed in ${Math.round(performance.now() - buildStartedAt)} ms`);
 }
 
 main().catch((err) => {

@@ -413,6 +413,9 @@ const MONTHS = [
   "july", "august", "september", "october", "november", "december",
 ];
 
+const PAUL_GRAHAM_ESSAY_LIMIT = 6;
+export const SOFTWARE_LEAD_WEEKLY_ISSUE_LIMIT = 6;
+
 async function fetchText(url, timeoutMs = 20_000) {
   const res = await fetch(url, {
     signal: AbortSignal.timeout(timeoutMs),
@@ -523,34 +526,45 @@ function fetchPythonWeekly() {
 // has a <title> like "Issue #699, 17th April 2026 - SoftwareLeadWeekly",
 // so we pull dates from the title tag.
 
-async function fetchSoftwareLeadWeekly() {
-  const sitemap = await fetchText("https://softwareleadweekly.com/sitemap.xml");
+export function selectLatestSoftwareLeadWeeklyIssues(
+  sitemap,
+  limit = SOFTWARE_LEAD_WEEKLY_ISSUE_LIMIT,
+) {
   const issueRe = /\/issues\/(\d+)(?=[<"])/g;
   const issues = new Set();
   for (const [, n] of sitemap.matchAll(issueRe)) issues.add(Number(n));
-  const top = [...issues].sort((a, b) => b - a).slice(0, 15);
-  if (top.length === 0) throw new Error("No /issues/N URLs in sitemap");
+  return [...issues].sort((a, b) => b - a).slice(0, limit);
+}
 
+export function parseSoftwareLeadWeeklyIssue(html, url) {
   const titleRe =
     /Issue #(\d+),\s*(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(\d{4})/;
+  const m = html.match(titleRe);
+  if (!m) return null;
+  const monthIdx = MONTHS.indexOf(m[3].toLowerCase());
+  if (monthIdx < 0) return null;
+  const date = new Date(Date.UTC(Number(m[4]), monthIdx, Number(m[2])));
+  if (Number.isNaN(date.getTime())) return null;
+  return {
+    title: `Software Lead Weekly #${m[1]}`,
+    link: url,
+    author: "Oren Ellenbogen",
+    source: "Software Lead Weekly",
+    date: date.toISOString(),
+  };
+}
+
+async function fetchSoftwareLeadWeekly() {
+  const sitemap = await fetchText("https://softwareleadweekly.com/sitemap.xml");
+  const top = selectLatestSoftwareLeadWeeklyIssues(sitemap);
+  if (top.length === 0) throw new Error("No /issues/N URLs in sitemap");
+
   const articles = await Promise.all(
     top.map(async (n) => {
       const url = `https://softwareleadweekly.com/issues/${n}`;
       try {
         const html = await fetchText(url);
-        const m = html.match(titleRe);
-        if (!m) return null;
-        const monthIdx = MONTHS.indexOf(m[3].toLowerCase());
-        if (monthIdx < 0) return null;
-        const date = new Date(Date.UTC(Number(m[4]), monthIdx, Number(m[2])));
-        if (Number.isNaN(date.getTime())) return null;
-        return {
-          title: `Software Lead Weekly #${m[1]}`,
-          link: url,
-          author: "Oren Ellenbogen",
-          source: "Software Lead Weekly",
-          date: date.toISOString(),
-        };
+        return parseSoftwareLeadWeeklyIssue(html, url);
       } catch {
         return null;
       }
@@ -682,7 +696,7 @@ async function fetchPaulGraham() {
   // Grab the top 6 — more than enough to cover any realistic window,
   // and cheap enough to fetch in parallel.
   const linkRe = /<a href="([a-z0-9][a-z0-9-]*\.html)">([^<]+)<\/a>/g;
-  const newest = [...html.matchAll(linkRe)].slice(0, 6);
+  const newest = [...html.matchAll(linkRe)].slice(0, PAUL_GRAHAM_ESSAY_LIMIT);
   if (newest.length === 0) throw new Error("No essay links found in articles.html");
 
   const essays = await Promise.all(

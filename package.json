@@ -5,7 +5,8 @@
   "description": "Static reading list of recent articles from selected sources.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/generate.mjs"
+    "build": "node scripts/generate.mjs",
+    "test": "node --test"
   },
   "devDependencies": {
     "rss-parser": "^3.13.0"
