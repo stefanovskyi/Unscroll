@@ -4,6 +4,7 @@ import test from "node:test";
 
 import {
   SOFTWARE_LEAD_WEEKLY_ISSUE_LIMIT,
+  parseAnthropicEngineering,
   parseSoftwareLeadWeeklyIssue,
   selectLatestSoftwareLeadWeeklyIssues,
 } from "../scripts/feeds.mjs";
@@ -45,5 +46,35 @@ test("rejects an issue page whose title format changed", () => {
       "https://softwareleadweekly.com/issues/707",
     ),
     null,
+  );
+});
+
+test("parses engineering posts from the Anthropic Engineering payload", async () => {
+  const html = await readFile(fixture("anthropic-engineering.html"), "utf8");
+
+  assert.deepEqual(parseAnthropicEngineering(html), [
+    {
+      title: "Redesigning source control at Anthropic",
+      link: "https://www.anthropic.com/research/redesigning-source-control",
+      author: "Anthropic",
+      source: "Anthropic Engineering",
+      date: "2026-10-13T12:00:00.000Z",
+    },
+    {
+      title: 'The "making" of Claude Code',
+      link: "https://www.anthropic.com/features/making-of-claude-code",
+      author: "Anthropic",
+      source: "Anthropic Engineering",
+      date: "2026-03-24T12:00:00.000Z",
+    },
+  ]);
+});
+
+test("returns no Anthropic posts when the payload has no posts array", () => {
+  assert.deepEqual(
+    parseAnthropicEngineering(
+      `<script>self.__next_f.push([1,"5:[\\"$\\",\\"div\\",null,{}]\\n"])</script>`,
+    ),
+    [],
   );
 });

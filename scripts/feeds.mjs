@@ -643,48 +643,86 @@ async function fetchYouTubeChannel({ handle, channelId, source }) {
 
 // --- Anthropic Engineering scraper ---------------------------------
 //
-// anthropic.com/engineering is a Next.js page with no RSS. Its initial
-// payload embeds a list of articles as escaped JSON inside the document,
-// one block per article shaped like:
-//   {"_type":"engineeringArticle", ... ,"publishedOn":"YYYY-MM-DD",
-//    "slug":{..."current":"<slug>"}, ... ,"title":"<title>"}
-// We split on the "engineeringArticle" marker and pull publishedOn, slug,
-// and title from each block. Authors are not in the index payload, so we
-// label everything "Anthropic" — accurate for the brand blog, even though
-// individual posts have named bylines on their own pages.
+// anthropic.com/engineering is a Next.js page with no RSS. Its data
+// arrives as React Server Components payload chunks, each a JSON string
+// literal inside `self.__next_f.push([1, "..."])`. Joined and decoded,
+// the payload holds a `"posts":[...]` array of Sanity documents:
+//   {"_type":"article","publishedOn":"YYYY-MM-DD",
+//    "cardTeams":[{"slug":"engineering",...}],
+//    "slug":{"current":"<slug>"},"title":"<title>","linkedUrl":null, ...}
+// Posts are served from /research/<slug> (the old /engineering/<slug>
+// URLs redirect elsewhere). The payload also carries `relatedArticles`
+// from other sections, so we read only the `posts` array and keep only
+// documents tagged with the engineering team. Authors are not in the
+// index payload, so we label everything "Anthropic" — accurate for the
+// brand blog, even though individual posts have named bylines.
 
-async function fetchAnthropicEngineering() {
-  const html = await fetchText("https://www.anthropic.com/engineering");
-  const blockRe = /\\"_type\\":\\"engineeringArticle\\"([\s\S]*?)(?=\\"_type\\":\\"engineeringArticle\\"|<\/script>)/g;
-  const slugRe = /\\"slug\\":\{\\"_type\\":\\"slug\\",\\"current\\":\\"([^"\\]+)\\"/;
-  const dateRe = /\\"publishedOn\\":\\"(\d{4}-\d{2}-\d{2})\\"/;
-  const titleRe = /\\"title\\":\\"((?:[^"\\]|\\.)+?)\\"/;
+const ANTHROPIC_ORIGIN = "https://www.anthropic.com";
+
+// Returns the JSON array or object starting at `start`, or null if it
+// never closes. Tracks string literals so brackets inside titles and
+// summaries don't count.
+function sliceJsonValue(text, start) {
+  let depth = 0;
+  let inString = false;
+  for (let i = start; i < text.length; i++) {
+    const c = text[i];
+    if (inString) {
+      if (c === "\\") i++;
+      else if (c === '"') inString = false;
+    } else if (c === '"') {
+      inString = true;
+    } else if (c === "[" || c === "{") {
+      depth++;
+    } else if (c === "]" || c === "}") {
+      depth--;
+      if (depth === 0) return text.slice(start, i + 1);
+    }
+  }
+  return null;
+}
+
+export function parseAnthropicEngineering(html) {
+  const chunkRe = /self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g;
+  const payload = [...html.matchAll(chunkRe)]
+    .map(([, literal]) => JSON.parse(literal))
+    .join("");
+
+  const marker = '"posts":[';
+  const at = payload.indexOf(marker);
+  if (at < 0) return [];
+  const json = sliceJsonValue(payload, at + marker.length - 1);
+  if (!json) return [];
 
   const seen = new Set();
   const articles = [];
-  for (const [, block] of html.matchAll(blockRe)) {
-    const slugM = block.match(slugRe);
-    const dateM = block.match(dateRe);
-    const titleM = block.match(titleRe);
-    if (!slugM || !dateM || !titleM) continue;
-    const slug = slugM[1];
-    if (seen.has(slug)) continue;
+  for (const post of JSON.parse(json)) {
+    const isEngineering = post?.cardTeams?.some((t) => t?.slug === "engineering");
+    const slug = post?.slug?.current;
+    const title = typeof post?.title === "string" ? post.title.trim() : "";
+    const day = /^\d{4}-\d{2}-\d{2}$/.test(post?.publishedOn ?? "") ? post.publishedOn : null;
+    if (!isEngineering || !slug || !title || !day || seen.has(slug)) continue;
     seen.add(slug);
     // Date is YYYY-MM-DD with no time; treat as midday UTC so it lands on
     // the intended calendar day in any sane timezone.
-    const date = new Date(`${dateM[1]}T12:00:00Z`);
+    const date = new Date(`${day}T12:00:00Z`);
     if (Number.isNaN(date.getTime())) continue;
-    const title = decodeXml(titleM[1].replace(/\\u0026/g, "&").replace(/\\"/g, '"').replace(/\\\\/g, "\\"));
     articles.push({
       title,
-      link: `https://www.anthropic.com/engineering/${slug}`,
+      link: new URL(post.linkedUrl || `/research/${slug}`, ANTHROPIC_ORIGIN).toString(),
       author: "Anthropic",
       source: "Anthropic Engineering",
       date: date.toISOString(),
     });
   }
+  return articles;
+}
+
+async function fetchAnthropicEngineering() {
+  const html = await fetchText(`${ANTHROPIC_ORIGIN}/engineering`);
+  const articles = parseAnthropicEngineering(html);
   if (articles.length === 0) {
-    throw new Error("No engineeringArticle entries found on anthropic.com/engineering");
+    throw new Error("No engineering posts found on anthropic.com/engineering");
   }
   return articles;
 }
